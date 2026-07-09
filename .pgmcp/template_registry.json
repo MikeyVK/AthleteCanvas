@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "version_hashes": {
+    "8dd42510": {
+      "artifact_type": "issue",
+      "created": "2026-07-09T07:12:35.162612+00:00",
+      "hash_algorithm": "SHA256",
+      "concrete": {
+        "template_id": "issue.md",
+        "version": "1.0.0"
+      }
+    },
+    "130ac5ea": {
+      "artifact_type": "planning",
+      "created": "2026-07-09T09:43:13.761618+00:00",
+      "hash_algorithm": "SHA256",
+      "concrete": {
+        "template_id": "planning.md",
+        "version": "1.3.0"
+      }
+    }
+  },
+  "current_versions": {
+    "issue": "8dd42510",
+    "planning": "130ac5ea"
+  },
+  "templates": {},
+  "last_updated": "2026-07-09T09:43:13.761662+00:00"
+}
