@@ -2719,7 +2719,7 @@ workflows:
           - id: docs-readme
             type: file_glob
             required: true
-            dir: docs/mcp_server
+            dir: docs
             pattern: README*.md
         instructions:
           sub_role: documenter
