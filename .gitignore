@@ -31,3 +31,11 @@ frontend/dist/
 
 # Env
 .env
+
+# Phase-Gate MCP Server ignores
+.pgmcp/logs/
+.pgmcp/temp/
+.pgmcp/.restart_marker
+.agents/mcp_config.json
+.vscode/mcp.json
+temp/
