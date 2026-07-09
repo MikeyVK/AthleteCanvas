@@ -1,22 +1,4 @@
-<!-- README.md -->
-<!-- template=generic_doc version=43c84181 created=2026-07-09T10:54Z updated=2026-07-09T12:55Z -->
-# Ypsia — Personal AI Coach
-
-**Status:** DEFINITIVE  
-**Version:** 1.0  
-**Last Updated:** 2026-07-09
-
----
-
-## Purpose
-
-Provide a landing page and onboarding index for the Ypsia platform repository.
-
----
-
-## Summary
-
-Overview of Ypsia's key features, tech stack, codebase structure, and developer documentation entry points.
+# Ypsia
 
 > Personal AI-Driven Training, Nutrition & Weekly Rhythm Coach.
 
@@ -26,7 +8,7 @@ The platform is designed as a privacy-respecting, local-first application that a
 
 ---
 
-## Key Features
+## ✨ Features
 
 - **Training Fundament**: Import, normalize, and store Garmin FIT activity files.
 - **Weekly Rhythm Planner**: Dynamic scheduling of training around fixed life rhythms (work, family) and recovery needs.
@@ -35,7 +17,7 @@ The platform is designed as a privacy-respecting, local-first application that a
 
 ---
 
-## Technology Stack
+## 🛠 Technology Stack
 
 - **Backend**: Python 3.11+, FastAPI, SQLite (local and privacy-first storage).
 - **Frontend**: React, Vite, CSS.
@@ -61,18 +43,10 @@ To quickly find the information you need, refer to these primary entry points:
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 
 - `backend/` - FastAPI backend application and SQLite database.
 - `frontend/` - React/Vite single-page application.
 - `web/` - Static marketing/info site and charter web viewer.
 - `docs/` - Project documentation, planning, and guidelines.
 - `.agents/` - AI agent instruction sets and workflows.
-
----
-
-## Version History
-
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | 2026-07-09 | Agent | Initial draft |
