@@ -1,7 +1,7 @@
 # pgmcp — Agent Protocol
 
 **Auto-loaded by VS Code / Google Antigravity** via `chat.useAgentsMdFile: true` — single always-on instruction file.
-**Status:** Active | **Context:** AI-powered training, nutrition and weekly planning platform (ypsia / AthleteCanvas)
+**Status:** Active | **Context:** AI-powered training, nutrition and weekly planning platform (ypsia)
 
 ---
 
@@ -284,7 +284,7 @@ Use Co → Imp only for child technical delegation. Epic-owned branch review and
 
 ---
 
-## 🏗️ Project Context & Architecture: AthleteCanvas (ypsia)
+## 🏗️ Project Context & Architecture: ypsia
 
 **What it is:** A personal AI coach platform integrating training data (Garmin + others), AI-driven analysis (Gemini via LiteLLM), weekly rhythm planning, nutrition tracking, and meal planning.
 

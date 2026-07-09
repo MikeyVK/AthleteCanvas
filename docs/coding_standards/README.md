@@ -2,23 +2,26 @@
 
 ## Overview
 
-This directory contains the comprehensive coding standards for S1mpleTrader V3. All development must follow these guidelines to maintain code quality, consistency, and maintainability.
+This directory contains the comprehensive coding standards for the project. All development must follow these guidelines to maintain code quality, consistency, and maintainability.
 
 ## Quick Links
 
-📖 **Start Here:** [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Understand the development cycle
+**⚖️ Architecture contract — read this FIRST:**
 
-🎯 **Daily Use:** [QUALITY_GATES.md](QUALITY_GATES.md) - Pre-merge checklist
+🏛️ **[ARCHITECTURE_PRINCIPLES.md](ARCHITECTURE_PRINCIPLES.md)** — Binding architectural principles (SOLID, Config-First, Fail-Fast, CQS, ISP, Law of Demeter). This is the `primary` reference. Code that violates these principles is REJECTED, regardless of whether tooling gates pass.
 
-🌳 **Git Strategy:** [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Branching and commits
+📝 **Documentation standard:** [DOCUMENTATION_STANDARD.md](DOCUMENTATION_STANDARD.md) — Shared rules for drafting, structuring, and presenting project documentation. Read this before drafting or scaffolding research, design, planning, or other governed documents.
 
-✨ **Style Guide:** [CODE_STYLE.md](CODE_STYLE.md) - Code formatting rules
+---
 
-🧩 **Type Checking:** [TYPE_CHECKING_PLAYBOOK.md](TYPE_CHECKING_PLAYBOOK.md) - Standardized fixes for typing issues
+📋 **Pre-merge checklist:** [QUALITY_GATES.md](QUALITY_GATES.md) — 8 mandatory gates (incl. Gate 7 architectural review)
 
+✨ **Formatting and style:** [CODE_STYLE.md](CODE_STYLE.md) — Code formatting (PEP 8 enforced by tooling)
+
+🧩 **Type checking:** [TYPE_CHECKING_PLAYBOOK.md](TYPE_CHECKING_PLAYBOOK.md) — Standardized approach for typing issues
 ## Documentation Structure
 
-### 1. [TDD_WORKFLOW.md](TDD_WORKFLOW.md)
+### 1. [AGENTS.md](../../AGENTS.md)
 
 **Test-Driven Development (TDD) Workflow**
 
@@ -64,7 +67,7 @@ The 7 mandatory quality gates that all code must pass.
 - Understanding VS Code warnings
 - Setting up new workspace
 
-### 3. [GIT_WORKFLOW.md](GIT_WORKFLOW.md)
+### 3. [AGENTS.md](../../AGENTS.md)
 
 **Git Workflow - Branching & Commit Conventions**
 
@@ -90,7 +93,7 @@ Feature branch workflow with strict quality requirements.
 
 **Code Style Guide - Formatting & Conventions**
 
-Comprehensive style guide for Python code in S1mpleTrader V3.
+Comprehensive style guide for Python code in PhaseGate MCP.
 
 **Topics:**
 - File headers (mandatory architectural documentation)
@@ -115,7 +118,7 @@ Comprehensive style guide for Python code in S1mpleTrader V3.
 
 ### Starting a New DTO
 
-1. **Read:** [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Understand the cycle
+1. **Read:** [AGENTS.md](../../AGENTS.md) - Understand the TDD cycle
 2. **Create feature branch:**
    ```powershell
    git checkout -b feature/my-dto
@@ -124,7 +127,7 @@ Comprehensive style guide for Python code in S1mpleTrader V3.
 4. **GREEN phase:** Minimal implementation, commit
 5. **REFACTOR phase:** Quality improvements, commit
 6. **Check:** [QUALITY_GATES.md](QUALITY_GATES.md) - Run all 7 gates
-7. **Merge:** [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Merge to main
+7. **Merge:** [AGENTS.md](../../AGENTS.md) - Merge conventions
 
 ### Fixing Quality Gate Failures
 
@@ -139,7 +142,7 @@ Comprehensive style guide for Python code in S1mpleTrader V3.
 
 ### Writing Good Commit Messages
 
-1. **Read:** [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Commit conventions
+1. **Read:** [AGENTS.md](../../AGENTS.md) - Commit conventions
 2. **Use prefixes:** `test:`, `feat:`, `refactor:`, `docs:`, `fix:`, `chore:`
 3. **Structure:** Short summary + optional body + optional footer
 4. **Include status:** `Status: RED|GREEN`, `Quality gates: 10/10`
@@ -167,7 +170,7 @@ All code must meet these standards before merge:
 
 **Configuration Doctrine:**
 - **`pyproject.toml`** = IDE baseline (pragmatic, for VS Code/PyCharm)
-- **`.st3/quality.yaml`** = CI authority (strict, gates use `--isolated`)
+- **`.pgmcp/quality.yaml`** = CI authority (strict, gates use `--isolated`)
 - See [QUALITY_GATES.md](QUALITY_GATES.md) for complete details and exact commands
 
 ## Key Principles
@@ -192,8 +195,8 @@ All code must meet these standards before merge:
 | **❌ NEVER** | `tests/*.py` root or `tests/unit/` |
 
 **Enforcement:**
-- `base_path` in `.st3/artifacts.yaml` for `unit_test` → `tests/mcp_server/unit/`
-- `base_path` in `.st3/artifacts.yaml` for `integration_test` → `tests/mcp_server/integration/`
+- `base_path` in `.pgmcp/artifacts.yaml` for `unit_test` → `tests/mcp_server/unit/`
+- `base_path` in `.pgmcp/artifacts.yaml` for `integration_test` → `tests/mcp_server/integration/`
 - For backend code, override via `output_path="tests/backend/..."` in `scaffold_artifact`
 - `pytest` zonder args = enkel `tests/mcp_server/` (via `testpaths` in `pyproject.toml`)
 - `pytest tests/backend/` = explicit backend run
@@ -223,9 +226,8 @@ scaffold_artifact(
 
 ## Related Documentation
 
-- **Architecture:** [../architecture/README.md](../architecture/README.md) - System design principles
-- **Implementation:** [../implementation/IMPLEMENTATION_STATUS.md](../implementation/IMPLEMENTATION_STATUS.md) - Current progress
-- **Reference:** [../reference/README.md](../reference/README.md) - Templates and examples
+- **Architecture:** [docs/manuals/architecture.md](../manuals/architecture.md) - System design principles
+- **Reference:** [docs/reference/README.md](../reference/README.md) - Templates and examples
 
 ## Support
 

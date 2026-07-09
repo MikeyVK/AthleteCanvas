@@ -1,8 +1,10 @@
-# Quality Gates
+﻿# Quality Gates
 
 ## Overview
 
-All code in S1mpleTrader V3 must pass **7 mandatory quality gates** before merging to main. Each gate must **pass** (exit code 0) to ensure code quality and consistency.
+> **⚠️ Read first:** [ARCHITECTURE_PRINCIPLES.md](ARCHITECTURE_PRINCIPLES.md) — tooling gates validate *form*, architectural principles validate *correctness*. Code can pass all gates and still be REJECTED on architectural grounds.
+
+All code must pass **8 mandatory quality gates** before merging to main. Each gate must **pass** (exit code 0) to ensure code quality and consistency.
 
 ## Configuration Doctrine: IDE vs CI
 
@@ -13,7 +15,7 @@ All code in S1mpleTrader V3 must pass **7 mandatory quality gates** before mergi
    - Balanced for developer productivity
    - May have pragmatic ignores for known false positives
 
-2. **`.st3/quality.yaml`** = **CI Authority** (Strict)
+2. **`ci-quality.yaml` (or equivalent CI config)** = **CI Authority** (Strict)
    - Used by quality gates in CI/CD pipelines
    - Stricter enforcement before merge
    - Ruff gates use `--isolated` flag to ignore IDE config
@@ -40,6 +42,7 @@ Every DTO implementation must pass all gates for **both** the DTO file and its t
 - [ ] Gate 4: Type Checking (DTOs only)
 - [ ] Gate 5: Tests Passing
 - [ ] Gate 6: Code Coverage (>= 90%)
+- [ ] Gate 7: Architectural Review (see ARCHITECTURE_PRINCIPLES.md)
 
 ### Gate 0: Ruff Format
 
@@ -203,6 +206,29 @@ pytest tests/ --cov=backend --cov=mcp_server --cov=new_package --cov-branch --co
 
 ## Post-Implementation Workflow
 
+### Gate 7: Architectural Review
+
+**Purpose:** Ensure code conforms to the architectural principles in [ARCHITECTURE_PRINCIPLES.md](ARCHITECTURE_PRINCIPLES.md). This gate is a **human/agent review**, not a tooling check.
+
+**Checklist — run through these questions for every PR:**
+
+| Question | Expected answer |
+|---|---|
+| Does each new class have exactly one responsibility? | Yes — otherwise split |
+| Are there if-chains on phase names, action types, or workflow names? | No — OCP violation |
+| Is business knowledge (phase names, commit-type maps, branch types) stored in config? | Yes — Config-First |
+| Are dependencies injected via constructor? | Yes — DIP |
+| Are read-only consumers limited to a narrow read interface? | Yes — ISP |
+| Do `get_state()` / `get_current_phase()` return without calling `save()`? | Yes — CQS |
+| Are value objects `frozen=True`? | Yes — CQS enforcement |
+| Are singletons implemented via `ClassVar` + lazy init (no module-level side effects)? | Yes — Fail-Fast |
+| Does the config loader validate inconsistent config combinations at startup? | Yes — Fail-Fast |
+| Is there a new hardcoded list or regex with branch types or phase names? | No — read from config |
+| Were migration layers written for deprecated parameters? | No — YAGNI |
+| Does each new method belong to the class of its domain? | Yes — Cohesion |
+
+**If in doubt:** consult [ARCHITECTURE_PRINCIPLES.md](ARCHITECTURE_PRINCIPLES.md) for the full principle definitions and prohibited patterns.
+
 Complete workflow for a new DTO:
 
 ```powershell
@@ -350,10 +376,49 @@ def _artifact_manager(
 
 **Status:** Use this pattern for all fixtures that inject other fixtures as parameters.
 
+
+### 5. Integration Test Boundary Contract
+
+Integration tests in `tests/mcp_server/integration/` are part of the **default test suite** and run with every `pytest tests/mcp_server` invocation. The following contract must hold to keep the full suite safe and side-effect-free.
+
+**What "integration" means in this codebase:**
+
+| Characteristic | Rule |
+|---|---|
+| External API adapter | Always mocked (`MagicMock` or `MagicMock(spec=...)`) |
+| Filesystem writes | Exclusively via `tmp_path` (pytest fixture) |
+| Real workspace reads | Permitted for read-only operations (e.g. `ruff`/`mypy` on a real source file) |
+| Network calls | Never — zero real HTTP/GitHub API traffic |
+| Side effects outside `tmp_path` | Not allowed — test must be fully reversible |
+| Environment variable guards | Not needed — the adapter boundary is the safety layer |
+
+Integration tests exercise multiple real layers simultaneously (e.g. tool + manager + config) while mocking the external boundary. They are not slower-running tests requiring an opt-in flag; they are hermetic tests with a wider internal scope.
+
+**Boundary enforcement:**
+
+The `test_pytest_config.py` suite actively guards these invariants:
+
+- `testpaths = ["tests/mcp_server"]` — backend tests never run implicitly
+- No `-m not integration` filter — the integration marker is intentionally abolished (merged via #237)
+- `integration` marker not defined in `pyproject.toml` — not needed because the adapter boundary provides safety, not a marker
+- `asyncio_mode = "strict"` — async tests pay no event-loop overhead unless marked
+- `pytest-xdist` enabled via `-n auto` — parallel execution requires `tmp_path` isolation
+
+**Writing a new integration test — checklist:**
+
+- [ ] File lives in `tests/mcp_server/integration/`
+- [ ] Module docstring includes `@layer: Tests (Integration)`
+- [ ] External API adapter replaced with `MagicMock` or `MagicMock(spec=AdapterClass)`
+- [ ] All filesystem writes via `tmp_path` — never writes to the real workspace
+- [ ] No env-gated or opt-in skip guard (no `pytest.mark.skipif(os.getenv(...))` or `pytest.skip` conditioned on an environment variable)
+- [ ] No `subprocess.run` targeting remote services — local git ops on `tmp_path` are fine
+- [ ] Compatible with `pytest-xdist` parallel execution (no shared mutable state between test functions)
+
 ## Code Review Rejection Criteria
 
 **REJECT if any of these conditions:**
 
+*Tooling (automated):*
 - ❌ Any quality gate fails (non-zero exit code)
 - ❌ Failing tests
 - ❌ Missing type hints
@@ -361,6 +426,15 @@ def _artifact_manager(
 - ❌ Code without tests (for new features)
 - ❌ Lines > 100 characters
 - ❌ Import grouping violations (see [CODE_STYLE.md](CODE_STYLE.md))
+
+*Architecture (Gate 7 — human/agent review):*
+- ❌ Hardcoded phase/workflow/branch-type names in production code (Config-First)
+- ❌ Dependency instantiated inside `execute()` or other methods (DIP)
+- ❌ Read-only consumer injected with write-capable interface (ISP)
+- ❌ Query method calls `save()` or mutates state (CQS)
+- ❌ Module-level `Config.load()` or similar — import-time side effects
+- ❌ God Class with multiple unrelated responsibilities (SRP)
+- ❌ If-chain on type/phase/action — use registry or config-driven dispatch (OCP)
 
 **ACCEPT only when:**
 - ✅ All quality gates pass (exit code 0)
@@ -371,6 +445,7 @@ def _artifact_manager(
 - ✅ Imports at top-level
 - ✅ Max line length 100 chars
 - ✅ Import grouping correct
+- ✅ Gate 7 architectural review checklist passes
 
 ## VS Code Settings (Recommended)
 
@@ -387,6 +462,5 @@ Add to `.vscode/settings.json`:
 
 ## Related Documentation
 
-- [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Test-driven development cycle
-- [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Branching and commit conventions
+- [AGENTS.md](../../AGENTS.md) - Test-driven development and Git/Commit conventions
 - [CODE_STYLE.md](CODE_STYLE.md) - Code formatting standards

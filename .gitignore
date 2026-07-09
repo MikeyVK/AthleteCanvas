@@ -16,10 +16,6 @@ frontend/dist/
 
 # Logs & runtime state
 .logs/
-.st3/state.json
-.st3/template_registry.json
-.st3/projects.json
-.st3/temp/
 
 # VS Code (keep mcp.json and settings.json)
 .vscode/*
@@ -27,7 +23,6 @@ frontend/dist/
 !.vscode/settings.json
 
 # MCP runtime
-.st3/.restart_marker
 
 # Env
 .env
