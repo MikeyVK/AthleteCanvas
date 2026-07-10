@@ -47,5 +47,5 @@ workflows:
   # Chore (lightweight maintenance workflow)
   chore:
     name: chore
-    description: "Lightweight maintenance workflow (planning → implementation → ready)"
+    description: "Lightweight maintenance workflow (research → implementation → ready)"
     default_execution_mode: interactive

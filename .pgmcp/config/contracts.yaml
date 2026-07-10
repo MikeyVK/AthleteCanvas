@@ -2890,41 +2890,41 @@ workflows:
             - PR submitted (merge requires human approval)
   chore:
     phases:
-      - name: planning
+      - name: research
         exit_requires:
-          - id: planning-doc
+          - id: research-doc
             type: file_glob
             required: true
             dir: docs/development
-            pattern: issue*/planning*.md
+            pattern: issue*/research*.md
         instructions:
-          sub_role: planner
+          sub_role: researcher
           phase_instructions: |
             [ ] Read the issue: get_issue(issue_number=N).
             [ ] Use explore_subagent to check existing code and identify files to change.
-            [ ] Present the proposed chore checklist to the user for feedback.
-            [ ] Create the planning artifact: scaffold_artifact(artifact_type='planning', name='planning').
-            [ ] Fill the planning document with the task checklist and verification plan.
-            [ ] Commit: git_add_or_commit(workflow_phase='planning', message='Planning for #N')
+            [ ] Present the findings and proposed checklist to the user for feedback.
+            [ ] Create the research artifact: scaffold_artifact(artifact_type='research', name='research', context={...}).
+            [ ] Fill the research document with findings and the approved strategy.
+            [ ] Commit: git_add_or_commit(workflow_phase='research', message='Research findings (#N)')
             [ ] First push: git_push(set_upstream=True)  # if first push on branch
             [ ] Produce hand-over for the implementation phase.
           handover_template: |
-            ### Planning → Implementation Hand-over
+            ### Research → Implementation Hand-over
             #### Scope
             - Issue: #N
-            - Chore focus: <one sentence>
+            - Research focus: <one sentence>
 
             #### Files
-            - docs/development/issueN/planning.md (new)
+            - docs/development/issueN/research.md (new)
 
             #### Stop-Go Proof
-            - Planning doc committed
+            - Research doc committed
       - name: implementation
         cycle_based: false
         instructions:
           sub_role: implementer
           phase_instructions: |
-            [ ] Read the planning document and work context.
+            [ ] Read the research document and work context.
             [ ] Implement the changes according to the checklist.
             [ ] Run quality gates on changed files: run_quality_gates(files=[...]).
             [ ] Run tests if applicable to verify correctness: run_tests().
