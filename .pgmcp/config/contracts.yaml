@@ -2888,6 +2888,72 @@ workflows:
             - PR body scaffolded: scaffold_artifact(artifact_type='pr', name='pr', context={...})
             - Deferred-work transfer prepared for @co
             - PR submitted (merge requires human approval)
+  chore:
+    phases:
+      - name: research
+        exit_requires:
+          - id: research-doc
+            type: file_glob
+            required: true
+            dir: docs/development
+            pattern: issue*/research*.md
+        instructions:
+          sub_role: researcher
+          phase_instructions: |
+            [ ] Read the issue: get_issue(issue_number=N).
+            [ ] Use explore_subagent to check existing code and identify files to change.
+            [ ] Present the findings and proposed checklist to the user for feedback.
+            [ ] Create the research artifact: scaffold_artifact(artifact_type='research', name='research', context={...}).
+            [ ] Fill the research document with findings and the approved strategy.
+            [ ] Commit: git_add_or_commit(workflow_phase='research', message='Research findings (#N)')
+            [ ] First push: git_push(set_upstream=True)  # if first push on branch
+            [ ] Produce hand-over for the implementation phase.
+          handover_template: |
+            ### Research → Implementation Hand-over
+            #### Scope
+            - Issue: #N
+            - Research focus: <one sentence>
+
+            #### Files
+            - docs/development/issueN/research.md (new)
+
+            #### Stop-Go Proof
+            - Research doc committed
+      - name: implementation
+        cycle_based: false
+        instructions:
+          sub_role: implementer
+          phase_instructions: |
+            [ ] Read the research document and work context.
+            [ ] Implement the changes according to the checklist.
+            [ ] Run quality gates on changed files: run_quality_gates(files=[...]).
+            [ ] Run tests if applicable to verify correctness: run_tests().
+            [ ] Commit: git_add_or_commit(workflow_phase='implementation', message='chore: implement #N')
+            [ ] Push changes: git_push().
+            [ ] Produce hand-over for the ready phase.
+          handover_template: |
+            ### Implementation → Ready Hand-over
+            #### Scope
+            - Issue: #N
+            - Changes implemented: <summary>
+
+            #### Stop-Go Proof
+            - Quality gates / tests passed
+            - Changes committed and pushed
+      - name: ready
+        instructions:
+          sub_role: implementer
+          phase_instructions: |
+            [ ] Run final quality gate: run_quality_gates(scope='branch')
+            [ ] Commit state files: git_add_or_commit(workflow_phase='ready', message='chore: update pgmcp state before PR')
+            [ ] Submit PR: submit_pr(head='<branch>', title='<title>', body='<pr description>')
+            [ ] Do NOT call merge_pr — human approval required.
+            [ ] Produce final hand-over.
+          handover_template: |
+            ### Ready → CO / Merge Hand-over
+            #### Scope
+            - Issue: #N
+            - PR submitted: <pr_url>
   epic:
     phases:
       - name: research

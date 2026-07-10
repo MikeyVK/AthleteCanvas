@@ -43,3 +43,9 @@ workflows:
     name: epic
     description: "Epic workflow for large initiatives (research → planning → design → coordination → documentation)"
     default_execution_mode: interactive
+
+  # Chore (lightweight maintenance workflow)
+  chore:
+    name: chore
+    description: "Lightweight maintenance workflow (research → implementation → ready)"
+    default_execution_mode: interactive
