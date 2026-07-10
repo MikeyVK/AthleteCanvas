@@ -42,13 +42,18 @@ Currently, research is either handled by @co or @imp as part of the phase-gate w
 
 ## Findings
 
-A standalone main-chat @research agent can be defined in .agents/rules/research.agent.md. It will utilize only read-only tools and be workflow-agnostic, serving as a direct conversational partner for the user.
+1. **Standalone Research Agent**: A standalone main-chat `@research` agent can be defined in `.agents/rules/research.agent.md`. It will utilize only read-only tools and be workflow-agnostic, serving as a direct conversational partner for the user.
+2. **IDE-Agnostic Improvements**: Active agent instruction files contain legacy references to specific IDEs (`VS Code` and `Google Antigravity`):
+   - `AGENTS.md` references them in the auto-load settings (line 3) and chat session model (line 211).
+   - Rules files (`co.agent.md`, `imp.agent.md`, `qa.agent.md`, `research.agent.md`) reference them in their frontmatter description blocks.
+   - These references should be replaced with generic terms (e.g., "the IDE" or "agent orchestration") to achieve a clean, IDE-agnostic setup. No dedicated IDE-specific folders are required.
 
 ---
 
 ## Approved Strategy
 
-Create a dedicated, standalone, workflow-independent, read-only research agent configuration in the workspace.
+- Create a dedicated, standalone, workflow-independent, read-only research agent configuration (`.agents/rules/research.agent.md`).
+- Remove IDE-specific references from `AGENTS.md` and the frontmatter of all agent rules files, replacing them with generic equivalents.
 
 ---
 
