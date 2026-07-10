@@ -1,0 +1,19 @@
+{
+  "23": {
+    "issue_title": "label sync & refresh role slash-command",
+    "workflow_name": "feature",
+    "execution_mode": "interactive",
+    "required_phases": [
+      "research",
+      "design",
+      "planning",
+      "implementation",
+      "validation",
+      "documentation",
+      "ready"
+    ],
+    "skip_reason": null,
+    "parent_branch": "main",
+    "created_at": "2026-07-10T11:04:51.075305+00:00"
+  }
+}
