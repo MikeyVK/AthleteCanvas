@@ -1,6 +1,6 @@
 ---
 trigger: manual
-description: Standalone Research Agent ruleset for VS Code/Antigravity background or main-chat research tasks.
+description: Standalone Research Agent ruleset for background or main-chat research tasks.
 ---
 
 # @research — Research Agent Role
