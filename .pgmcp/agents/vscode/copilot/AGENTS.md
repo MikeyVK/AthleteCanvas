@@ -205,9 +205,9 @@ These are representative examples, not the complete registry. Current first-clas
 
 ---
 
-## 🤝 Three-Agent Model
+## 🤝 Three-Agent Model & Standalone Research
 
-This project uses three specialized agents in separate VS Code chat sessions to prevent role contamination and context pollution.
+This project uses three specialized agents in separate VS Code chat sessions to prevent role contamination and context pollution, along with a standalone research agent for deep exploratory work.
 
 ### Roles
 
@@ -216,6 +216,7 @@ This project uses three specialized agents in separate VS Code chat sessions to 
 | `@co` | Coordination authority and epic workflow owner | Read all; issue/label/milestone admin; epic docs/contracts/prompts edits; epic lifecycle mutations, phase transitions, commits, quality gates, PR submission, and merge within the approved narrow allowlist |
 | `@imp` | Child-issue implementation executor | Production code and test work on non-epic branches; cycle execution; commits; phase and cycle transitions |
 | `@qa` | QA authority — read-only | Read files; run tests; run quality gates. **No edits, no commits** |
+| `@research` | Standalone Research Agent | Read all; web searching; explore codebase and documentation. Operates outside phase-gate workflows. **No edits, no commits** |
 
 ### Sub-roles
 
