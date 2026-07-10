@@ -76,31 +76,43 @@ labels:
   # phase:* labels are validated against workphases.yaml at runtime
   # Example: phase:research, phase:implementation, phase:ready
   
-  # SCOPE - Impact Area (6 labels)
+  # SCOPE - Impact Area (9 labels)
   # Which part of the system is affected
-  - name: "scope:architecture"
+  - name: "scope:ai"
     color: "BFD4F2"
-    description: "Architectural changes"
-  
-  - name: "scope:mcp-server"
+    description: "Artificial Intelligence and Gemini integration"
+
+  - name: "scope:backend"
     color: "BFD4F2"
-    description: "MCP server internals"
-  
-  - name: "scope:platform"
+    description: "Backend application code"
+
+  - name: "scope:data"
     color: "BFD4F2"
-    description: "GitHub/git platform integration"
-  
+    description: "Data model and database schema"
+
+  - name: "scope:frontend"
+    color: "BFD4F2"
+    description: "Frontend user interface"
+
+  - name: "scope:infrastructure"
+    color: "BFD4F2"
+    description: "Infrastructure and deployment configuration"
+
+  - name: "scope:nutrition"
+    color: "BFD4F2"
+    description: "Nutrition tracking and meal planning"
+
+  - name: "scope:planning"
+    color: "BFD4F2"
+    description: "Weekly planner and training scheduler"
+
   - name: "scope:tooling"
     color: "BFD4F2"
-    description: "Development tooling"
-  
-  - name: "scope:workflow"
-    color: "BFD4F2"
-    description: "Workflow/process improvements"
-  
+    description: "Development tooling and configuration"
+
   - name: "scope:documentation"
     color: "BFD4F2"
-    description: "Documentation scope"
+    description: "Project documentation"
 
 # ---------------------------------------------------------------------------
 # CHANGELOG

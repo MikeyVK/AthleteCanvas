@@ -1,8 +1,11 @@
 version: "1.0.0"
 scopes:
-  - architecture
-  - mcp-server
-  - platform
+  - ai
+  - backend
+  - data
+  - frontend
+  - infrastructure
+  - nutrition
+  - planning
   - tooling
-  - workflow
   - documentation
