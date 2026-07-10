@@ -80,7 +80,7 @@ labels:
   # Which part of the system is affected
   - name: "scope:ai"
     color: "BFD4F2"
-    description: "Artificial Intelligence and Gemini integration"
+    description: "Artificial Intelligence and LLM integration"
 
   - name: "scope:backend"
     color: "BFD4F2"

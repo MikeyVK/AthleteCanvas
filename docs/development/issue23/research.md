@@ -49,10 +49,10 @@ GitHub labels currently use default grey colors and lack descriptions for ypsia 
 | :--- | :--- | :--- | :--- |
 | **type:\*** | feature, bug, refactor, docs, research, epic, chore | type:feature, type:bug, type:refactor, type:docs, type:research, type:epic, type:chore | Keep as-is; categories match. |
 | **priority:\*** | critical, high, medium, low, triage | priority:critical, priority:high, priority:medium, priority:low, priority:triage | Update `priority:high` and `priority:medium` color/descriptions on remote to match YAML colors (D93F0B, FBCA04). |
-| **scope:\*** | architecture, mcp-server, platform, tooling, workflow, documentation | scope:ai, scope:backend, scope:data, scope:frontend, scope:infrastructure, scope:nutrition, scope:planning, scope:tooling, scope:documentation | **Remove** old server scopes (`mcp-server`, `platform`, `workflow`). **Add** Ypsia-specific scopes to `labels.yaml` with soft-blue colors (`BFD4F2`) and clear descriptions, then sync to GitHub. |
+| **scope:\*** | architecture, mcp-server, platform, tooling, workflow, documentation | scope:ai, scope:backend, scope:data, scope:frontend, scope:infrastructure, scope:nutrition, scope:planning, scope:tooling, scope:documentation | **Remove** old server scopes (`mcp-server`, `platform`, `workflow`). **Add** Ypsia-specific scopes to `labels.yaml` with soft-blue colors (`BFD4F2`) and clear descriptions (`scope:ai` -> "Artificial Intelligence and LLM integration"), then sync to GitHub. |
 
 ### Slash Command Workflows
-Workflows are parsed and executed by the VS Code / Gemini agent host client from `.agents/workflows/*.md`. 
+Workflows are parsed and executed by the agent host client from `.agents/workflows/*.md`. 
 The new `/start` workflow will enforce that the agent reads `AGENTS.md` and their respective `@` sub-role configuration file (`.agents/rules/<role>.agent.md`), outputting a formal confirmation. Since the client loads these files on command execution, this acts as a robust mid-session refresh mechanism.
 
 ### Lightweight Chore Workflow
