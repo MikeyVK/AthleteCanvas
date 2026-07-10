@@ -47,12 +47,13 @@ Currently, research is either handled by @co or @imp as part of the phase-gate w
    - `AGENTS.md` references them in the auto-load settings (line 3) and chat session model (line 211).
    - Rules files (`co.agent.md`, `imp.agent.md`, `qa.agent.md`, `research.agent.md`) reference them in their frontmatter description blocks.
    - These references should be replaced with generic terms (e.g., "the IDE" or "agent orchestration") to achieve a clean, IDE-agnostic setup. No dedicated IDE-specific folders are required.
+3. **Non-Destructive Tool Access**: To maximize effectiveness, the `@research` agent requires access to non-destructive, read-only `pgmcp` server tools (e.g., `get_issue`, `get_project_plan`, `git_diff_stat`, `git_status`) to fetch workspace, issue, and branch metadata.
 
 ---
 
 ## Approved Strategy
 
-- Create a dedicated, standalone, workflow-independent, read-only research agent configuration (`.agents/rules/research.agent.md`).
+- Create a dedicated, standalone, workflow-independent, read-only research agent configuration (`.agents/rules/research.agent.md`) equipped with codebase, web search, and read-only `pgmcp` workflow and git tools.
 - Remove IDE-specific references from `AGENTS.md` and the frontmatter of all agent rules files, replacing them with generic equivalents.
 
 ---
