@@ -1,16 +1,16 @@
-<!-- docs\development\issue23\research.md -->
-<!-- template=research version=8b7bb3ab created=2026-07-10T15:09Z updated= -->
+<!-- docs/development/issue23/research.md -->
+<!-- template=research version=8b7bb3ab created=2026-07-10T15:09Z updated=2026-07-10T17:15Z -->
 # Research: label sync & refresh role slash-command
 
 **Status:** DEFINITIVE  
-**Version:** 1.0  
+**Version:** 1.1  
 **Last Updated:** 2026-07-10
 
 ---
 
 ## Purpose
 
-Document findings on repository label status, workflow structures, and design a lightweight chore workflow and role-refresh mechanism.
+Document findings on repository label status, workflow structures, and research a lightweight chore workflow and role-refresh mechanism.
 
 ## Scope
 
@@ -28,15 +28,15 @@ Discrepancy between local labels configuration (labels.yaml) and remote GitHub l
 
 ## Research Goals
 
-- Compare local labels.yaml with remote repository labels and align them
-- Design a new custom start/refresh workflow to synchronize agent rules mid-session
-- Design a new lightweight chore workflow to reduce orchestration overhead
+- Compare local labels.yaml with remote repository labels to identify mismatches.
+- Investigate how custom slash-command workflows are registered and executed by the agent client.
+- Explore phase structure options for a lightweight workflow to reduce orchestration overhead.
 
 ---
 
 ## Background
 
-The pgmcp server provides github label management tools and parses slash commands from .agents/workflows/*.md. The workflows and phases are configured via workflows.yaml and contracts.yaml in the server configuration.
+The `phase-gate-mcp` server provides GitHub label management tools. The agent client parses and registers slash-command workflows from markdown files located in `.agents/workflows/*.md`. The workflows and phases are configured via workflows.yaml and contracts.yaml in the `.pgmcp/config/` directory.
 
 ---
 
@@ -52,8 +52,12 @@ GitHub labels currently use default grey colors and lack descriptions for ypsia 
 | **scope:\*** | architecture, mcp-server, platform, tooling, workflow, documentation | scope:ai, scope:backend, scope:data, scope:frontend, scope:infrastructure, scope:nutrition, scope:planning, scope:tooling, scope:documentation | **Remove** old server scopes (`mcp-server`, `platform`, `workflow`). **Add** Ypsia-specific scopes to `labels.yaml` with soft-blue colors (`BFD4F2`) and clear descriptions, then sync to GitHub. |
 
 ### Slash Command Workflows
-Workflows are parsed from `.agents/workflows/*.md`. The new `/start` workflow will enforce that the agent reads `AGENTS.md` and their respective `@` sub-role configuration file (`.agents/rules/<role>.agent.md`), outputting a formal confirmation.
-A new `chore` workflow registered in `workflows.yaml` and `contracts.yaml` with the path `planning -> implementation -> ready` will reduce phases from 7 to 3, with `implementation` phase configured as `cycle_based: false` to avoid TDD loops for minor housekeeping tasks.
+Workflows are parsed and executed by the VS Code / Gemini agent host client from `.agents/workflows/*.md`. 
+The new `/start` workflow will enforce that the agent reads `AGENTS.md` and their respective `@` sub-role configuration file (`.agents/rules/<role>.agent.md`), outputting a formal confirmation. Since the client loads these files on command execution, this acts as a robust mid-session refresh mechanism.
+
+### Lightweight Chore Workflow
+The `phase-gate-mcp` server processes workflow phases configured via `.pgmcp/config/workflows.yaml` and `.pgmcp/config/contracts.yaml`. 
+To reduce orchestration overhead for maintenance tasks, we can define a new `chore` workflow with the path `planning -> implementation -> ready`. By configuring the `implementation` phase with `cycle_based: false` in `contracts.yaml`, we can bypass TDD cycle checks and micro-QA audits, allowing direct commits and quick PR delivery.
 
 ---
 
@@ -83,3 +87,4 @@ Synchronized GitHub labels matching labels.yaml. Functional /start slash command
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | 2026-07-10 | Agent | Initial draft |
+| 1.1 | 2026-07-10 | Agent | Corrected command parser, rephrased goals, split sections |
