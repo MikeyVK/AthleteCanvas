@@ -1,10 +1,10 @@
 ---
-description: Bootstrap active sub-role instructions and AGENTS.md rules at startup or mid-session context refresh.
+description: Bootstrap active sub-role instructions and AGENTS.md rules at initial session startup.
 ---
 
 # /start
 
-This command forces the agent to synchronize its internal instruction set and verify compliance with the active workspace rules.
+This command forces the agent to initialize its session, synchronize its internal instruction set, and verify compliance with the active workspace rules.
 
 ## Step-by-Step Sequence
 
@@ -21,8 +21,11 @@ This command forces the agent to synchronize its internal instruction set and ve
    - If argument is `qa`: read **[qa.agent.md](../rules/qa.agent.md)**.
    - Alternatively, if a file is explicitly mentioned or @-mentioned, read that file.
 
-4. **Verify Tool Priority Compliance**:
-   Re-read and verify the **Tool Priority Matrix** and **run_in_terminal Restrictions** from **[AGENTS.md](../../AGENTS.md)**. Confirm that no forbidden commands will be run.
+4. **Verify Tool Priority and Built-In Tool Restrictions**:
+   Re-read and verify the **Tool Priority Matrix** and **run_in_terminal Restrictions** from **[AGENTS.md](../../AGENTS.md)**. Confirm that:
+   - Git, GitHub, File, Quality, and Test operations MUST use MCP tools.
+   - Built-in agent tools (e.g., `write_to_file`, `replace_file_content`, `multi_replace_file_content`) are strictly forbidden for repository operations when a corresponding MCP tool exists.
+   - Running terminal commands via `run_in_terminal`/`run_command` is strictly restricted.
 
 5. **Acknowledge and Report**:
    Output a formal startup confirmation block to the user detailing the synchronized state:
@@ -32,5 +35,5 @@ This command forces the agent to synchronize its internal instruction set and ve
    * **Active Role / Sub-role**: `<active_role_from_context>`
    * **Workflow Phase**: `<active_phase>`
    * **Understanding of Rules**: Confirmed reading of `AGENTS.md` and the active sub-role instructions.
-   * **Tool Priority Compliance**: Verified that Git, GitHub, File, Quality, and Test operations MUST use MCP tools, and `run_in_terminal`/`run_command` is strictly restricted.
+   * **Tool Priority Compliance**: Verified that Git, GitHub, File, Quality, and Test operations MUST use MCP tools, built-in agent tools (like `write_to_file`) are prohibited for repository actions, and terminal executions are strictly restricted.
    ```
