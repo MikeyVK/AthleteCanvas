@@ -3,7 +3,7 @@
 # Foundational Architecture Research
 
 **Status:** DRAFT  
-**Version:** 1.0  
+**Version:** 1.1  
 **Last Updated:** 2026-03-07
 
 ---
@@ -15,7 +15,7 @@ Establish the architectural foundation that all current and future epics depend 
 ## Scope
 
 **In Scope:**
-Project scaffolding, multi-tenancy (user model, data isolation), authentication (JWT, MFA, OAuth), API-first design, command/query service layer, frontend platform strategy, hexagonal architecture package layout
+Project scaffolding, multi-tenancy (user model, data isolation via RLS), authentication (JWT, MFA, OAuth), API-first design, command/query service layer, frontend platform strategy, hexagonal architecture package layout, Garmin Direct-First ingestion, Vector Storage & RAG, Background worker security, Secure sharing (E2EE) and Anonymization, Zero-Trust Operator Security.
 
 **Out of Scope:**
 Implementation of any component (that belongs to child issues), AI layer design (Epic 2), deployment/infrastructure (later epic), specific UI design/wireframes
@@ -29,19 +29,23 @@ Read these first:
 
 ## Problem Statement
 
-Critical architectural gaps discovered during Epic 1 design brainstorm: no project scaffolding baseline exists, multi-user and multi-platform requirements are unaddressed, the frontend data ingestion layer is entirely missing, the command/query service layer connecting frontend to backend is undefined, and auth (JWT, MFA, OAuth per-user) has not been designed. These gaps affect all current and future epics.
+Critical architectural gaps discovered during Epic 1 design brainstorm: no project scaffolding baseline exists, multi-user and multi-platform requirements are unaddressed, the frontend data ingestion layer is entirely missing, the command/query service layer connecting frontend to backend is undefined, and auth (JWT, MFA, OAuth per-user) has not been designed. Furthermore, architectural friction points around vector isolation, background worker security, waitlist security, and third-party ingestion polling (Garmin) were identified. These gaps affect all current and future epics.
 
 ## Research Goals
 
 - Determine project scaffolding baseline: package layout, pyproject.toml, import conventions, Alembic env, test structure
-- Evaluate and decide relational storage: PostgreSQL vs SQLite for multi-user requirements
-- Determine ChromaDB user isolation strategy: per-user collection vs metadata filter
+- Evaluate and decide relational storage: PostgreSQL + pgvector + RLS for multi-user isolation
+- Define unified vector storage & hierarchical rollups strategy
 - Research auth stack: JWT, MFA (WebAuthn vs TOTP), Garmin OAuth per-user with PKCE for mobile
 - Define API-first design principles: versioning, OpenAPI, CORS, platform-agnostic endpoint design
 - Design command/query service layer (CQRS-light) connecting FastAPI routes to domain services
 - Define frontend platform strategy: web-first with mobile-extensible design, PWA, React Native path
 - Determine hexagonal architecture package structure for multi-user, multi-platform backend
 - Assess impact of multi-tenancy on existing Epic 1 child issues #7-#15
+- Define Direct-First Garmin Ingestion with Smooth Flat Queue bootstrapping
+- Establish Background Worker Security (Two-Tier System Consent via data_shares)
+- Design Secure Sharing (E2EE) and Anonymization Architecture (Secure Views)
+- Define Zero-Trust Operator Security (Decentralized Private Key)
 
 ---
 
@@ -51,14 +55,14 @@ Epic 1 was designed assuming single-user SQLite. During design brainstorm, three
 
 ## Open Questions
 
-- ❓ PostgreSQL vs SQLite: what is the exact migration path and dev experience tradeoff?
-- ❓ ChromaDB: per-user collection naming convention and lifecycle management?
-- ❓ WebAuthn: which Python library, what is the registration/authentication flow, recovery strategy?
-- ❓ PKCE flow: how does garth handle mobile OAuth callbacks, what are the deep link requirements?
-- ❓ CQRS-light: how do Commands and Queries map to FastAPI routes and internal service calls?
-- ❓ React Native + Expo: what is the monorepo strategy relative to the existing Vite frontend?
-- ❓ User model: what fields are required, where does it live in the hexagonal structure?
-- ❓ Frontend Framework epic: what is the minimal scope to unblock all feature epics?
+- ✅ [RESOLVED] PostgreSQL vs SQLite: what is the exact migration path and dev experience tradeoff?
+- ✅ [RESOLVED] Vector Storage: what is the serialization and isolation strategy without external stores?
+- ✅ [RESOLVED] WebAuthn: which Python library, what is the registration/authentication flow, recovery strategy?
+- ✅ [RESOLVED] PKCE flow: how does garth handle mobile OAuth callbacks, what are the deep link requirements?
+- ✅ [RESOLVED] CQRS-light: how do Commands and Queries map to FastAPI routes and internal service calls?
+- ✅ [RESOLVED] React Native + Expo: what is the monorepo strategy relative to the existing Vite frontend?
+- ✅ [RESOLVED] User model: what fields are required, where does it live in the hexagonal structure?
+- ✅ [RESOLVED] Frontend Framework epic: what is the minimal scope to unblock all feature epics?
 
 
 ## Findings
@@ -78,7 +82,7 @@ Epic 1 was designed assuming single-user SQLite. During design brainstorm, three
       services/        # ImportOrchestrator, EmbeddingPipeline, AuthService — use cases
       adapters/
         inbound/       # FastAPI routes, request/response schemas
-        outbound/      # PostgreSQLRepo, ChromaDBStore, GarminAdapter, etc.
+        outbound/      # PostgreSQLRepo, GarminAdapter, etc.
     tests/
       unit/
       integration/
@@ -118,13 +122,20 @@ Epic 1 was designed assuming single-user SQLite. During design brainstorm, three
 
 This structure is the prerequisite for all epics. Every child issue in every epic operates within this layout. The `shared/` package means any endpoint added in any epic is immediately available to both web and mobile without additional work.
 
-### Finding 2 — Relational Storage: PostgreSQL + SQLAlchemy Core + Alembic
+### Finding 2 — Relational & Vector Storage: PostgreSQL + pgvector + SQLAlchemy Core + Alembic
 
-**Decision: PostgreSQL as the sole relational store, SQLAlchemy Core for repositories, Alembic for migrations, pytest-postgresql for integration tests.**
+**Decision: PostgreSQL as the *sole* store for both relational data and vector embeddings, isolated fundamentally via Row-Level Security (RLS). SQLAlchemy Core for repositories, Alembic for migrations, pytest-postgresql for integration tests.**
+
+#### Unified Storage & Row-Level Security (RLS)
+SQLite is insufficient for multi-user writes. Furthermore, splitting relational data and vector data across different systems creates complex synchronization risks. PostgreSQL with the `pgvector` extension becomes the single source of truth for both relational tables and the `user_embeddings` table. 
+
+Data isolation is not handled via application-level `WHERE` clauses. Instead, we enforce PostgreSQL Row-Level Security (RLS) using `user_uuid` at the database kernel level. This guarantees strict data isolation for all operations, making cross-tenant data leakage structurally impossible.
 
 #### Why PostgreSQL over SQLite
 
-SQLite is a single-writer database. With multiple users importing data concurrently, write-lock contention is inevitable and unrecoverable without an architectural rewrite. PostgreSQL is the baseline for any multi-user application. SQLite remains valid for local unit test fixtures only (in-memory, no disk I/O).
+SQLite is a single-writer database. With multiple users importing data concurrently, write-lock contention is inevitable and unrecoverable without an architectural rewrite. PostgreSQL is the baseline for any multi-user application.
+
+SQLite is entirely deprecated. Unit tests must rely purely on in-memory FakeAdapters (zero DB dependency). Integration tests use pytest-postgresql. Using SQLite for testing is strictly forbidden as it lacks native support for pgvector and JSONB.
 
 #### ORM strategy: SQLAlchemy Core (not ORM)
 
@@ -199,31 +210,25 @@ These are implementation tasks for the scaffolding child issue, not research fin
 
 `agent.md` must follow the same Config-over-Code principle applied to code: reference, don't duplicate. A 50-line `agent.md` that points to the right docs is more valuable than a 500-line `agent.md` that tries to contain everything and goes stale.
 
-### Finding 4 — ChromaDB User Isolation Strategy
+### Finding 4 — Unified Vector Storage & Hierarchical Rollups
 
-**Decision: per-user collection named `activities_{user_uuid}`, eagerly created at registration, shared embedding model as a platform-level contract.**
+**Decision: Deprecate external vector stores. Use pgvector with standard B-Tree indexes, Jinja2 deterministic serialization, and hierarchical rollups.**
 
-#### Per-user collection over metadata filter
+#### Vector Storage & Indexing
+External vector stores are completely deprecated to minimize infrastructure and eliminate split-brain syncing. Vectors are stored in `user_embeddings` alongside relational data. We explicitly avoid global HNSW indexes (which suffer from post-filtering recall loss). Instead, we rely on a standard B-Tree index on `user_uuid` to filter a specific user's records, followed by an exact Cosine Distance flat scan, which is extremely fast for personal-scale datasets (<10,000 activities).
 
-Each user gets a dedicated ChromaDB collection (`activities_{user_uuid}`). The alternative — one shared collection with a `user_id` metadata filter on every query — was rejected on security grounds: a missing filter is a data leak (OWASP A01 Broken Access Control). With per-user collections, isolation is structural, not conditional. GDPR deletion is also trivial: drop the collection.
+#### Deterministic Text Serialization
+Before vectorization, structured data (e.g., `TrackingRecord`) is converted into a natural language string using rigid, deterministic **Jinja2 templates** (e.g., combining activity type, duration, heart rate, and weather). This guarantees semantic stability in the 384-dimensional latent space of the static `all-MiniLM-L6-v2` model, preventing coordinate drift that dynamic serialization (via an LLM) would cause.
 
-#### Collection naming: UUID not integer PK
+#### Hierarchical Vector Rollups
+To support Retrieval-Augmented Generation (RAG) effectively over years of data, vectors are rolled up hierarchically:
+- **Micro-scale**: Per-activity/per-record vectors.
+- **Meso-scale**: "Week-Summary Vectors" generated dynamically at the end of each week.
+- **Macro-scale**: "Block-Summary Vectors" representing entire training cycles.
+The query path utilizes hierarchical retrieval (filtering macro-level first, zooming into meso-trends, and lastly retrieving micro-details).
 
-Collection names use the user's UUID (`activities_550e8400-e29b-41d4-a716-...`), not the integer primary key. UUIDs are non-enumerable — a collection name exposed in a log, an error message, or a misconfigured endpoint cannot be used to access another user's data. Integer PKs are sequential and guessable.
-
-The UUID is always available from the authenticated user context, so no extra DB lookup is required at query time.
-
-#### Lifecycle: eager creation at registration
-
-The collection is created when the user account is created, not lazily on first embedding. This eliminates null-checks and error branches throughout the embedding pipeline — if the user exists, the collection exists. Deletion is part of the account deletion transaction: PostgreSQL user record and ChromaDB collection are removed together.
-
-#### Embedding model: one model, one language, one knowledge base
-
-All user collections are created with identical embedding model metadata (model name, version, dimensions from `AppConfig`). This is a deliberate platform-level architectural principle, not a technical constraint.
-
-When every user's activities are embedded by the same model, all vectors occupy the same coordinate space. A 45-minute run at 158bpm produces a comparable vector for every user. This makes cross-user patterns discoverable: finding users with similar training loads, community benchmarks, anomaly detection. The moment different users use different models, their data becomes mutually incomprehensible — not one platform with many users, but many isolated islands that happen to share an app.
-
-The embedding model is the shared language of the platform. Changing it is a migration event affecting all users simultaneously — not a per-user configuration option.
+#### 0-Day Opt-Out via RAG Shield
+Because the generative LLM accesses user history purely via Retrieval-Augmented Generation (RAG), a user account deletion triggers an immediate database cascade delete of all relational data and vectors. The LLM instantly loses all context, creating a cryptographically hard 0-day opt-out shield without the need for model retraining.
 
 ### Finding 5 — Authentication & Identity: Delegated to Ory Kratos
 
@@ -298,7 +303,7 @@ TrackingRecord
 ├── recorded_at: datetime        # when the event occurred (not ingested)
 ├── ingested_at: datetime        # when we stored it
 ├── payload: dict                # type-specific data, Pydantic-validated
-└── is_embeddable: bool          # whether this record goes to ChromaDB
+└── is_embeddable: bool          # whether this record goes to pgvector user_embeddings
 
 RecordType:
   ACTIVITY       # GPS, HR, power, cadence, elevation
@@ -332,11 +337,11 @@ The `UNIQUE (user_uuid, source_id, external_id)` constraint makes every sync ope
 
 New `RecordType` values require no migration — only a new Pydantic model for payload validation, a corresponding `is_embeddable` rule, and (if indexed queries are needed on a payload field) an optional functional index on the JSONB column.
 
-#### What goes to ChromaDB
+#### What goes to pgvector
 
 Not all `TrackingRecord` types carry semantic meaning suitable for embedding:
 
-| RecordType | PostgreSQL | ChromaDB |
+| RecordType | Relational | pgvector |
 |---|---|---|
 | `ACTIVITY` | ✅ | ✅ semantic search, pattern matching |
 | `SLEEP` | ✅ | ✅ longitudinal patterns |
@@ -363,17 +368,16 @@ class IDataSource(Protocol):
 
 The pipeline calls only this interface. Adding a new data source = one new adapter class implementing `IDataSource`. No pipeline changes, no new tables.
 
-#### Garmin via `garth`: polling as the primary data path
+#### Garmin: Direct-First Priority & garth Bootstrapping
 
-`garth` provides access to raw Garmin data: FIT files, per-second HR streams, full GPS tracks, historical data as far back as Garmin stores. This is the data AthleteCanvas needs for embedding and analysis. The Garmin Health API (webhook/push partnership) delivers only processed summaries and does not expose raw FIT files or detailed streams — it is a subset of what `garth` provides.
+To protect user privacy and eliminate expensive middlemen, our primary strategic goal is securing direct, official API connections (such as the free Garmin Connect Developer Program). This minimizes user-facing costs and removes "man-in-the-middle" data brokers.
 
-`garth` polling is therefore the primary Garmin adapter, not a temporary workaround. Each poll:
-1. Loads the encrypted `garth` session from `ITokenStore`
-2. Fetches records since last successful sync timestamp
-3. On `SessionExpiredError`: marks source as `disconnected`, enqueues user notification ("Reconnect Garmin"), aborts
-4. On success: normalizes to `TrackingRecord` list, writes updated session state back to `ITokenStore`
+During the initial bootstrapping phase (while official business verification is pending), we may temporarily utilize simulated secure browser sessions (via `garth` in Python). We maintain the Charter's *Moral Moat* by **transparently communicating this mechanism to our users** during onboarding.
 
-The Garmin Health API is an optional future upgrade path: it could serve as a real-time webhook trigger that initiates a `garth` fetch immediately rather than waiting for the next scheduled poll. This requires no architectural changes — it is one more trigger type feeding the same queue.
+While simulated sync is active, we enforce hard limits via a **Smooth Flat Queue** to protect Garmin's resources:
+- Activation-triggered, debounced sync (max once per 30 mins per user).
+- Strict global concurrency lock of max 2 concurrent workers (flat average of ~2 requests per minute platform-wide).
+- Jittered queue scheduling.
 
 #### Background task queue: ARQ over Celery
 
@@ -383,16 +387,72 @@ Three trigger paths for sync jobs:
 
 | Trigger | Path | Notes |
 |---|---|---|
-| **Scheduled** | ARQ cron, configurable interval (default 30 min) per active user + source | Runs even when user is not active |
+| **Scheduled** | ARQ cron | Deprecated for simulated APIs (`garth`) to prevent IP bans ("Thundering Herd"). Reserved strictly for official webhooks or internal platform rollups. |
 | **User-initiated** | `POST /sync/{source_id}` → enqueue → `202 Accepted` | UI "refresh" button |
 | **Activation-based** | App foreground event → API call → enqueue | Debounced: max 1 job per user per source per 60s to prevent queue flooding |
 
 #### Adapter implementation priority
 
-1. **Garmin (`garth` polling)** — first working demo; existing personal data available immediately
+1. **Garmin (Direct / Bootstrapped `garth` polling)** — first working demo; existing personal data available immediately
 2. **Strava (OAuth2 + webhook)** — real-time, second largest activity dataset
 3. **Polar / Fitbit / Withings** — same OAuth2 + webhook pattern as Strava; marginal cost per additional adapter is low once the webhook receiver infrastructure exists
 4. **Apple Health / Google Health Connect** — native SDK adapters, mobile-only, separate epic
+
+### Finding 7 — Secure Sharing & Anonymization Architecture
+
+**Decision: Database-enforced RLS sharing, Defense-in-Depth Cryptographic Sharing (E2EE), and Secure Database Views for 0-day opt-out anonymization.**
+
+#### Cryptographic Sharing Protection (Defense-in-Depth)
+To mitigate the risk of a compromised `data_shares` table, we implement **End-to-End Encrypted (E2EE) Sharing** using public-key cryptography (libsodium/PyNaCl). All tracking data is encrypted at rest using a unique `user_data_key`. When User A shares with Coach B, User A's client encrypts the `user_data_key` with Coach B's public key and uploads it to `data_shares`. Attackers reading `data_shares` only gain raw ciphertexts.
+
+To ensure absolute resilience against network and cryptographic threats, the following defense-in-depth layers are mandated:
+- **MitM & CA Compromise:** Implement Out-of-Band (OOB) fingerprint verification for sharing setup. Prevent CA hijacking via DNS CAA records, Certificate Transparency (CT) monitoring, and strict Certificate Pinning in mobile apps.
+- **Post-Quantum Cryptography (PQC) Transition:** While current symmetric data encryption (AES-256) is quantum-safe, the asymmetric key exchange prepares for a hybrid transition combining classical ECC (Curve25519) with ML-KEM (Kyber) to thwart "harvest now, decrypt later" attacks.
+
+#### Aggregated Analytics (0-Day Opt-Out via Secure Views)
+To solve the "Anonymization vs. Erasure Paradox", we use a **Secure Database View** combined with dynamic RLS:
+- An `anonymized_research_data` View is exposed to the research role. This View strips out identifiers (`user_uuid`), buckets sensitive data, and joins `user_consent`.
+- If a user toggles consent to `FALSE` (or deletes their account), their data instantly and dynamically vanishes from the research dataset in real-time (0-day opt-out).
+
+### Finding 8 — Background Worker Security (Two-Tier System Consent)
+
+**Decision: Background processes (like ARQ) use a uniform `data_shares` grant model, abandoning dynamic context switches.**
+
+#### Uniform `data_shares` Approach
+Rather than using dynamic session-level context-switching (`SET LOCAL app.current_user_id`), we unify background processing under the same **Dynamic Grant** model used for sharing. 
+- The background worker has its own dedicated system UUID (`arq_background_worker`).
+- During registration (or opt-in), a system-level share is written to `data_shares` granting the `arq_background_worker` access to the user's data.
+- This ensures a single, uniform access control mechanism across the entire platform, making data exposure fully auditable in a single table.
+
+#### Two-Tier System Consent
+- **Tier 1: Private Storage (Default)**: Data is ingested and encrypted. No background processing or rollups are executed.
+- **Tier 2: AI Insights (Opt-In)**: The user grants the `arq_background_worker` access to generate Meso/Macro rollups and embeddings, enabling the hierarchical RAG coach.
+
+When opting into Tier 2, the user's client encrypts their user_data_key with the arq_background_worker's public key. The worker decrypts the tracking records strictly in-memory (using CIA-grade protections) to generate the deterministic Jinja2 string and calculate the embedding. It then saves only the irreversible 384-float vector to the database, ensuring the server disk never holds plaintext activity data.
+
+### Finding 9 — Zero-Trust Operator Security
+
+**Decision: Decentralized Private Key, CIA-grade memory protection, and local processing to eliminate server-side RAM scraping.**
+
+#### Decentralized Operations
+Administrative functions (like sending invite emails for the waitlist) are structurally designed to never expose clear-text sensitive data to the central server's long-term memory. The application server only stores Public Keys and Encrypted payloads.
+
+The Operator uses a local secure environment (a dedicated client) holding the Private Key. When sending waitlist emails:
+1. The server provides the encrypted email addresses.
+2. The local Operator Client decrypts the batch in-memory.
+3. Emails are dispatched directly from the local machine (or via a direct SMTP relay).
+4. Memory is securely scrubbed immediately after processing (`mlock`, `memzero`). **CRITICAL:** Because standard Python strings are immutable, plaintext emails must be processed using strictly mutable memory buffers (e.g., `bytearray` or `ctypes`). For high-value deployments, this decryption script must execute within a Hardware Trusted Execution Environment (TEE, e.g., Intel SGX / AMD SEV).
+
+This model ensures that even if a hacker achieves root access and active memory scraping on the central server, the most valuable data (e.g., highly sensitive user contact info) remains inaccessible.
+
+### Finding 10 — Deferred Work Notes (Branch Hygiene)
+
+**Decision: Maintain strict branch hygiene on `epic/16`. Necessary updates to other epics are deferred until their respective branches are active.**
+
+To prevent out-of-scope modifications on the current branch, the following critical updates are deferred and logged here. The Standalone Research Agent (`@research`) must execute these updates immediately upon checking out the respective branches:
+
+- **Epic 1 (Data Fundament):** Update `docs/planning/issue1/planning.md` and `docs/planning/issue1/research.md`. Remove all references to SQLite and ChromaDB. Replace them with PostgreSQL, `pgvector`, SQLAlchemy Core, and Alembic as the single, unified source of truth.
+- **Epic 18 (Marketing Site / Waitlist):** Update `docs/planning/issue18/research.md`. Implement the **Constant-Time Execution** requirement for subscribe/unsubscribe endpoints to prevent Waitlist Timing Attacks (using dummy operations and fixed response paddings). Ensure the Zero-Trust Offline Operator Decryption architecture (Finding 9) is fully integrated.
 
 ## Related Documentation
 - **[docs/planning/issue1/research.md][related-1]**
@@ -412,3 +472,4 @@ Three trigger paths for sync jobs:
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 |  | Agent | Initial draft |
+| 1.1 | 2026-03-07 | Agent | Major architectural refactor: pgvector, RLS, Zero-Trust, E2EE sharing, and Deferred Notes |

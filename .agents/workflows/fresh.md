@@ -2,7 +2,7 @@
 description: Bootstrap active sub-role instructions and AGENTS.md rules at initial session startup.
 ---
 
-# /start
+# /fresh
 
 This command forces the agent to initialize its session, synchronize its internal instruction set, and verify compliance with the active workspace rules.
 
@@ -15,7 +15,7 @@ This command forces the agent to initialize its session, synchronize its interna
    Read **[AGENTS.md](../../AGENTS.md)** to load and align with all general workspace-level guidelines and tool restrictions.
 
 3. **Read Sub-Role Instructions**:
-   Read the specific sub-role rule file corresponding to the argument passed (e.g. `/start co`, `/start imp`, `/start qa`) or the file mentioned in the command:
+   Read the specific sub-role rule file corresponding to the argument passed (e.g. `/fresh co`, `/fresh imp`, `/fresh qa`) or the file mentioned in the command:
    - If argument is `co`: read **[co.agent.md](../rules/co.agent.md)**.
    - If argument is `imp`: read **[imp.agent.md](../rules/imp.agent.md)**.
    - If argument is `qa`: read **[qa.agent.md](../rules/qa.agent.md)**.

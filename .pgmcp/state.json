@@ -1,4 +1,5 @@
 {
+  "schema_version": "1.0.0",
   "branch": "epic/16-foundational-architecture",
   "issue_number": 16,
   "workflow_name": "epic",

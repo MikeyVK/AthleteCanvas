@@ -188,7 +188,7 @@ Transition branch to next phase (strict sequential validation).
 |-----------|------|----------|-------------|
 | `branch` | `str` | **Yes** | Branch name (e.g., `"feature/123-oauth"`) |
 | `to_phase` | `str` | **Yes** | Target phase to transition to. Run `get_work_context()` to see valid phases for the current branch; enum is injected at runtime from `workphases.yaml`. |
-| `human_approval` | `str` | No | Optional human approval message (audit trail) |
+| `human_approval_message` | `str` | No | Optional human approval message (audit trail) |
 
 #### Returns
 
@@ -220,7 +220,7 @@ Transition branch to next phase (strict sequential validation).
 {
   "branch": "feature/123-oauth",
   "to_phase": "documentation",
-  "human_approval": "Tests passing, code reviewed, ready for docs"
+  "human_approval_message": "Tests passing, code reviewed, ready for docs"
 }
 ```
 
@@ -267,7 +267,7 @@ Force non-sequential phase transition (skip/jump with reason and human approval)
 | `branch` | `str` | **Yes** | Branch name (e.g., `"feature/123-oauth"`) |
 | `to_phase` | `str` | **Yes** | Target phase to transition to (can skip phases). Run `get_work_context()` to see valid phases for the current branch; enum is injected at runtime from `workphases.yaml`. |
 | `skip_reason` | `str` | **Yes** | Reason for skipping validation (audit trail) — must be non-empty (min_length=1) |
-| `human_approval` | `str` | **Yes** | Human approval message (REQUIRED for forced transitions) — must be non-empty (min_length=1) |
+| `human_approval_message` | `str` | **Yes** | Human approval message (REQUIRED for forced transitions) — must be non-empty (min_length=1) |
 
 #### Returns
 
@@ -281,7 +281,7 @@ Force non-sequential phase transition (skip/jump with reason and human approval)
     "to_phase": "merge-prep",
     "skipped_phases": ["green", "refactor", "documentation"],
     "skip_reason": "Emergency hotfix approved by team lead",
-    "human_approval": "Team lead approval: critical security fix",
+    "human_approval_message": "Team lead approval: critical security fix",
     "timestamp": "2026-02-08T12:00:00Z"
   }
 }
@@ -294,7 +294,7 @@ Force non-sequential phase transition (skip/jump with reason and human approval)
   "branch": "feature/123-oauth",
   "to_phase": "merge-prep",
   "skip_reason": "Emergency hotfix: critical security vulnerability discovered",
-  "human_approval": "Approved by Tech Lead (John Doe) - immediate merge required"
+  "human_approval_message": "Approved by Tech Lead (John Doe) - immediate merge required"
 }
 ```
 
@@ -304,7 +304,7 @@ Force non-sequential phase transition (skip/jump with reason and human approval)
 - **Branch-Local State:** Updates `.pgmcp/state.json` for the active branch; forced-transition metadata stays in that branch-local state
 - **Required Next Step:** On success, the response appends `🚀 REQUIRED NEXT STEP: Call get_work_context now before any other tool call to load the current phase context for this branch.`
 - **Use Sparingly:** Intended for emergency situations only
-- **Required Fields:** Both `skip_reason` and `human_approval` are REQUIRED (not optional)
+- **Required Fields:** Both `skip_reason` and `human_approval_message` are REQUIRED (not optional)
 
 ---
 
@@ -380,6 +380,7 @@ Current branch state (runtime, branch-local, neutralized before PR submission):
 
 ```json
 {
+  "schema_version": "1.0.0",
   "branch": "feature/123-oauth",
   "issue_number": 123,
   "workflow_name": "feature",
@@ -400,16 +401,17 @@ Current branch state (runtime, branch-local, neutralized before PR submission):
   "issue_title": "Add OAuth2 authentication",
   "parent_branch": "main",
   "created_at": "2026-02-08T10:00:00Z",
-  "transitions": [],
-  "reconstructed": false
+  "transitions": []
 }
+```
 ```
 
 **Behavior:**
-- Updated by `initialize_project`, `transition_phase`, and `force_phase_transition`
-- Synchronized by `git_checkout` (loads state when switching branches)
-- Treated as a branch-local artifact and neutralized before `submit_pr`
-
+- Validated at load-time by `StateVersionValidator` against expected SemVer `1.0.0`.
+- Updated by `initialize_project`, `transition_phase`, and `force_phase_transition`.
+- On schema version mismatch or file corruption, `StateVersionValidator` performs a Clean Break: backs up the file to `state.json.bak` and raises a `ConfigError` without fallback git-log reconstruction.
+- Synchronized by `git_checkout` (loads state when switching branches).
+- Treated as a branch-local artifact and neutralized before `submit_pr`.
 ---
 
 ### .pgmcp/deliverables.json
@@ -418,25 +420,28 @@ Workflow definition and planning deliverables (branch-local artifact):
 
 ```json
 {
-  "123": {
-    "issue_title": "Add OAuth2 authentication",
-    "workflow_name": "feature",
-    "execution_mode": "normal",
-    "required_phases": [
-      "research",
-      "design",
-      "planning",
-      "implementation",
-      "validation",
-      "documentation"
-    ],
-    "skip_reason": null,
-    "parent_branch": "main",
-    "created_at": "2026-02-08T10:00:00Z",
-    "planning_deliverables": {
-      "cycles": {
-        "total": 3,
-        "cycles": []
+  "schema_version": "1.0.0",
+  "projects": {
+    "123": {
+      "issue_title": "Add OAuth2 authentication",
+      "workflow_name": "feature",
+      "execution_mode": "normal",
+      "required_phases": [
+        "research",
+        "design",
+        "planning",
+        "implementation",
+        "validation",
+        "documentation"
+      ],
+      "skip_reason": null,
+      "parent_branch": "main",
+      "created_at": "2026-02-08T10:00:00Z",
+      "planning_deliverables": {
+        "cycles": {
+          "total": 3,
+          "cycles": []
+        }
       }
     }
   }
@@ -444,10 +449,11 @@ Workflow definition and planning deliverables (branch-local artifact):
 ```
 
 **Behavior:**
-- Initialized by `initialize_project`
-- Extended by `save_planning_deliverables` and `update_planning_deliverables`
-- Treated as a branch-local artifact and neutralized before `submit_pr`
-
+- Wrapped in a top-level `"schema_version": "1.0.0"` envelope and validated by `StateVersionValidator` on load.
+- Initialized by `initialize_project`.
+- Extended by `save_planning_deliverables` and `update_planning_deliverables`.
+- On schema version mismatch or corruption, `StateVersionValidator` backs up to `deliverables.json.bak` and raises `ConfigError`.
+- Treated as a branch-local artifact and neutralized before `submit_pr`.
 ---
 ---
 
@@ -541,7 +547,7 @@ Phase state is **synchronized** with git branch operations:
      branch="bugfix/456-security",
      to_phase="merge-prep",
      skip_reason="Critical security vulnerability - zero-day exploit",
-     human_approval="CTO approval (Jane Smith) - immediate production deployment"
+     human_approval_message="CTO approval (Jane Smith) - immediate production deployment"
    )
 2. git_push(set_upstream=True)
 3. submit_pr(title="HOTFIX: Security patch", body="...", head="bugfix/456-security")
@@ -565,6 +571,7 @@ Phase state is **synchronized** with git branch operations:
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 3.0 | 2026-07-21 | Agent | Update state management sections with dynamic state file version validation and Clean Break strategy (#438) |
 | 2.2 | 2026-06-11 | Agent | Rename tdd_cycles to cycles in project planning deliverables schema |
 | 2.1 | 2026-05-24 | Agent | Document the required `get_work_context` follow-up note on successful phase transitions |
 | 2.0 | 2026-02-08 | Agent | Complete reference for 4 project/phase tools: initialize, inspect, transition, force-transition |
