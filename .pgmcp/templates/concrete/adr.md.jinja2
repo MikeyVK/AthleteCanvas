@@ -1,0 +1,126 @@
+{#- concrete/adr.md.jinja2 - Architectural Decision Record Template -#}
+{#- Version: 1.0.0 -#}
+{#- Purpose: Documenting architecturally significant decisions -#}
+{%- extends "tier2_base_markdown.jinja2" -%}
+
+{%- import "tier3_pattern_markdown_status_header.jinja2" as hdr -%}
+{%- import "tier3_pattern_markdown_purpose_scope.jinja2" as ps -%}
+{%- import "tier3_pattern_markdown_prerequisites.jinja2" as prereq -%}
+{%- import "tier3_pattern_markdown_related_docs.jinja2" as related -%}
+{%- import "tier3_pattern_markdown_version_history.jinja2" as history -%}
+
+{#-
+TEMPLATE_METADATA:
+  enforcement: STRICT
+  level: structure
+  extends: tier2_base_markdown.jinja2
+  purpose: "Concrete template for Architectural Decision Records (MADR 3.0+ compatible)"
+  version: "1.0.0"
+  introspection:
+    template_id: adr
+    tier: concrete
+    parent: tier2_base_markdown
+    variables:
+      required:
+        - title
+        - status
+        - version
+        - last_updated
+        - problem_statement
+        - considered_options
+        - decision_outcome
+        - rationale
+-#}
+
+{% block document_content -%}
+
+---
+
+## Context & Problem Statement
+
+{{ problem_statement }}
+
+{% if decision_drivers %}
+### Decision Drivers
+
+{% for driver in decision_drivers -%}
+- {{ driver }}
+{% endfor %}
+{% endif %}
+
+---
+
+## Considered Options
+
+{% for option in considered_options %}
+### {{ option.name }}
+
+{% if option.description %}
+{{ option.description }}
+
+{% endif %}
+{% if option.pros %}
+**Pros (+):**
+{% for pro in option.pros -%}
+- {{ pro }}
+{% endfor %}
+
+{% endif %}
+{% if option.cons %}
+**Cons (-):**
+{% for con in option.cons -%}
+- {{ con }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+
+---
+
+## Decision Outcome
+
+**Chosen Option:** {{ decision_outcome }}
+
+### Rationale
+
+{{ rationale }}
+
+{% if supersedes %}
+
+*Note: This ADR supersedes [{{ supersedes }}].*
+{% endif %}
+{% if superseded_by %}
+
+*Note: This ADR is superseded by [{{ superseded_by }}].*
+{% endif %}
+
+---
+
+## Consequences
+
+{% if consequences_positive %}
+### Positive Consequences (+)
+
+{% for pos in consequences_positive -%}
+- {{ pos }}
+{% endfor %}
+
+{% endif %}
+{% if consequences_negative %}
+### Negative Consequences & Risks (-)
+
+{% for neg in consequences_negative -%}
+- {{ neg }}
+{% endfor %}
+
+{% endif %}
+{% if confirmation %}
+
+---
+
+## Confirmation & Verification
+
+{{ confirmation }}
+{% endif %}
+
+{% endblock %}

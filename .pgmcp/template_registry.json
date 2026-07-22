@@ -45,6 +45,15 @@
         "template_id": "research.md",
         "version": "1.3.1"
       }
+    },
+    "bdb2b149": {
+      "artifact_type": "adr",
+      "created": "2026-07-22T20:00:16.290371+00:00",
+      "hash_algorithm": "SHA256",
+      "concrete": {
+        "template_id": "adr.md",
+        "version": "1.0.0"
+      }
     }
   },
   "current_versions": {
@@ -52,8 +61,9 @@
     "planning": "130ac5ea",
     "generic_doc": "43c84181",
     "pr": "93bb9b4e",
-    "research": "8b7bb3ab"
+    "research": "8b7bb3ab",
+    "adr": "bdb2b149"
   },
   "templates": {},
-  "last_updated": "2026-07-10T15:09:23.301580+00:00"
+  "last_updated": "2026-07-22T20:00:16.290384+00:00"
 }
