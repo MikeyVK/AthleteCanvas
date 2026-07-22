@@ -1,6 +1,6 @@
 {#- concrete/adr.md.jinja2 - Architectural Decision Record Template -#}
-{#- Version: 1.0.0 -#}
-{#- Purpose: Documenting architecturally significant decisions -#}
+{#- Version: 1.1.0 -#}
+{#- Purpose: Documenting architecturally significant decisions with agent guardrails -#}
 {%- extends "tier2_base_markdown.jinja2" -%}
 
 {%- import "tier3_pattern_markdown_status_header.jinja2" as hdr -%}
@@ -14,8 +14,8 @@ TEMPLATE_METADATA:
   enforcement: STRICT
   level: structure
   extends: tier2_base_markdown.jinja2
-  purpose: "Concrete template for Architectural Decision Records (MADR 3.0+ compatible)"
-  version: "1.0.0"
+  purpose: "Concrete template for Architectural Decision Records (MADR 3.0+ compatible with Agent Guardrails)"
+  version: "1.1.0"
   introspection:
     template_id: adr
     tier: concrete
@@ -31,6 +31,17 @@ TEMPLATE_METADATA:
         - decision_outcome
         - rationale
 -#}
+
+{% block header_fields -%}
+**Status:** {{ status }}  
+**Version:** {{ version }}  
+**Last Updated:** {{ last_updated }}  
+**Supersedes:** {{ supersedes | default('None') }}  
+**Superseded By:** {{ superseded_by | default('None') }}  
+{% if deciders -%}
+**Deciders:** {{ deciders | join(', ') }}  
+{% endif -%}
+{% endblock %}
 
 {% block document_content -%}
 
@@ -59,20 +70,24 @@ TEMPLATE_METADATA:
 {{ option.description }}
 
 {% endif %}
-{% if option.pros %}
 **Pros (+):**
+{% if option.pros %}
 {% for pro in option.pros -%}
 - {{ pro }}
 {% endfor %}
-
+{% else %}
+- None identified
 {% endif %}
-{% if option.cons %}
+
 **Cons (-):**
+{% if option.cons %}
 {% for con in option.cons -%}
 - {{ con }}
 {% endfor %}
-
+{% else %}
+- None identified
 {% endif %}
+
 {% endfor %}
 
 ---
@@ -84,15 +99,6 @@ TEMPLATE_METADATA:
 ### Rationale
 
 {{ rationale }}
-
-{% if supersedes %}
-
-*Note: This ADR supersedes [{{ supersedes }}].*
-{% endif %}
-{% if superseded_by %}
-
-*Note: This ADR is superseded by [{{ superseded_by }}].*
-{% endif %}
 
 ---
 
@@ -111,6 +117,14 @@ TEMPLATE_METADATA:
 
 {% for neg in consequences_negative -%}
 - {{ neg }}
+{% endfor %}
+
+{% endif %}
+{% if agent_guardrails %}
+### Agent Implementation Guardrails
+
+{% for guardrail in agent_guardrails -%}
+- {{ guardrail }}
 {% endfor %}
 
 {% endif %}

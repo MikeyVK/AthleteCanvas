@@ -1,8 +1,8 @@
 type: doc
 type_id: adr
-template_version: 1.0.0
+template_version: 1.1.0
 name: Architectural Decision Record
-description: Architectural Decision Record (ADR) capturing context, drivers, options, decision outcome, consequences, and confirmation
+description: Architectural Decision Record (ADR) capturing context, drivers, options with explicit pros/cons, decision outcome, guardrails, and confirmation
 output_type: file
 template_path: concrete/adr.md.jinja2
 fallback_template: null
@@ -40,7 +40,7 @@ context_schema:
   version:
     type: string
     title: Version
-    description: Document version (e.g. 1.0.0)
+    description: Document version in 1.x.y format (e.g. 1.0.0)
     required: true
   last_updated:
     type: string
@@ -54,6 +54,16 @@ context_schema:
     required: false
     items:
       type: string
+  supersedes:
+    type: string
+    title: Supersedes
+    description: Reference to prior ADR superseded by this record (or None)
+    required: false
+  superseded_by:
+    type: string
+    title: Superseded By
+    description: Reference to newer ADR that supersedes this record (or None)
+    required: false
   problem_statement:
     type: string
     title: Problem Statement
@@ -69,7 +79,7 @@ context_schema:
   considered_options:
     type: array
     title: Considered Options
-    description: Options evaluated during research with pros and cons
+    description: Options evaluated during research with explicit pros and cons
     required: true
     items:
       type: object
@@ -97,20 +107,17 @@ context_schema:
     required: false
     items:
       type: string
+  agent_guardrails:
+    type: array
+    title: Agent Implementation Guardrails
+    description: Hard MUST / MUST NOT boundary rules for AI agents implementing this decision
+    required: false
+    items:
+      type: string
   confirmation:
     type: string
     title: Confirmation & Verification
     description: How the implementation of this decision is verified (e.g. automated tests, quality gates)
-    required: false
-  supersedes:
-    type: string
-    title: Supersedes
-    description: Reference to prior ADR superseded by this record
-    required: false
-  superseded_by:
-    type: string
-    title: Superseded By
-    description: Reference to newer ADR that supersedes this record
     required: false
   purpose:
     type: string

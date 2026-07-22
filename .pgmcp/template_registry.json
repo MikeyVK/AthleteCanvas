@@ -54,6 +54,15 @@
         "template_id": "adr.md",
         "version": "1.0.0"
       }
+    },
+    "b4627a40": {
+      "artifact_type": "adr",
+      "created": "2026-07-22T20:20:04.422977+00:00",
+      "hash_algorithm": "SHA256",
+      "concrete": {
+        "template_id": "adr.md",
+        "version": "1.1.0"
+      }
     }
   },
   "current_versions": {
@@ -62,8 +71,8 @@
     "generic_doc": "43c84181",
     "pr": "93bb9b4e",
     "research": "8b7bb3ab",
-    "adr": "bdb2b149"
+    "adr": "b4627a40"
   },
   "templates": {},
-  "last_updated": "2026-07-22T20:00:16.290384+00:00"
+  "last_updated": "2026-07-22T20:20:04.422994+00:00"
 }
