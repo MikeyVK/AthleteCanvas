@@ -148,3 +148,15 @@ context_schema:
     required: false
     items:
       type: string
+  category:
+    type: string
+    title: Category
+    description: High-level architectural domain category (e.g. Data & Storage)
+    required: false
+  tags:
+    type: array
+    title: Tags
+    description: Granular keywords for searchability
+    required: false
+    items:
+      type: string

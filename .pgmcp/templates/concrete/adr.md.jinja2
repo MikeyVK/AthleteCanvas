@@ -30,12 +30,19 @@ TEMPLATE_METADATA:
         - considered_options
         - decision_outcome
         - rationale
+      optional:
+        - category
+        - tags
 -#}
 
 {% block header_fields -%}
 **Status:** {{ status }}  
 **Version:** {{ version }}  
 **Last Updated:** {{ last_updated }}  
+**Category:** {{ category | default('Uncategorized') }}  
+{% if tags -%}
+**Tags:** {{ tags | join(', ') }}  
+{% endif -%}
 **Supersedes:** {{ supersedes | default('None') }}  
 **Superseded By:** {{ superseded_by | default('None') }}  
 {% if deciders -%}
@@ -64,7 +71,7 @@ TEMPLATE_METADATA:
 ## Considered Options
 
 {% for option in considered_options %}
-### {{ option.name }}
+### {{ option.title | default(option.name) }}
 
 {% if option.description %}
 {{ option.description }}
