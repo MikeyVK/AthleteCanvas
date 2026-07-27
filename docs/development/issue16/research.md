@@ -76,7 +76,7 @@ Epic 1 was designed assuming single-user SQLite. During design brainstorm, three
 ```
 / (repo root)
   backend/
-    athletecanvas/
+    ypsiacore/
       domain/          # ActivityRecord, User, AppConfig — pure logic, no IO
       ports/           # IActivityWriter, IEmbeddingStore, BaseAdapter — interfaces only
       services/        # ImportOrchestrator, EmbeddingPipeline, AuthService — use cases
@@ -186,7 +186,7 @@ alembic upgrade head  # applies all pending migrations
 
 ### Finding 3 — Project Onboarding & Reference Docs Technical Debt
 
-**Decision: a single project README.md at repo root + a lean agent.md covering the full project. Reference docs scope-locked to AthleteCanvas. Addressed in a dedicated scaffolding child issue.**
+**Decision: a single project README.md at repo root + a lean agent.md covering the full project. Reference docs scope-locked to Ypsia Core. Addressed in a dedicated scaffolding child issue.**
 
 #### The problem
 
@@ -201,7 +201,7 @@ A fresh agent or developer starting on this project today has no single entry po
 
 #### What remains to be done (scaffolding epic child issue)
 
-- Root `README.md` — does not yet exist for AthleteCanvas
+- Root `README.md` — does not yet exist for Ypsia Core
 - `agent.md` — exists but needs a full review pass: remove S1mpleTrader context, align with new epic structure, add links to this foundational research and Epic 1 research
 
 These are implementation tasks for the scaffolding child issue, not research findings. They are captured here to ensure they are not forgotten.
@@ -273,7 +273,7 @@ All components are free and open-source:
 | Component | License | Role |
 |---|---|---|
 | Ory Kratos | Apache 2.0 | Identity & MFA |
-| Ory Hydra (optional) | Apache 2.0 | OIDC provider (if AthleteCanvas ever issues tokens to third parties) |
+| Ory Hydra (optional) | Apache 2.0 | OIDC provider (if Ypsia Core ever issues tokens to third parties) |
 | `@ory/client` | MIT | React + React Native SDK |
 
 Ory Cloud (the hosted SaaS version) is explicitly **not used**. Kratos runs as a Docker container alongside the application.
@@ -306,9 +306,10 @@ TrackingRecord
 └── is_embeddable: bool          # whether this record goes to pgvector user_embeddings
 
 RecordType:
-  ACTIVITY       # GPS, HR, power, cadence, elevation
-  SLEEP          # stages, HRV, SPO2, duration, score
-  BODY_METRICS   # weight, body fat, VO2max, bone mass
+  EVENT          # Discrete events (e.g. HEALTH_WORKOUT, CODE_COMMIT)
+  TIMESERIES     # Continuous data streams (e.g. daily HR, CPU load)
+  METRIC         # Point-in-time metrics (e.g. weight, VO2max, repo stars)
+  TEXT           # Unstructured text (e.g. notes, journals)
   USER_SETTINGS  # HR zones, FTP, age, height, units preference
   USER_PROFILE   # static/sensitive: blood type, medical notes — encrypted
 ```
@@ -343,9 +344,10 @@ Not all `TrackingRecord` types carry semantic meaning suitable for embedding:
 
 | RecordType | Relational | pgvector |
 |---|---|---|
-| `ACTIVITY` | ✅ | ✅ semantic search, pattern matching |
-| `SLEEP` | ✅ | ✅ longitudinal patterns |
-| `BODY_METRICS` | ✅ | ❌ time series, no semantic value |
+| `EVENT` | ✅ | ✅ semantic search, pattern matching (if applicable) |
+| `TEXT` | ✅ | ✅ longitudinal patterns, semantic search |
+| `TIMESERIES`| ✅ | ❌ raw data (aggregated into meso/macro vectors) |
+| `METRIC` | ✅ | ❌ time series, no semantic value |
 | `USER_SETTINGS` | ✅ | ❌ |
 | `USER_PROFILE` | ✅ (encrypted fields) | ❌ |
 

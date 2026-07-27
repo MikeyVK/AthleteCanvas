@@ -5,6 +5,7 @@
 **Status:** ACCEPTED  
 **Version:** 1.0.1  
 **Last Updated:** 2026-07-24  
+**Level:** Strategic  
 **Category:** Data & Storage  
 **Tags:** database, schema, agnostic  
 **Supersedes:** None  

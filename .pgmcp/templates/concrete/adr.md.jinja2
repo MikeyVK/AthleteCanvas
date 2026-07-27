@@ -31,14 +31,19 @@ TEMPLATE_METADATA:
         - decision_outcome
         - rationale
       optional:
+        - level
         - category
         - tags
+        - deciders
 -#}
 
 {% block header_fields -%}
 **Status:** {{ status }}  
 **Version:** {{ version }}  
 **Last Updated:** {{ last_updated }}  
+{% if level -%}
+**Level:** {{ level }}  
+{% endif -%}
 **Category:** {{ category | default('Uncategorized') }}  
 {% if tags -%}
 **Tags:** {{ tags | join(', ') }}  

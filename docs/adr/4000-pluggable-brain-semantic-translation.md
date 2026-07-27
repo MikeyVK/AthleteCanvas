@@ -5,6 +5,7 @@
 **Status:** ACCEPTED  
 **Version:** 1.0.0  
 **Last Updated:** 2026-07-24  
+**Level:** Strategic  
 **Category:** Intelligence  
 **Tags:** ai, vectors, deterministic, semantic  
 **Supersedes:** None  

@@ -148,11 +148,23 @@ context_schema:
     required: false
     items:
       type: string
+  id:
+    type: integer
+    title: ID
+    description: ADR ID number according to domain/level taxonomy
+    required: true
+  level:
+    type: string
+    title: Level
+    description: Strategic or Tactical
+    required: true
+    enum: [Strategic, Tactical]
   category:
     type: string
     title: Category
-    description: High-level architectural domain category (e.g. Data & Storage)
-    required: false
+    description: High-level architectural domain category
+    required: true
+    enum: ["Core Invariants", "Data & Storage", "Security & Identity", "Integration", "Intelligence"]
   tags:
     type: array
     title: Tags

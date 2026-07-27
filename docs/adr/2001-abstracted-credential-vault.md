@@ -5,6 +5,7 @@
 **Status:** ACCEPTED  
 **Version:** 1.0.0  
 **Last Updated:** 2026-07-23  
+**Level:** Strategic  
 **Category:** Security & Identity  
 **Tags:** security, cryptography, transparency  
 **Supersedes:** None  
