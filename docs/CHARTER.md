@@ -41,9 +41,9 @@ Je bent niet op zoek naar validatie. Je bent op zoek naar waarheid.
 
 ## Missie
 
-> Wij bouwen een platform dat heterogene data (gebeurtenissen, metrieken, tijdsreeksen, ongestructureerde teksten en structurele relaties) omzet in eerlijk inzicht — zonder agenda, zonder oordeel en zonder de aandacht van de gebruiker als verdienmodel.
+> Wij bouwen een platform dat eigen data omzet in eerlijk inzicht — zonder agenda, zonder oordeel en zonder de aandacht van de gebruiker als verdienmodel.
 >
-> Het platform verzamelt wat jouw systemen continu produceren. Het legt kruisverbanden die je zelf niet kunt zien. Het geeft ze terug in jouw taal, op jouw tempo, zonder te vertellen wat je ervan moet vinden.
+> Het platform verzamelt wat jouw werk, leven en omgeving al produceren. Het legt verbanden die je zelf niet kunt zien. Het geeft ze terug in jouw taal, op jouw tempo, zonder te vertellen wat je ervan moet vinden.
 >
 > Jouw data is van jou. De inzichten zijn van jou. De conclusies zijn van jou.
 
