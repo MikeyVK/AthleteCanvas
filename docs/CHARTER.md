@@ -19,13 +19,13 @@ Dit document fungeert als het definitieve referentiekader voor (toekomstige) eng
 
 ## Doel
 
-> "Wij helpen mensen, bedrijven en organisaties de werkelijkheid van hun eigen data eerlijk te begrijpen — in een wereld die data versnippert en aandacht exploiteert."
+> "Wij helpen mensen en organisaties zichzelf eerlijk te begrijpen — in een wereld die daar actief op tegenwerkt."
 
 ---
 
 ## De Gebruiker
 
-Je genereert en verzamelt continu data op diverse terreinen — werkprocessen, digitale gewoonten, besluitvorming, fysieke en omgevingstriggers, of operationele metrieken. Je bent gefrustreerd dat bestaande tools je data opsluiten in gesloten silo's die alleen het verleden terugspiegelen, zonder je kruisverbanden te tonen.
+Je verzamelt al data, maar bent gefrustreerd dat de tools je alleen je verleden terugspiegelen, zonder je iets te leren. Je gebruikt uiteenlopende apps en systemen en weet dat er verbanden zijn — maar je kunt ze zelf niet zien.
 
 Je denkt na. Niet omdat je meer tijd hebt dan een ander, maar omdat je je niet comfortabel voelt met aannames. Je zoekt betrouwbare grond in een wereld vol ruis. Je gebruikt AI niet als orakel, maar als gesprekspartner voor kritisch denken.
 
