@@ -76,7 +76,7 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 
 **Voor de mens of organisatie** die meer data genereert dan ooit, maar geen enkel gesloten platform vertrouwt om die eerlijk te interpreteren.
 
-**Bieden wij** één soevereine plek waar al je datastromen samenkomen — werk, leefstijl, keuzes, gewoonten en omgeving — en waar een eerlijke AI helpt dit om te zetten in inzicht. Niet in een score die je terugbrengt. Niet in een keten (*streak*) die je gevangen houdt, maar in een antwoord op de vraag die je zelf stelde.
+**Bieden wij** één soevereine plek waar al je datastromen samenkomen — werk, leefstijl, keuzes, gewoonten en omgeving — en waar een eerlijke AI helpt dit om te zetten in inzicht. Niet in kunstmatige cijfers of verslavende prikkels, maar in een antwoord op de vraag die je zelf stelde.
 
 ### Het verschil met alternatieven:
 
