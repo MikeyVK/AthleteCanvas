@@ -105,11 +105,11 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 *De onwrikbare geloofsovertuigingen die elke beslissing toetsen. Elke feature, elke architectuurkeuze en elke business-beslissing wordt hieraan geijkt. Als een idee hieraan twijfelt, gaat het niet door.*
 
 **Principe 1 — Eigenaarschap door verificatie, niet door beloftes.**
-De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met álle eigen data — inclusief AI-geschiedenis, reflecties en ruwe data — in een open formaat dat zonder onze software leesbaar is.
+Vertrouwen mag nooit afhangen van onze blauwe ogen. De architectuur, de data-opslag en -verwerking zijn open-source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met alle eigen data, inclusief AI-geschiedenis, reflecties en ruwe data, in een open formaat dat zonder onze software leesbaar is.
 
 Jouw meest intieme data en vertrouwelijke documenten zijn voor ons onleesbaar. Wij leveren de kluis, jij bezit als enige de sleutel. Wat wij wél kunnen lezen, staat in de open-source code. Wat wij niet kunnen lezen, ook.
 
-De enige toestemming die de gebruiker apart verleent, betreft bijdragen aan geaggregeerde inzichten op populatieniveau. Wie wil dat persoonlijke of operationele patronen meewegen in platformbrede analyses, kiest dat expliciet en kan het op elk moment, zonder gevolg, terugtrekken. Bijdragen aan populatie-analyses verlenen ons nóóit toegang tot de individuele data waaruit ze zijn afgeleid.
+De enige toestemming die apart wordt verleend, betreft bijdragen aan geaggregeerde, geanonimiseerde analyses. Wie wil dat persoonlijke of operationele patronen meewegen in platformbrede trendinzichten, kiest daar expliciet voor en kan deze toestemming op elk moment, zonder gevolg, terugtrekken. Bijdragen aan geaggregeerde analyses verlenen niemand toegang tot de individuele data waaruit ze zijn afgeleid.
 
 **Principe 2 — De onafhankelijke AI (Transitie).**
 Om onafhankelijk te blijven van Big Tech, weigeren we black-box modellen die trainen op privédata. Onze absolute stip op de horizon is een zelfgehost, open-source LLM, specifiek en uitsluitend getraind voor domeinoverstijgend inzicht op basis van expliciet gedoneerde anonieme data.
