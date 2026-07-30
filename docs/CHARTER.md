@@ -90,11 +90,11 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 
 **Wij zijn het enige platform dat:**
 
-- Alle bronnen combineert, zonder leveranciersafhankelijkheid (*vendor lock-in*).
-- Analyse levert zonder engagement-model — er is geen commerciële prikkel om je langer dan nodig te houden.
-- Jouw data centraal host voor connectiviteit, maar de privacy verifieerbaar maakt via een volledig open-source architectuur en database-ontwerp.
-- Eerlijk is, ook als het antwoord ongemakkelijk is — geen positiviteitsfilter, geen gamificatie.
-- Gebouwd is op open kerncode die door iedereen gecontroleerd kan worden.
+- Alle datastromen combineert zonder *vendor lock-in*.
+- Inzicht levert zonder gamificatie of commerciële prikkels om je schermtijd te rekken.
+- Data centraal verbindt voor maximale functionaliteit, maar de privacy verifieerbaar borgt via een open-source architectuur.
+- Eerlijke antwoorden geeft, ook als de uitkomst ongemakkelijk is, zonder positiviteitsfilter.
+- Exclusief aan de kant van de gebruiker staat, omdat ons verdienmodel 100% is afgestemd op jouw belang.
 
 > De belofte in één zin: Wij maken jouw data zo eerlijk leesbaar dat je er beslissingen op durft te baseren — zonder enige twijfel over wiens belang er gediend wordt.
 
