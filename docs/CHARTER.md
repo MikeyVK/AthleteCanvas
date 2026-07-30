@@ -51,11 +51,11 @@ Je bent niet op zoek naar validatie. Je bent op zoek naar waarheid.
 
 ## Visie
 
-> Een wereld waarin beslissingen worden gebaseerd op de werkelijkheid van verifieerbare data — niet op wat platforms de gebruiker laten geloven.
+> Een wereld waarin beslissingen worden gebaseerd op de werkelijkheid van verifieerbare data — niet op wat platforms gebruikers laten geloven.
 >
-> Wij willen bewijzen dat technologie die de gebruiker centraal stelt en de aandacht van de gebruiker niet exploiteert, niet alleen mogelijk is — maar beter werkt. Wij geloven dat eerlijkheid, transparantie en data-soevereiniteit geen concessies zijn aan kwaliteit of schaal, maar juist de voorwaarden ervoor.
+> Wij willen bewijzen dat technologie die gebruikers centraal stelt en hun aandacht niet exploiteert, niet alleen mogelijk is — maar beter werkt. Wij geloven dat eerlijkheid, transparantie en data-soevereiniteit geen concessies zijn aan kwaliteit of schaal, maar juist de voorwaarden ervoor.
 >
-> De mens of organisatie die zichzelf eerlijk wil begrijpen, verdient een thuis. Geen keuze tussen krachtige tools en de waarheid over zichzelf.
+> Wie zichzelf of de eigen organisatie eerlijk wil begrijpen, verdient een thuis. Geen keuze tussen krachtige tools en de waarheid over zichzelf.
 
 ---
 
