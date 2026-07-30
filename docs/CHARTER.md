@@ -74,18 +74,18 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 
 ## Waardepropositie
 
-**Voor de bewuste mens, bedrijven of organisaties** die meer data genereren dan ooit, maar geen enkel gesloten platform vertrouwen om die eerlijk te interpreteren.
+**Voor de mens of organisatie** die meer data genereert dan ooit, maar geen enkel gesloten platform vertrouwt om die eerlijk te interpreteren.
 
-**Bieden wij** één soevereine plek waar alle datastromen en contextuele data samenkomen — gebeurtenissen, tijdsreeksen, metrieken, ongestructureerde notities en structurele relaties — en waar een eerlijke AI dit omzet in inzicht. Niet in een score die je terugbrengt. Niet in een keten (*streak*) die je gevangen houdt, maar in een antwoord op de vraag die je zelf stelde.
+**Bieden wij** één soevereine plek waar al je datastromen samenkomen — werk, leefstijl, keuzes, gewoonten en omgeving — en waar een eerlijke AI helpt dit om te zetten in inzicht. Niet in een score die je terugbrengt. Niet in een keten (*streak*) die je gevangen houdt, maar in een antwoord op de vraag die je zelf stelde.
 
 ### Het verschil met alternatieven:
 
 | Alternatief | Probleem |
 |---|---|
-| Gesloten Silo-apps | Geïsoleerde data, eigen ecosysteem, geen domeinoverstijgende kruisverbanden |
+| Gesloten Silo-apps | Geïsoleerde data, eigen ecosysteem, geen verbanden over domeinen heen |
 | Centralistische Data Aggregators | Geen intelligentie, verborgen platform-agenda, data-verkoop |
-| Generieke AI-assistenten | Geen continue soevereine geheugenbank, geen domeinoverstijgende query-capaciteit |
-| Handmatige analyse / Consultancy | Duur, incidenteel, niet-continu, afhankelijk van subjectieve interpretatie |
+| Generieke AI-assistenten | Geen toegang tot jouw context, geen continu geheugen van jouw data |
+| Handmatige analyse / Consultancy | Duur, incidenteel, afhankelijk van subjectieve interpretatie |
 | Niets doen | De chaos wint |
 
 **Wij zijn het enige platform dat:**
