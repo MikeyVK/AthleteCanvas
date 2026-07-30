@@ -122,13 +122,15 @@ De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positiviteitsfi
 **Principe 4 — Inzicht is het doel, niet betrokkenheid.**
 Succes betekent dat de gebruiker de app minder nodig heeft, niet meer. Elke feature wordt beoordeeld op de vraag: *helpt dit de gebruiker het systeem beter te begrijpen, of houdt het de gebruiker langer in de app dan nodig is?* Schermtijd is nooit een succesmetric. Widgets bestaan om het openen van de app onnodig te maken.
 
+Het zoeken naar inzicht kan op zichzelf een verslavende cyclus worden. Ypsia is ontworpen om antwoorden te vinden om keuzes te maken in het echte leven, in plaats van de gebruiker vast te houden in een oneindige cyclus van data-analyse.
+
 **Principe 5 — Ethische keuzes zitten in de architectuur, niet in de gebruiksvoorwaarden.**
 Nul-engagement, cryptografische data-verwijdering en de absolute afwezigheid van een aanbevelingsalgoritme — dit zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
 
 **Principe 6 — Absolute domein-agnostiek als fundament.**  
 Ypsia is een universele intelligentie-engine die patronen, causaliteit en afwijkingen ontdekt over verschillende datadomeinen heen. Het platform dwingt geen enkel domeinspecifiek denkkader af. Of het nu gaat om digitale werkprocessen, operationele metrieken, het in kaart brengen van complexe besluitvorming, of persoonlijke logboeken — het platform verwerkt alle data via uniforme, abstracte contracten. Elk ontwerp wordt getoetst met de harde vraag: *is dit vrij van hardgecodeerde domeinaannames of veronderstelde data-typen?*
 
-**Principe 7 — Transparantie als standaard.**
+**Principe 7 — Radicale transparantie als standaard.**
 Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering is inzichtelijk. De open core is auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
 
 **Principe 8 — Menselijke werkelijkheid boven hoogtepunten.**
