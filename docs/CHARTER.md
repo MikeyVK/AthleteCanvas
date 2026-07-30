@@ -96,7 +96,7 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 - Eerlijke antwoorden geeft, ook als de uitkomst ongemakkelijk is, zonder positiviteitsfilter.
 - Exclusief aan de kant van de gebruiker staat, omdat ons verdienmodel 100% is afgestemd op jouw belang.
 
-> De belofte in één zin: Wij maken jouw data zo eerlijk leesbaar dat je er beslissingen op durft te baseren — zonder enige twijfel over wiens belang er gediend wordt.
+> De belofte in één zin: Wij maken jouw data zo eerlijk leesbaar dat je er beslissingen op durft te baseren, zonder enige twijfel over wiens belang er gediend wordt.
 
 ---
 
