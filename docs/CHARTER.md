@@ -152,7 +152,7 @@ Gedragsdata, operationele data en persoonlijke gegevens worden nooit verkocht, v
 Geen durfkapitaal (*venture capital*) met een exit-verplichting. Geen overname door een partij wiens businessmodel haaks staat op eigenaarschap en transparantie. Groei wordt uitsluitend gefinancierd door gebruikers die het platform waardevol vinden, niet door investeerders die op korte termijn rendement eisen.
 
 **Nooit: een AI die naar de mond praat.**
-De AI is geen coach die je aanmoedigt, geen therapeut die je valideert en geen feed die je gelukkig houdt. De AI is een eerlijk analysemodel dat verbanden toont en afwijkingen signaleert — ook als de gebruiker er niet blij van wordt. Er wordt geen positieve bias ingebakken in het model.
+De AI is geen coach die je aanmoedigt, geen therapeut die je valideert en geen feed die je gelukkig houdt. De AI is een eerlijk analysemodel dat verbanden toont en afwijkingen signaleert, ook als de uitkomst ongemakkelijk voelt. Er wordt geen positieve bias ingebakken in het model.
 
 **Nooit: een ongefundeerd diagnostisch of normatief oordeel.**  
 We meten, we leggen verbanden en we signaleren afwijkingen van de eigen basislijn. We stellen echter géén normatieve oordelen over hoe iemand moet leven of werken. "Dit proces vertoont een structurele vertraging" is een objectieve observatie. "Je moet dit anders doen" is een oordeel. Het eerste is ons werk. Het tweede niet.
