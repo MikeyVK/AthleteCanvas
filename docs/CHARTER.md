@@ -167,17 +167,17 @@ Een gebruiker verlaat het platform altijd met alle eigen data. Data-export is ee
 
 ## De Noordster
 
-> "We slagen als de gebruiker de app sluit met meer inzicht dan bij het openen ervan."
+> "We slagen als de gebruiker het platform sluit met meer inzicht dan bij het openen ervan."
 
-Dit is de absolute toetssteen voor elke productkeuze. Niet hoeveel mensen dagelijks actief zijn. Niet hoe lang een sessie duurt. Maar of de gebruiker na interactie met het platform iets begrijpt over zijn systeem of processen wat daarvoor nog niet helder was.
+Dit is de absolute toetssteen voor elke productkeuze. Niet hoeveel mensen dagelijks actief zijn. Niet hoe lang een sessie duurt. Maar of iemand na interactie met het platform iets begrijpt wat daarvoor nog niet helder was.
 
 Wij meten dat via expliciete, vrijwillige feedback van de gebruiker, nooit via passieve gedragsdata. Succes is wat de gebruiker zelf aanwijst als waardevol, niet wat wij stiekem uit klikgedrag afleiden.
 
 **Wat dit betekent in de praktijk:**
 
-- Een week zonder de app te openen, maar met drie eerdere inzichten die iemands gedrag blijvend hebben veranderd → **een gigantisch succes.**
-- Dagelijks inloggen zonder dat er daadwerkelijk iets geleerd wordt → **een mislukking.**
-- Een gebruiker die vertrekt met voldoende zelfinzicht om zonder Ypsia te kunnen → **het beste dat ons kan overkomen.**
+- Een week zonder het platform te openen, maar met inzichten die keuzes en richting blijvend hebben veranderd → **een gigantisch succes.**
+- Dagelijks inloggen zonder dat er daadwerkelijk inzicht ontstaat → **een mislukking.**
+- Een gebruiker die het platform laat meegroeien met veranderende fases in leven en werk, zonder er afhankelijk van te worden → **het beste dat ons kan overkomen.**
 
 **Wat we NIET meten als succes:**
 
@@ -188,9 +188,9 @@ Wij meten dat via expliciete, vrijwillige feedback van de gebruiker, nooit via p
 
 **Wat we WÉL meten:**
 
-- Groeit het zelfbegrip van de gebruiker over tijd?
+- Groeit het inzicht over tijd?
 - Worden er verbanden zichtbaar die daarvoor onzichtbaar waren?
-- Blijft de gebruiker bij ons omdat het platform daadwerkelijk waarde levert — en niet omdat vertrek wordt bemoeilijkt?
+- Blijft de gebruiker bij ons omdat het platform daadwerkelijk waarde levert, en niet omdat vertrek wordt bemoeilijkt?
 
 ---
 
