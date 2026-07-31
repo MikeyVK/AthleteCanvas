@@ -160,8 +160,8 @@ Ypsia levert diagnostiek en analyse: we leggen verbanden, ontdekken oorzaken en 
 **Nooit: algoritmische viraliteit.**
 Geen aanbevelingsalgoritme. Geen "mensen die je misschien kent". Geen "trending content". Geen "Voor Jou"-pagina. Ontdekking is altijd intentioneel: via een directe link, een expliciete zoekopdracht of een persoonlijke uitnodiging. Viraliteit is architecturaal onmogelijk gemaakt, niet alleen beleidsmatig verboden. Experts, adviseurs en creators brengen hun eigen publiek mee via externe kanalen; het platform biedt geen enkel intern mechanisme om hun bereik kunstmatig op te voeren.
 
-**Nooit: leveranciersafhankelijkheid (vendor lock-in).**
-De gebruiker verlaat het platform altijd met alle eigen data. Data-export is een kerneigenschap, geen verstopt support-ticket. Het export-formaat is open en leesbaar zonder onze software. Een gebruiker die vertrekt na het vinden van iets beters — dat is een acceptabel resultaat. Een gebruiker die blijft omdat het platform vertrek moeilijk maakt — een fundamentele mislukking.
+**Nooit: vendor lock-in.**
+Een gebruiker verlaat het platform altijd met alle eigen data. Data-export is een kerneigenschap, geen verstopt support-ticket. Het exportformaat is open en leesbaar zonder onze software. Een gebruiker die vertrekt na het vinden van iets beters, is een acceptabel resultaat. Een gebruiker die blijft omdat het platform vertrek moeilijk maakt, is een fundamentele mislukking.
 
 ---
 
