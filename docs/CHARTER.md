@@ -143,7 +143,7 @@ Elke vorm van datadeling, samenwerking of externe integratie is *opt-in*. Nooit 
 *Wat we bewust nooit worden. Deze grenzen zijn expliciet getrokken om te voorkomen dat het platform ongemerkt afglijdt, want de meeste platforms worden niet gecorrumpeerd door slechte intenties, maar door het vergeten van kaders die ze nooit helder hadden gesteld.*
 
 **Nooit: een engagement-model.**
-We optimaliseren nooit op schermtijd, *Daily Active Users* (DAU), sessieduur, *streak*-voltooiingen of het klikken op notificaties. Die metrics bestaan niet als intern doel. Zodra iemand binnen het bedrijf zegt: "we moeten gebruikers langer in de app houden", is dat het absolute signaal dat we de verkeerde richting ingaan.
+We optimaliseren nooit op schermtijd, *Daily Active Users* (DAU), sessieduur, het voltooien van *streaks* of het klikken op notificaties. Die metrieken bestaan niet als intern doel. Zodra iemand binnen het bedrijf zegt dat we gebruikers langer in de app moeten houden, is dat het absolute signaal dat we de verkeerde richting ingaan.
 
 **Nooit: data-handel.**
 Gedragsdata, operationele data en persoonlijke gegevens worden nooit verkocht, verhuurd, of gebruikt voor het targeten van advertenties. Niet direct, niet indirect, niet intern en niet via derden. Niet nu, niet onder een nieuwe eigendomsstructuur en niet via kruisgebruik met andere producten.
