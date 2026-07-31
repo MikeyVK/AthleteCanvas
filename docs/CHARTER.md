@@ -134,7 +134,7 @@ Ypsia is ontworpen om patronen, causaliteit en afwijkingen te ontdekken overal w
 Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering en ingebrachte context zijn inzichtelijk. De broncode en architectuur zijn open en auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
 
 **Principe 8 — Toestemming is altijd expliciet, altijd intrekbaar.**
-Elke vorm van datadeling, sociale interactie of externe integratie is *opt-in*. Nooit stilzwijgend aangenomen, nooit standaard aan. Wie toestemming geeft, begrijpt precies waarvoor en kan die op elk moment intrekken, zonder enig verlies van eigen data.
+Elke vorm van datadeling, samenwerking of externe integratie is *opt-in*. Nooit stilzwijgend aangenomen, nooit standaard aan. Wie toestemming geeft, begrijpt precies waarvoor en kan deze op elk moment intrekken, zonder enig verlies van eigen data.
 
 ---
 
