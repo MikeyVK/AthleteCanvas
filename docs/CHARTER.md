@@ -111,10 +111,10 @@ Jouw meest intieme data en vertrouwelijke documenten zijn voor ons onleesbaar. W
 
 De enige toestemming die apart wordt verleend, betreft bijdragen aan geaggregeerde, geanonimiseerde analyses. Wie wil dat persoonlijke of operationele patronen meewegen in platformbrede trendinzichten, kiest daar expliciet voor en kan deze toestemming op elk moment, zonder gevolg, terugtrekken. Bijdragen aan geaggregeerde analyses verlenen niemand toegang tot de individuele data waaruit ze zijn afgeleid.
 
-**Principe 2 — De onafhankelijke AI (Transitie).**
-Om onafhankelijk te blijven van Big Tech, weigeren we black-box modellen die trainen op privédata. Onze absolute stip op de horizon is een zelfgehost, open-source LLM, specifiek en uitsluitend getraind voor domeinoverstijgend inzicht op basis van expliciet gedoneerde anonieme data.
+**Principe 2 — Onafhankelijkheid van AI-modellen.**
+Om onafhankelijk te blijven van Big Tech, weigeren we black-box modellen die trainen op privédata. Onze absolute stip op de horizon is een zelfgehost, open-source AI-model, specifiek en uitsluitend getraind voor eerlijke analyse op basis van expliciet gedoneerde, geanonimiseerde data.
 
-Tot die tijd faciliteren we BYOAI (*Bring Your Own AI*) en BYOK (*Bring Your Own Key*): jij kiest welke externe provider jouw data verwerkt voor de analyse, en jij beheert de sleutel waarmee die toegang wordt verleend. Wij verdienen niet aan die keuze en wij beïnvloeden die keuze niet. De verbinding tussen jou en jouw gekozen provider bestaat uitsluitend in jouw belang, nooit voor ons. Wij zijn de brug, niet de meeluisteraar: wij sturen jouw data door voor analyse, maar slaan de inhoud en het antwoord nooit op.
+Tot die tijd faciliteren we BYOAI (*Bring Your Own AI*) en BYOK (*Bring Your Own Key*): jij kiest welke externe provider jouw data verwerkt voor de analyse en jij beheert de sleutel waarmee toegang wordt verleend. Wij verdienen niet aan die keuze en beïnvloeden die niet. De verbinding tussen jou en je gekozen provider bestaat uitsluitend in jouw belang. Wij zijn de brug, niet de meeluisteraar: wij verzenden data uitsluitend op jouw verzoek en kijken of luisteren nooit mee.
 
 **Principe 3 — Eerlijkheid boven comfort.**
 De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positiviteitsfilter. Geen *sugarcoating*. Geen optimistische herformulering van een negatieve trend of systeemfout. De gebruiker die de waarheid zoekt, verdient een tool die de waarheid vertelt. Eerlijkheid ontslaat ons echter niet van menselijkheid: wanneer data of documenten structurele crisissignalen afgeven, verwijst het platform proactief door naar professionele ondersteuning. Dit is de enige uitzondering op onze weigering om te oordelen.
