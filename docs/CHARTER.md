@@ -149,7 +149,7 @@ We optimaliseren nooit op schermtijd, *Daily Active Users* (DAU), sessieduur, he
 Gedragsdata, operationele data en persoonlijke gegevens worden nooit verkocht, verhuurd of gebruikt voor het targeten van advertenties. Niet direct, niet indirect, niet intern en niet via derden. Niet nu, niet onder een nieuwe eigendomsstructuur en niet via kruisgebruik met andere producten.
 
 **Nooit: externe aandeelhouders met andere belangen.**
-Geen durfkapitaal (*venture capital*) met een exit-verplichting. Geen overname door een partij wiens businessmodel haaks staat op eigenaarschap en transparantie. Groei wordt uitsluitend gefinancierd door de gebruikers die het platform waardevol vinden, niet door investeerders die op korte termijn rendement eisen.
+Geen durfkapitaal (*venture capital*) met een exit-verplichting. Geen overname door een partij wiens businessmodel haaks staat op eigenaarschap en transparantie. Groei wordt uitsluitend gefinancierd door gebruikers die het platform waardevol vinden, niet door investeerders die op korte termijn rendement eisen.
 
 **Nooit: een AI die naar de mond praat.**
 De AI is geen coach die je aanmoedigt, geen therapeut die je valideert en geen feed die je gelukkig houdt. De AI is een eerlijk analysemodel dat verbanden toont en afwijkingen signaleert — ook als de gebruiker er niet blij van wordt. Er wordt geen positieve bias ingebakken in het model.
