@@ -120,9 +120,9 @@ Tot die tijd faciliteren we BYOAI (*Bring Your Own AI*) en BYOK (*Bring Your Own
 De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positiviteitsfilter. Geen *sugarcoating*. Geen optimistische herformulering van een negatieve trend of potentieel probleem. Een gebruiker die eerlijkheid zoekt, verdient een tool die hier maximaal in ondersteunt. Eerlijkheid ontslaat ons echter niet van menselijkheid: wanneer data of documenten structurele crisissignalen afgeven, verwijst het platform proactief door naar professionele ondersteuning.
 
 **Principe 4 — Inzicht is het doel, niet betrokkenheid.**
-Succes betekent dat de gebruiker de app minder nodig heeft, niet meer. Elke feature wordt beoordeeld op de vraag: *helpt dit de gebruiker het systeem beter te begrijpen, of houdt het de gebruiker langer in de app dan nodig is?* Schermtijd is nooit een succesmetric. Widgets bestaan om het openen van de app onnodig te maken.
+Succes betekent dat een gebruiker de app minder nodig heeft, niet meer. Elke feature wordt beoordeeld op de vraag: *helpt dit om beter te begrijpen wat er écht speelt, of houdt het iemand langer in de app dan nodig is?* Schermtijd is nooit een succesmetric. Widgets bestaan om het openen van de app onnodig te maken.
 
-Het zoeken naar inzicht kan op zichzelf een verslavende cyclus worden. Ypsia is ontworpen om antwoorden te vinden om keuzes te maken in het echte leven, in plaats van de gebruiker vast te houden in een oneindige cyclus van data-analyse.
+Het zoeken naar inzicht kan op zichzelf een verslavende cyclus worden. Ypsia is ontworpen om antwoorden te vinden om keuzes te maken in het échte leven, in plaats van de gebruiker vast te houden in een oneindige cyclus van data-analyse.
 
 **Principe 5 — Ethische keuzes zitten in de architectuur, niet in de gebruiksvoorwaarden.**
 Nul-engagement, cryptografische data-verwijdering en de absolute afwezigheid van een aanbevelingsalgoritme — dit zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
