@@ -125,7 +125,7 @@ Succes betekent dat een gebruiker de app minder nodig heeft, niet meer. Elke fea
 Het zoeken naar inzicht kan op zichzelf een verslavende cyclus worden. Ypsia is ontworpen om antwoorden te vinden om keuzes te maken in het échte leven, in plaats van de gebruiker vast te houden in een oneindige cyclus van data-analyse.
 
 **Principe 5 — Ethische keuzes zitten in de architectuur, niet in de gebruiksvoorwaarden.**
-Nul-engagement, cryptografische data-verwijdering en de absolute afwezigheid van een aanbevelingsalgoritme — dit zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
+Nul-engagement, cryptografische dataverwijdering en de afwezigheid van een aanbevelingsalgoritme zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
 
 **Principe 6 — Absolute domein-agnostiek als fundament.**  
 Ypsia is een universele intelligentie-engine die patronen, causaliteit en afwijkingen ontdekt over verschillende datadomeinen heen. Het platform dwingt geen enkel domeinspecifiek denkkader af. Of het nu gaat om digitale werkprocessen, operationele metrieken, het in kaart brengen van complexe besluitvorming, of persoonlijke logboeken — het platform verwerkt alle data via uniforme, abstracte contracten. Elk ontwerp wordt getoetst met de harde vraag: *is dit vrij van hardgecodeerde domeinaannames of veronderstelde data-typen?*
