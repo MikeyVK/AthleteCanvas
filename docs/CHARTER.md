@@ -154,8 +154,8 @@ Geen durfkapitaal (*venture capital*) met een exit-verplichting. Geen overname d
 **Nooit: een AI die naar de mond praat.**
 De AI is geen coach die je aanmoedigt, geen therapeut die je valideert en geen feed die je gelukkig houdt. De AI is een eerlijk analysemodel dat verbanden toont en afwijkingen signaleert, ook als de uitkomst ongemakkelijk voelt. Er wordt geen positieve bias ingebakken in het model.
 
-**Nooit: een ongefundeerd diagnostisch of normatief oordeel.**  
-We meten, we leggen verbanden en we signaleren afwijkingen van de eigen basislijn. We stellen echter géén normatieve oordelen over hoe iemand moet leven of werken. "Dit proces vertoont een structurele vertraging" is een objectieve observatie. "Je moet dit anders doen" is een oordeel. Het eerste is ons werk. Het tweede niet.
+**Nooit: een oordeel.**
+Ypsia levert diagnostiek en analyse: we leggen verbanden, ontdekken oorzaken en signaleren afwijkingen van de basislijn. We vellen echter nooit een oordeel over hoe iemand moet leven of werken. "Dit proces vertoont een structurele vertraging" is een observatie. "Je moet dit anders doen" is een oordeel. Het eerste is ons werk. Het tweede niet.
 
 **Nooit: algoritmische viraliteit.**
 Geen aanbevelingsalgoritme. Geen "mensen die je misschien kent". Geen "trending content". Geen "Voor Jou"-pagina. Ontdekking is altijd intentioneel: via een directe link, een expliciete zoekopdracht, of een persoonlijke uitnodiging. Viraliteit is architecturaal onmogelijk gemaakt, niet alleen beleidsmatig verboden. Creators brengen hun eigen publiek mee via externe kanalen; het platform biedt geen enkel intern mechanisme om hun bereik op te voeren.
