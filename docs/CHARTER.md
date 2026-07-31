@@ -131,7 +131,7 @@ Nul-engagement, cryptografische dataverwijdering en de afwezigheid van een aanbe
 Ypsia is ontworpen om patronen, causaliteit en afwijkingen te ontdekken overal waar data ontstaat. Het platform dwingt geen enkel domeinspecifiek denkkader af. Of het nu gaat om werkprocessen, persoonlijke logboeken, operationele metrieken of complexe keuzes, alle data wordt verwerkt via gelijke, open standaarden. Elk ontwerp wordt getoetst met de harde vraag: *is dit vrij van hardgecodeerde domeinaannames?*
 
 **Principe 7 — Radicale transparantie als standaard.**
-Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering is inzichtelijk. De open core is auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
+Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering en ingebrachte context zijn inzichtelijk. De broncode en architectuur zijn open en auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
 
 **Principe 8 — Menselijke werkelijkheid boven hoogtepunten.**
 We bouwen voor het echte leven — voor de slechte dag, de gebroken week en de periode dat overleven genoeg is. Een profiel is geen etalage van prestaties; het is een eerlijk logboek van een mens of organisatie. Data die de werkelijkheid toont, ook als die onflatterend is, heeft fundamenteel meer waarde dan data die wordt verzwegen.
