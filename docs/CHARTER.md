@@ -146,7 +146,7 @@ Elke vorm van datadeling, samenwerking of externe integratie is *opt-in*. Nooit 
 We optimaliseren nooit op schermtijd, *Daily Active Users* (DAU), sessieduur, het voltooien van *streaks* of het klikken op notificaties. Die metrieken bestaan niet als intern doel. Zodra iemand binnen het bedrijf zegt dat we gebruikers langer in de app moeten houden, is dat het absolute signaal dat we de verkeerde richting ingaan.
 
 **Nooit: data-handel.**
-Gedragsdata, operationele data en persoonlijke gegevens worden nooit verkocht, verhuurd, of gebruikt voor het targeten van advertenties. Niet direct, niet indirect, niet intern en niet via derden. Niet nu, niet onder een nieuwe eigendomsstructuur en niet via kruisgebruik met andere producten.
+Gedragsdata, operationele data en persoonlijke gegevens worden nooit verkocht, verhuurd of gebruikt voor het targeten van advertenties. Niet direct, niet indirect, niet intern en niet via derden. Niet nu, niet onder een nieuwe eigendomsstructuur en niet via kruisgebruik met andere producten.
 
 **Nooit: externe aandeelhouders met andere belangen.**
 Geen durfkapitaal (*venture capital*) met een exit-verplichting. Geen overname door een partij wiens businessmodel haaks staat op eigenaarschap en transparantie. Groei wordt uitsluitend gefinancierd door de gebruikers die het platform waardevol vinden, niet door investeerders die op korte termijn rendement eisen.
