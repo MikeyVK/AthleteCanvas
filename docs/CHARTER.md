@@ -133,10 +133,7 @@ Ypsia is ontworpen om patronen, causaliteit en afwijkingen te ontdekken overal w
 **Principe 7 — Radicale transparantie als standaard.**
 Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering en ingebrachte context zijn inzichtelijk. De broncode en architectuur zijn open en auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
 
-**Principe 8 — Menselijke werkelijkheid boven hoogtepunten.**
-We bouwen voor het echte leven — voor de slechte dag, de gebroken week en de periode dat overleven genoeg is. Een profiel is geen etalage van prestaties; het is een eerlijk logboek van een mens of organisatie. Data die de werkelijkheid toont, ook als die onflatterend is, heeft fundamenteel meer waarde dan data die wordt verzwegen.
-
-**Principe 9 — Toestemming is altijd expliciet, altijd intrekbaar.**
+**Principe 8 — Toestemming is altijd expliciet, altijd intrekbaar.**
 Elke vorm van datadeling, sociale interactie of externe integratie is *opt-in*. Nooit stilzwijgend aangenomen, nooit standaard aan. Wie toestemming geeft, begrijpt precies waarvoor en kan die op elk moment intrekken, zonder enig verlies van eigen data.
 
 ---
