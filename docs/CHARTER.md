@@ -127,8 +127,8 @@ Het zoeken naar inzicht kan op zichzelf een verslavende cyclus worden. Ypsia is 
 **Principe 5 — Ethische keuzes zitten in de architectuur, niet in de gebruiksvoorwaarden.**
 Nul-engagement, cryptografische dataverwijdering en de afwezigheid van een aanbevelingsalgoritme zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
 
-**Principe 6 — Absolute domein-agnostiek als fundament.**  
-Ypsia is een universele intelligentie-engine die patronen, causaliteit en afwijkingen ontdekt over verschillende datadomeinen heen. Het platform dwingt geen enkel domeinspecifiek denkkader af. Of het nu gaat om digitale werkprocessen, operationele metrieken, het in kaart brengen van complexe besluitvorming, of persoonlijke logboeken — het platform verwerkt alle data via uniforme, abstracte contracten. Elk ontwerp wordt getoetst met de harde vraag: *is dit vrij van hardgecodeerde domeinaannames of veronderstelde data-typen?*
+**Principe 6 — Vrij van opgelegde denkkaders.**
+Ypsia is ontworpen om patronen, causaliteit en afwijkingen te ontdekken overal waar data ontstaat. Het platform dwingt geen enkel domeinspecifiek denkkader af. Of het nu gaat om werkprocessen, persoonlijke logboeken, operationele metrieken of complexe keuzes, alle data wordt verwerkt via gelijke, open standaarden. Elk ontwerp wordt getoetst met de harde vraag: *is dit vrij van hardgecodeerde domeinaannames?*
 
 **Principe 7 — Radicale transparantie als standaard.**
 Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering is inzichtelijk. De open core is auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
