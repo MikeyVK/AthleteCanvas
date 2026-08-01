@@ -76,7 +76,7 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 
 **Voor de mens of organisatie** die meer data genereert dan ooit, maar geen enkel gesloten platform vertrouwt om die eerlijk te interpreteren.
 
-**Bieden wij** één soevereine plek waar al je datastromen samenkomen — werk, leefstijl, keuzes, gewoonten en omgeving — en waar een eerlijke AI helpt dit om te zetten in inzicht. Niet in kunstmatige cijfers of verslavende prikkels, maar in een antwoord op de vraag die je zelf stelde.
+**Bieden wij** één soeverein fundament waar al je datastromen samenkomen, verrijkt met een oneindig uitbreidbaar ecosysteem voor domeinspecifieke intelligentie, waardoor een onafhankelijke AI helpt met analyse, zonder op jouw data te zijn getraind.
 
 ### Het verschil met alternatieven:
 
