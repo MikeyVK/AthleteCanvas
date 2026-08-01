@@ -92,7 +92,7 @@ Er is meer data beschikbaar dan ooit. Applicaties, sensoren en workflows meten c
 
 - Alle datastromen combineert zonder *vendor lock-in*.
 - Inzicht levert zonder gamificatie of commerciële prikkels om je schermtijd te rekken.
-- Data centraal verbindt voor maximale functionaliteit, maar de privacy verifieerbaar borgt via een open-source architectuur.
+- Een universeel open-source fundament biedt dat al je datastromen verbindt zonder hardgecodeerd denkkader, verrijkt met een open ecosysteem van sjablonen.
 - Eerlijke antwoorden geeft, ook als de uitkomst ongemakkelijk is, zonder positiviteitsfilter.
 - Exclusief aan de kant van de gebruiker staat, omdat ons verdienmodel 100% is afgestemd op jouw belang.
 
@@ -128,7 +128,7 @@ Het zoeken naar inzicht kan op zichzelf een verslavende cyclus worden. Ypsia is 
 Nul-engagement, cryptografische dataverwijdering en de afwezigheid van een aanbevelingsalgoritme zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
 
 **Principe 6 — Vrij van opgelegde denkkaders.**
-Ypsia is ontworpen om patronen, causaliteit en afwijkingen te ontdekken overal waar data ontstaat. Het platform dwingt geen enkel domeinspecifiek denkkader af. Of het nu gaat om werkprocessen, persoonlijke logboeken, operationele metrieken of complexe keuzes, alle data wordt verwerkt via gelijke, open standaarden. Elk ontwerp wordt getoetst met de harde vraag: *is dit vrij van hardgecodeerde domeinaannames?*
+Ypsia is ontworpen om patronen, causaliteit en afwijkingen te ontdekken overal waar data ontstaat. De kern van het platform blijft 100% universeel en neutraal; specifieke domeinkennis wordt uitsluitend toegevoegd via transparante, uitbreidbare sjablonen en adapters. Of het nu gaat om werkprocessen, persoonlijke logboeken, operationele metrieken of complexe keuzes: alle data wordt verwerkt via gelijke, open standaarden. Elk ontwerp wordt getoetst met de harde vraag: *is de kern vrij van hardgecodeerde domeinaannames?*
 
 **Principe 7 — Radicale transparantie als standaard.**
 Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering en ingebrachte context zijn inzichtelijk. De broncode en architectuur zijn open en auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het platform werkt, kan dat.
