@@ -3,7 +3,7 @@
 Transcript Extractor Script voor Ypsia / Antigravity
 
 Zet Antigravity JSONL-transcripts om naar een schone, menselijk leesbare Markdown-weergave.
-Ondersteunt geavanceerde filtering op tijdsintervallen, stap-indices en inhoudstypes.
+Ondersteunt geavanceerde filtering op tijdsintervallen, stap-indices, inhoudstypes en metadata.
 
 Gebruik:
     python scripts/extract_transcript.py [opties]
@@ -12,8 +12,8 @@ Voorbeelden:
     # Standaard extractie van de huidige conversatie
     python scripts/extract_transcript.py
 
-    # Exporteer naar een specifiek bestand met een tijdsfilter
-    python scripts/extract_transcript.py --start-time "2026-08-01T20:00:00" -o docs/gesprek_aug1.md
+    # Exporteer zonder tijdstempels en stap-indices in headers
+    python scripts/extract_transcript.py --no-metadata
 
     # Exporteer uitsluitend de stappen tussen index 1500 en 1600 zonder denkstappen
     python scripts/extract_transcript.py --start-step 1500 --end-step 1600 --no-thinking
@@ -23,6 +23,7 @@ import argparse
 import datetime
 import json
 import os
+import re
 import sys
 
 DEFAULT_TRANSCRIPT = r"C:\Users\miche\.gemini\antigravity\brain\0ff47fb1-bd71-4157-af0f-011b96af6c1c\.system_generated\logs\transcript.jsonl"
@@ -34,8 +35,15 @@ def parse_iso_time(ts_str):
         ts_clean = ts_str.replace("Z", "+00:00")
         return datetime.datetime.fromisoformat(ts_clean)
     except Exception as e:
-        print(f"Waarschuwing: kon datum '{ts_str}' niet parsen: {e}")
         return None
+
+def clean_content(content_str):
+    """Verwijder systeem-header ruis zoals 'Created At: ... Completed At: ...'."""
+    if not content_str:
+        return ""
+    # Strip Created At / Completed At systeemheaders van tool/runner outputs
+    cleaned = re.sub(r"^Created At:.*?\n(Completed At:.*?\n)?", "", content_str.strip(), flags=re.DOTALL)
+    return cleaned.strip()
 
 def extract_transcript(args):
     input_path = args.input or DEFAULT_TRANSCRIPT
@@ -89,14 +97,17 @@ def extract_transcript(args):
 
             step_type = data.get("type", "")
             source = data.get("source", "")
-            content = data.get("content", "")
+            content = clean_content(data.get("content", ""))
             thinking = data.get("thinking", "")
+
+            # Meta-header formatter
+            meta_str = f" [Stap {step_idx} | {created_at}]" if args.include_metadata else ""
 
             # 1. Gebruikersinvoer
             if (step_type == "USER_INPUT" or source == "USER_EXPLICIT") and args.include_user:
                 items_matched += 1
-                outfile.write(f"## 👤 Gebruiker [Stap {step_idx} | {created_at}]\n\n")
-                outfile.write(f"{content.strip()}\n\n")
+                outfile.write(f"## 👤 Gebruiker{meta_str}\n\n")
+                outfile.write(f"{content}\n\n")
                 outfile.write("---\n\n")
 
             # 2. Model antwoorden & Redeneerstappen
@@ -107,16 +118,17 @@ def extract_transcript(args):
                 if args.include_thinking and thinking and thinking.strip():
                     items_matched += 1
                     wrote_section = True
-                    outfile.write(f"### 💭 Redenering (Thinking) [Stap {step_idx}]\n\n")
+                    thinking_meta = f" [Stap {step_idx}]" if args.include_metadata else ""
+                    outfile.write(f"### 💭 Redenering (Thinking){thinking_meta}\n\n")
                     quoted = "\n".join([f"> {l}" for l in thinking.strip().split("\n")])
                     outfile.write(f"{quoted}\n\n")
 
                 # Inhoudelijk antwoord
-                if args.include_assistant and content and content.strip():
+                if args.include_assistant and content:
                     items_matched += 1
                     wrote_section = True
-                    outfile.write(f"## 🤖 Antigravity [Stap {step_idx} | {created_at}]\n\n")
-                    outfile.write(f"{content.strip()}\n\n")
+                    outfile.write(f"## 🤖 Antigravity{meta_str}\n\n")
+                    outfile.write(f"{content}\n\n")
 
                 if wrote_section:
                     outfile.write("---\n\n")
@@ -124,8 +136,9 @@ def extract_transcript(args):
             # 3. Optionele Tool-samenvatting
             elif args.include_tools and step_type in ("MCP_TOOL", "RUN_COMMAND", "SAFE_EDIT_FILE"):
                 items_matched += 1
-                outfile.write(f"#### 🛠️ Tool Execution [{step_type} | Stap {step_idx}]\n\n")
-                summary_snippet = content.strip().split("\n")[0] if content else ""
+                tool_meta = f" [Stap {step_idx}]" if args.include_metadata else ""
+                outfile.write(f"#### 🛠️ Tool Execution [{step_type}]{tool_meta}\n\n")
+                summary_snippet = content.split("\n")[0] if content else ""
                 outfile.write(f"`{summary_snippet[:150]}`\n\n")
 
     print(f"✅ Extractie voltooid!")
@@ -146,13 +159,14 @@ def main():
     parser.add_argument("--start-step", type=int, help="Minimale stap-index (step_index).")
     parser.add_argument("--end-step", type=int, help="Maximale stap-index (step_index).")
 
-    # Inhoud schakelaars
+    # Inhoud & Metadata schakelaars
     parser.add_argument("--no-thinking", dest="include_thinking", action="store_false", help="Sluit denkstappen (thinking) uit.")
     parser.add_argument("--no-user", dest="include_user", action="store_false", help="Sluit gebruikersberichten uit.")
     parser.add_argument("--no-assistant", dest="include_assistant", action="store_false", help="Sluit assistent-antwoorden uit.")
+    parser.add_argument("--no-metadata", dest="include_metadata", action="store_false", help="Sluit tijdstempels en stap-indices in de headers uit.")
     parser.add_argument("--include-tools", action="store_true", help="Voeg een beknopte samenvatting van tool-uitvoeringen toe.")
 
-    parser.set_defaults(include_thinking=True, include_user=True, include_assistant=True)
+    parser.set_defaults(include_thinking=True, include_user=True, include_assistant=True, include_metadata=True)
 
     args = parser.parse_args()
     extract_transcript(args)
