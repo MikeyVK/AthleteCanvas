@@ -3,10 +3,10 @@
 Pure Dialogue Extractor Script voor Ypsia / Antigravity
 
 Zet Antigravity JSONL-transcripts om naar een puur taalkundig dialoogbestand.
-Verwijdert ALLE codeblokken, documentdumps, tool-outputs en systeemruis.
+Verwijdert ALLE codeblokken, documentdumps, XML/HTML tags en tool-outputs.
 
 Gebruik:
-    python scripts/extract_transcript.py --start-time "2026-07-24T00:00:00" -o .pgmcp/logs/pure_dialogue_20260724.md
+    python scripts/extract_transcript.py --start-time "2026-07-24T00:00:00" -o .pgmcp/logs/transcript_20260724_20260802.md
 """
 
 import argparse
@@ -24,7 +24,6 @@ def parse_iso_time(ts_str):
     try:
         ts_clean = ts_str.replace("Z", "+00:00")
         dt = datetime.datetime.fromisoformat(ts_clean)
-        # Zorg dat de datetime altijd UTC-aware is voor vergelijking
         if dt.tzinfo is None:
             dt = dt.replace(tzinfo=datetime.timezone.utc)
         return dt
@@ -40,7 +39,7 @@ def format_short_time(ts_str):
 
 def strip_non_dialogue(text):
     """
-    Verwijder alle codeblokken, documentdumps en systeem-metadata.
+    Verwijder alle codeblokken, documentdumps, XML/HTML tags en systeem-metadata.
     Behoud uitsluitend de zuivere taalkundige dialoog.
     """
     if not text:
@@ -49,7 +48,8 @@ def strip_non_dialogue(text):
     # 1. Strip omheinde codeblokken (```...```)
     text = re.sub(r'```.*?```', '', text, flags=re.DOTALL)
 
-    # 2. Strip systeem- en XML-tags
+    # 2. Strip onzichtbare XML/HTML tags die Markdown previews verbergen
+    text = re.sub(r'<USER_SETTINGS_CHANGE>.*?</USER_SETTINGS_CHANGE>', '', text, flags=re.DOTALL)
     text = re.sub(r'<ADDITIONAL_METADATA>.*?</ADDITIONAL_METADATA>', '', text, flags=re.DOTALL)
     text = re.sub(r'<user_information>.*?</user_information>', '', text, flags=re.DOTALL)
     text = re.sub(r'<SYSTEM_MESSAGE>.*?</SYSTEM_MESSAGE>', '', text, flags=re.DOTALL)
@@ -59,6 +59,10 @@ def strip_non_dialogue(text):
     text = re.sub(r'<subagents>.*?</subagents>', '', text, flags=re.DOTALL)
     text = re.sub(r'<messaging>.*?</messaging>', '', text, flags=re.DOTALL)
     text = re.sub(r'<artifacts>.*?</artifacts>', '', text, flags=re.DOTALL)
+    
+    # Strip <USER_REQUEST> en </USER_REQUEST> wrapper tags, maar BEHOUD de tekst ertussen
+    text = re.sub(r'</?USER_REQUEST>', '', text)
+    text = re.sub(r'</?[A-Z_]+>', '', text)  # Strip alle eventuele overgebleven custom XML tags
 
     # 3. Strip eventuele losse file-dump patronen
     text = re.sub(r'File Path: `file:///.*?`(\n.*?)?(?=^\s*#|^\s*##|\Z)', '', text, flags=re.DOTALL | re.MULTILINE)
@@ -90,7 +94,7 @@ def extract_pure_dialogue(args):
             sys.exit(1)
 
     now_str = datetime.datetime.now().strftime("%Y%m%d_%H%M")
-    output_path = args.output or rf".pgmcp\logs\pure_dialogue_{now_str}.md"
+    output_path = args.output or rf".pgmcp\logs\transcript_{now_str}.md"
 
     start_dt = parse_iso_time(args.start_time)
     end_dt = parse_iso_time(args.end_time)
