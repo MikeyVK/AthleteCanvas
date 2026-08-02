@@ -5,17 +5,8 @@ Pure Dialogue Extractor Script voor Ypsia / Antigravity
 Zet Antigravity JSONL-transcripts om naar een puur taalkundig dialoogbestand.
 Verwijdert ALLE codeblokken, documentdumps, tool-outputs en systeemruis.
 
-Doel:
-    Een vederlicht, puur tekstueel transcript dat alleen onze inhoudelijke
-    conversatie en redeneerstappen bevat, ideaal voor menselijke lezing en
-    het inlezen door (externe) AI-agents.
-
 Gebruik:
-    python scripts/extract_transcript.py [opties]
-
-Voorbeelden:
-    python scripts/extract_transcript.py -o .pgmcp/logs/pure_dialogue.md
-    python scripts/extract_transcript.py --no-thinking -o .pgmcp/logs/pure_dialogue.md
+    python scripts/extract_transcript.py --start-time "2026-07-24T00:00:00" -o .pgmcp/logs/pure_dialogue_20260724.md
 """
 
 import argparse
@@ -32,7 +23,11 @@ def parse_iso_time(ts_str):
         return None
     try:
         ts_clean = ts_str.replace("Z", "+00:00")
-        return datetime.datetime.fromisoformat(ts_clean)
+        dt = datetime.datetime.fromisoformat(ts_clean)
+        # Zorg dat de datetime altijd UTC-aware is voor vergelijking
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=datetime.timezone.utc)
+        return dt
     except Exception as e:
         return None
 
@@ -65,7 +60,7 @@ def strip_non_dialogue(text):
     text = re.sub(r'<messaging>.*?</messaging>', '', text, flags=re.DOTALL)
     text = re.sub(r'<artifacts>.*?</artifacts>', '', text, flags=re.DOTALL)
 
-    # 3. Strip eventuele losse file-dump patronen (zoals view_file outputs)
+    # 3. Strip eventuele losse file-dump patronen
     text = re.sub(r'File Path: `file:///.*?`(\n.*?)?(?=^\s*#|^\s*##|\Z)', '', text, flags=re.DOTALL | re.MULTILINE)
     text = re.sub(r'^Created At:.*?\n(Completed At:.*?\n)?', '', text, flags=re.DOTALL)
 
@@ -94,7 +89,8 @@ def extract_pure_dialogue(args):
             print(f"Fout: Invoerbestand niet gevonden op: {input_path}")
             sys.exit(1)
 
-    output_path = args.output or r".pgmcp\logs\pure_dialogue.md"
+    now_str = datetime.datetime.now().strftime("%Y%m%d_%H%M")
+    output_path = args.output or rf".pgmcp\logs\pure_dialogue_{now_str}.md"
 
     start_dt = parse_iso_time(args.start_time)
     end_dt = parse_iso_time(args.end_time)
@@ -152,7 +148,7 @@ def extract_pure_dialogue(args):
                     outfile.write(f"{cleaned_user}\n\n")
                     outfile.write("---\n\n")
 
-            # 2. Model antwoorden & Redeneerstappen (ALLEEN van PLANNER_RESPONSE, nooit MCP_TOOL of VIEW_FILE outputs!)
+            # 2. Model antwoorden & Redeneerstappen (ALLEEN van PLANNER_RESPONSE)
             elif step_type == "PLANNER_RESPONSE":
                 wrote_section = False
 
@@ -165,7 +161,7 @@ def extract_pure_dialogue(args):
                     quoted = "\n".join([f"> {l}" for l in cleaned_thinking.split("\n")])
                     outfile.write(f"{quoted}\n\n")
 
-                # Inhoudelijk antwoord (geschreven door het model naar de gebruiker)
+                # Inhoudelijk antwoord
                 cleaned_assistant = strip_non_dialogue(content)
                 if args.include_assistant and cleaned_assistant:
                     items_matched += 1
@@ -175,8 +171,6 @@ def extract_pure_dialogue(args):
 
                 if wrote_section:
                     outfile.write("---\n\n")
-
-            # Negeer expliciet alle MCP_TOOL, VIEW_FILE, RUN_COMMAND, LIST_DIRECTORY stappen!
 
     print("[SUCCESS] Pure dialoog-extractie voltooid!")
     print(f"- Regels verwerkt: {lines_processed}")
@@ -190,7 +184,7 @@ def main():
     parser.add_argument("-i", "--input", help="Pad naar het invoer JSONL transcript bestand.")
     parser.add_argument("-o", "--output", help="Pad waar het Markdown bestand opgeslagen moet worden.")
     
-    parser.add_argument("--start-time", help="Starttijd in ISO formaat (bijv. '2026-08-01T20:00:00').")
+    parser.add_argument("--start-time", help="Starttijd in ISO formaat (bijv. '2026-07-24T00:00:00').")
     parser.add_argument("--end-time", help="Eindtijd in ISO formaat (bijv. '2026-08-02T12:00:00').")
     parser.add_argument("--start-step", type=int, help="Minimale stap-index (step_index).")
     parser.add_argument("--end-step", type=int, help="Maximale stap-index (step_index).")
