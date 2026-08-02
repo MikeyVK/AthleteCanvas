@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 """
-Transcript Extractor Script voor Ypsia / Antigravity
+Pure Dialogue Extractor Script voor Ypsia / Antigravity
 
-Zet Antigravity JSONL-transcripts om naar een schone, menselijk leesbare Markdown-weergave.
-Ondersteunt geavanceerde filtering op tijdsintervallen, stap-indices, inhoudstypes en metadata.
+Zet Antigravity JSONL-transcripts om naar een puur taalkundig dialoogbestand.
+Verwijdert ALLE codeblokken, documentdumps, tool-outputs en systeemruis.
+
+Doel:
+    Een vederlicht, puur tekstueel transcript dat alleen onze inhoudelijke
+    conversatie en redeneerstappen bevat, ideaal voor menselijke lezing en
+    het inlezen door (externe) AI-agents.
 
 Gebruik:
     python scripts/extract_transcript.py [opties]
 
 Voorbeelden:
-    python scripts/extract_transcript.py -i C:\\...\\transcript_full.jsonl -o .pgmcp/logs/transcript_chat.md
+    python scripts/extract_transcript.py -o .pgmcp/logs/pure_dialogue.md
+    python scripts/extract_transcript.py --no-thinking -o .pgmcp/logs/pure_dialogue.md
 """
 
 import argparse
@@ -31,28 +37,54 @@ def parse_iso_time(ts_str):
         return None
 
 def format_short_time(ts_str):
-    """Formatteer een ISO datumstring naar een korte, leesbare tijdstempel YYYY-MM-DD HH:MM:SS."""
+    """Formatteer een ISO datumstring naar YYYY-MM-DD HH:MM:SS."""
     dt = parse_iso_time(ts_str)
     if dt:
         return dt.strftime("%Y-%m-%d %H:%M:%S")
     return ts_str or ""
 
-def clean_user_content(content_str):
-    """Verwijder systeem-injected XML tags zoals <ADDITIONAL_METADATA> uit gebruikersprompts."""
-    if not content_str:
+def strip_non_dialogue(text):
+    """
+    Verwijder alle codeblokken, documentdumps en systeem-metadata.
+    Behoud uitsluitend de zuivere taalkundige dialoog.
+    """
+    if not text:
         return ""
-    cleaned = re.sub(r"<ADDITIONAL_METADATA>.*?</ADDITIONAL_METADATA>", "", content_str, flags=re.DOTALL)
-    cleaned = re.sub(r"<user_information>.*?</user_information>", "", cleaned, flags=re.DOTALL)
-    return cleaned.strip()
 
-def clean_assistant_content(content_str):
-    """Verwijder systeem-header ruis zoals 'Created At: ... Completed At: ...' uit assistant outputs."""
-    if not content_str:
-        return ""
-    cleaned = re.sub(r"^Created At:.*?\n(Completed At:.*?\n)?", "", content_str.strip(), flags=re.DOTALL)
-    return cleaned.strip()
+    # 1. Strip omheinde codeblokken (```...```)
+    text = re.sub(r'```.*?```', '', text, flags=re.DOTALL)
 
-def extract_transcript(args):
+    # 2. Strip systeem- en XML-tags
+    text = re.sub(r'<ADDITIONAL_METADATA>.*?</ADDITIONAL_METADATA>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<user_information>.*?</user_information>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<SYSTEM_MESSAGE>.*?</SYSTEM_MESSAGE>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<user_rules>.*?</user_rules>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<workflows>.*?</workflows>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<skills>.*?</skills>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<subagents>.*?</subagents>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<messaging>.*?</messaging>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<artifacts>.*?</artifacts>', '', text, flags=re.DOTALL)
+
+    # 3. Strip eventuele losse file-dump patronen (zoals view_file outputs)
+    text = re.sub(r'File Path: `file:///.*?`(\n.*?)?(?=^\s*#|^\s*##|\Z)', '', text, flags=re.DOTALL | re.MULTILINE)
+    text = re.sub(r'^Created At:.*?\n(Completed At:.*?\n)?', '', text, flags=re.DOTALL)
+
+    # 4. Opschonen van witregels
+    lines = [line.rstrip() for line in text.splitlines()]
+    clean_lines = []
+    prev_empty = False
+    for line in lines:
+        if not line:
+            if not prev_empty:
+                clean_lines.append("")
+                prev_empty = True
+        else:
+            clean_lines.append(line)
+            prev_empty = False
+
+    return "\n".join(clean_lines).strip()
+
+def extract_pure_dialogue(args):
     input_path = args.input or DEFAULT_TRANSCRIPT
     if not os.path.exists(input_path):
         fallback = input_path.replace("transcript_full.jsonl", "transcript.jsonl")
@@ -62,7 +94,7 @@ def extract_transcript(args):
             print(f"Fout: Invoerbestand niet gevonden op: {input_path}")
             sys.exit(1)
 
-    output_path = args.output or r".pgmcp\logs\transcript_chat.md"
+    output_path = args.output or r".pgmcp\logs\pure_dialogue.md"
 
     start_dt = parse_iso_time(args.start_time)
     end_dt = parse_iso_time(args.end_time)
@@ -73,7 +105,7 @@ def extract_transcript(args):
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
 
     with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
-        outfile.write(f"# Conversatie & Redeneergeschiedenis\n\n")
+        outfile.write(f"# Puur Taalkundig Dialoog Transcript\n\n")
         outfile.write(f"*Gegenereerd op: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} | Bron: `{input_path}`*\n\n---\n\n")
 
         for line in infile:
@@ -113,27 +145,28 @@ def extract_transcript(args):
 
             # 1. Gebruikersinvoer
             if (step_type == "USER_INPUT" or source == "USER_EXPLICIT") and args.include_user:
-                cleaned_user = clean_user_content(content)
+                cleaned_user = strip_non_dialogue(content)
                 if cleaned_user:
                     items_matched += 1
                     outfile.write(f"## 👤 Gebruiker{meta_str}\n\n")
                     outfile.write(f"{cleaned_user}\n\n")
                     outfile.write("---\n\n")
 
-            # 2. Model antwoorden & Redeneerstappen
-            elif step_type == "PLANNER_RESPONSE" or source == "MODEL":
+            # 2. Model antwoorden & Redeneerstappen (ALLEEN van PLANNER_RESPONSE, nooit MCP_TOOL of VIEW_FILE outputs!)
+            elif step_type == "PLANNER_RESPONSE":
                 wrote_section = False
 
                 # Denkstappen
-                if args.include_thinking and thinking and thinking.strip():
+                cleaned_thinking = strip_non_dialogue(thinking)
+                if args.include_thinking and cleaned_thinking:
                     items_matched += 1
                     wrote_section = True
                     outfile.write(f"### 💭 Redenering (Thinking){meta_str}\n\n")
-                    quoted = "\n".join([f"> {l}" for l in thinking.strip().split("\n")])
+                    quoted = "\n".join([f"> {l}" for l in cleaned_thinking.split("\n")])
                     outfile.write(f"{quoted}\n\n")
 
-                # Inhoudelijk antwoord
-                cleaned_assistant = clean_assistant_content(content)
+                # Inhoudelijk antwoord (geschreven door het model naar de gebruiker)
+                cleaned_assistant = strip_non_dialogue(content)
                 if args.include_assistant and cleaned_assistant:
                     items_matched += 1
                     wrote_section = True
@@ -143,21 +176,16 @@ def extract_transcript(args):
                 if wrote_section:
                     outfile.write("---\n\n")
 
-            # 3. Optionele Tool-samenvatting
-            elif args.include_tools and step_type in ("MCP_TOOL", "RUN_COMMAND", "SAFE_EDIT_FILE"):
-                items_matched += 1
-                outfile.write(f"#### 🛠️ Tool Execution [{step_type}]{meta_str}\n\n")
-                summary_snippet = clean_assistant_content(content).split("\n")[0] if content else ""
-                outfile.write(f"`{summary_snippet[:150]}`\n\n")
+            # Negeer expliciet alle MCP_TOOL, VIEW_FILE, RUN_COMMAND, LIST_DIRECTORY stappen!
 
-    print("[SUCCESS] Extractie voltooid!")
+    print("[SUCCESS] Pure dialoog-extractie voltooid!")
     print(f"- Regels verwerkt: {lines_processed}")
-    print(f"- Elementen ge-extraheerd: {items_matched}")
+    print(f"- Dialoog-interacties ge-extraheerd: {items_matched}")
     print(f"- Uitvoerlocatie: {output_path}")
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Parset en filtert Antigravity JSONL-transcripts naar schone Markdown."
+        description="Extracteert uitsluitend de puur taalkundige dialoog uit Antigravity JSONL-transcripts."
     )
     parser.add_argument("-i", "--input", help="Pad naar het invoer JSONL transcript bestand.")
     parser.add_argument("-o", "--output", help="Pad waar het Markdown bestand opgeslagen moet worden.")
@@ -171,12 +199,11 @@ def main():
     parser.add_argument("--no-user", dest="include_user", action="store_false", help="Sluit gebruikersberichten uit.")
     parser.add_argument("--no-assistant", dest="include_assistant", action="store_false", help="Sluit assistent-antwoorden uit.")
     parser.add_argument("--no-metadata", dest="include_metadata", action="store_false", help="Sluit tijdstempels in de headers uit.")
-    parser.add_argument("--include-tools", action="store_true", help="Voeg een beknopte samenvatting van tool-uitvoeringen toe.")
 
     parser.set_defaults(include_thinking=True, include_user=True, include_assistant=True, include_metadata=True)
 
     args = parser.parse_args()
-    extract_transcript(args)
+    extract_pure_dialogue(args)
 
 if __name__ == "__main__":
     main()
