@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "projects": {
+    "22": {
+      "issue_title": "Repo maintenance and agentic instructions",
+      "workflow_name": "docs",
+      "execution_mode": "interactive",
+      "required_phases": [
+        "planning",
+        "documentation",
+        "ready"
+      ],
+      "skip_reason": null,
+      "parent_branch": "main",
+      "created_at": "2026-08-06T06:38:25.335471+00:00"
+    }
+  }
+}
