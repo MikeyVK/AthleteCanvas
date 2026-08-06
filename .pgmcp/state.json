@@ -3,7 +3,7 @@
   "branch": "chore/22-track-codex-agent-config",
   "issue_number": 22,
   "workflow_name": "docs",
-  "current_phase": "documentation",
+  "current_phase": "ready",
   "current_cycle": null,
   "last_cycle": null,
   "cycle_history": [],
@@ -25,6 +25,14 @@
       "human_approval_message": "Ik keur expliciet een verkorte workflow goed voor deze chore.",
       "forced": true,
       "skip_reason": "User explicitly approved a shortened workflow for this small repository configuration chore; a separate planning artifact would add no material value."
+    },
+    {
+      "from_phase": "documentation",
+      "to_phase": "ready",
+      "timestamp": "2026-08-06T09:04:08.239281+00:00",
+      "human_approval_message": null,
+      "forced": false,
+      "skip_reason": null
     }
   ],
   "reconstructed": false,
