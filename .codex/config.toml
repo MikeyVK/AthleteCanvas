@@ -1,0 +1,26 @@
+[mcp_servers.phase-gate-mcp]
+command = 'C:\1Voudig\99_Programming\ypsia\.venv\Scripts\python.exe'
+args = ["-m", "mcp_server.core.proxy"]
+cwd = 'C:\1Voudig\99_Programming\ypsia'
+env_vars = ["GITHUB_TOKEN"]
+
+[mcp_servers.phase-gate-mcp.env]
+PGMCP_WORKSPACE_ROOT = 'C:\1Voudig\99_Programming\ypsia'
+PGMCP_SERVER_PROJECT_DIR = ".pgmcp"
+GITHUB_OWNER = "MikeyVK"
+GITHUB_REPO = "ypsia"
+
+[mcp_servers.phase-gate-mcp.tools.health_check]
+approval_mode = "approve"
+
+[mcp_servers.phase-gate-mcp.tools.search_documentation]
+approval_mode = "approve"
+
+[mcp_servers.phase-gate-mcp.tools.get_work_context]
+approval_mode = "approve"
+
+[mcp_servers.phase-gate-mcp.tools.safe_edit_file]
+approval_mode = "approve"
+
+[mcp_servers.phase-gate-mcp.tools.git_status]
+approval_mode = "approve"
