@@ -240,15 +240,35 @@ Example: `@imp implementer: start cycle C_LOADER.5 for issue 257`
 - **Review** → use `@qa`. Findings on epic-owned branches route back to `@co`; findings on child technical work route back to `@imp`.
 
 Never mix roles in one session. Fresh context prevents scope contamination and authority confusion.
+### Codex Skill and Workflow Mapping
+
+| Antigravity surface | Codex surface |
+|---|---|
+| Agent `@co` | Top-level skill [`pgmcp-co`](.agents/skills/pgmcp-co/SKILL.md) |
+| Agent `@imp` | Top-level skill [`pgmcp-imp`](.agents/skills/pgmcp-imp/SKILL.md) |
+| Agent `@qa` | Top-level skill [`pgmcp-qa`](.agents/skills/pgmcp-qa/SKILL.md) |
+| Agent `@research` | Top-level skill [`pgmcp-research`](.agents/skills/pgmcp-research/SKILL.md) |
+| Workflow `create-issue` | Internal `pgmcp-co` workflow reference |
+| Workflow `start-issue` | Internal `pgmcp-co` workflow reference |
+| Workflow `end-issue` | Internal `pgmcp-co` workflow reference |
+| Workflow `go` | Internal `pgmcp-imp` workflow reference |
+| Workflow `start` | Startup contract in this file and the selected role skill |
+
+`.agents/workflows/` is the single procedural source for both Antigravity and Codex. Codex role
+skills route to those files as internal workflow references; they are not independently
+discoverable Codex skills or slash commands. Do not copy their procedure text into role skills.
+
 ### Startup Protocol
 
-Each agent has its own startup protocol defined in its `.agent.md` file. Normal chat sessions call
-`get_work_context` as the first tool invocation. `open-issue` and `end-issue` are explicit
-lifecycle-boundary exceptions that may run their scripted bootstrap or exit sequence before
-control returns to a normal `get_work_context`-first session. See:
-- [`@co` startup](.github/agents/co.agent.md)
-- [`@imp` startup](.github/agents/imp.agent.md)
-- [`@qa` startup](.github/agents/qa.agent.md)
+Each agent has its own startup protocol defined in its `.agent.md` file and corresponding Codex
+role skill. Normal chat sessions call `get_work_context` as the first tool invocation.
+`start-issue` and `end-issue` are explicit lifecycle-boundary exceptions that may run their
+scripted bootstrap or exit sequence before control returns to a normal
+`get_work_context`-first session. `create-issue` is normal coordination work and therefore loads
+`get_work_context` first. See:
+- [`@co` startup](.agents/rules/co.agent.md)
+- [`@imp` startup](.agents/rules/imp.agent.md)
+- [`@qa` startup](.agents/rules/qa.agent.md)
 
 ### Hand-Over Contract
 

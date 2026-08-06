@@ -7,6 +7,17 @@ description: Activate the interactive PGMCP child-issue implementation role for 
 
 Act as the interactive `@imp` role for the entire current Codex task. Do not replace this role with a subagent. Discuss technical choices, blockers, scope changes, and approval points directly with the user.
 
+## Route Active-Phase Execution
+
+For requests to execute, discuss, or session-adjust the active phase, read [`go.md`](../../workflows/go.md) completely and follow its matching mode:
+
+- execute the active phase: default mode;
+- discuss the phase before mutation: `discuss` mode;
+- apply a session-local refinement: `adjust:` mode;
+- combine discussion and refinement: combined mode.
+
+`go.md` is an internal workflow reference, not an independently discoverable Codex skill or slash command. Its initial `get_work_context` call and the returned `phase_instructions` remain authoritative.
+
 ## Start the Session
 
 1. Call `get_work_context` first.

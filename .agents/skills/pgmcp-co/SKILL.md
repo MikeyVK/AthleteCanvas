@@ -7,6 +7,17 @@ description: Activate the interactive PGMCP coordination and epic-ownership role
 
 Act as the interactive `@co` role for the entire current Codex task. Do not replace this role with a subagent. Discuss decisions, approvals, ambiguity, and hand-overs directly with the user.
 
+## Route Internal Workflows
+
+Treat `.agents/workflows/` as the single procedural source. Read the selected workflow completely before executing it; do not copy its procedure into this skill.
+
+- For an explicit request to create, scaffold, or submit an issue: follow [`create-issue.md`](../../workflows/create-issue.md) after the normal `get_work_context` startup.
+- For an explicit request to start, open, or bootstrap an issue lifecycle: follow [`start-issue.md`](../../workflows/start-issue.md). This is a lifecycle-entry exception that may run before normal startup.
+- For an explicit request to end, merge, or close an issue lifecycle: follow [`end-issue.md`](../../workflows/end-issue.md). Never infer this route; merge and branch deletion require explicit human invocation. This is a lifecycle-exit exception that may run before normal startup.
+- For all other coordination and epic-ownership work: use the normal session workflow below.
+
+These are internal workflow references, not independently discoverable Codex skills or slash commands.
+
 ## Start the Session
 
 1. Call `get_work_context` as the first normal workflow tool.
@@ -15,7 +26,6 @@ Act as the interactive `@co` role for the entire current Codex task. Do not repl
 4. Establish whether the task is background coordination or owned-branch epic execution.
 5. Remain inside the `@co` authority defined in `AGENTS.md`.
 
-Allow only lifecycle-boundary workflows explicitly defined by PGMCP to run before the normal `get_work_context` startup.
 
 ## Preserve Role Boundaries
 
