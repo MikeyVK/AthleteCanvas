@@ -178,7 +178,8 @@ graph TD
 | **Runtime** | `MCPServer`, `NoteContext` | MCP protocol handling, tool dispatch coordination |
 | **Tools** | 50 `ICoreTool` instances wrapped in a decorator pipeline | Delegate business logic to managers and return semantic DTOs |
 | **Resources** | 4 `BaseResource` subclasses | Expose read-only project context via `pgmcp://` URIs |
-| **Managers** | 18 manager classes | Business logic, workflow state, quality gates |
+| **Managers** | 19 manager classes (including `WorkspaceVersionValidator`) | Business logic, workflow state, quality gates, version validation |
+| **Services** | `WorkspaceUpgrader`, `DocumentIndexer`, `SearchService` | Application services for workspace upgrading, search, and indexing |
 | **Adapters** | `FilesystemAdapter`, `GitAdapter`, `GitHubAdapter` | External system integration |
 
 ---
@@ -259,10 +260,11 @@ mcp_server/
 │   ├── workflow_gate_runner.py
 │   ├── enforcement_runner.py
 │   ├── phase_contract_resolver.py
-│   ├── state_reconstructor.py
+│   ├── state_version_validator.py
 │   ├── pytest_runner.py
 │   ├── quality_state_repository.py
 │   ├── deliverable_checker.py
+│   ├── workspace_version_validator.py
 │   └── branch_parent_reader.py
 │
 ├── tools/                         # MCP tool implementations (22 files)
@@ -327,7 +329,8 @@ mcp_server/
 ├── services/                      # Application services
 │   ├── document_indexer.py
 │   ├── search_service.py
-│   └── template_engine.py
+│   ├── template_engine.py
+│   └── workspace_upgrader.py      # Automated workspace upgrader service
 │
 ├── validation/                    # Template validation (9 files)
 │   ├── layered_template_validator.py
@@ -378,21 +381,30 @@ sequenceDiagram
     participant CL as ConfigLoader
     participant CV as ConfigValidator
     participant Server as MCPServer
+    participant DegradedServer as DegradedMCPServer
 
     CLI->>BS: ServerBootstrapper(settings)
     BS->>BS: 1. setup_logging()
     BS->>BS: 2. init TemplateRegistry
-    BS->>CL: 3. load 15 YAML configs
-    CL-->>BS: raw config objects
-    BS->>CV: 4. cross-validate configs
-    CV-->>BS: validated
-    BS->>BS: 5. build ConfigLayer (frozen)
-    BS->>BS: 6. build ManagerGraph (frozen)
-    BS->>BS: 7. build Tools + Resources
-    BS->>Server: MCPServer(settings, tools, resources, presenter, publisher)
-    Server->>Server: setup_handlers()
-    Server->>Server: asyncio.run(server.run())
+    alt Load/Validate Success
+        BS->>CL: 3. load 15 YAML configs
+        CL-->>BS: raw config objects
+        BS->>CV: 4. cross-validate configs
+        CV-->>BS: validated
+        BS->>BS: 5. build ConfigLayer (frozen)
+        BS->>BS: 6. build ManagerGraph (frozen)
+        BS->>BS: 7. build Tools + Resources
+        BS->>Server: MCPServer(settings, tools, resources, presenter, publisher)
+        Server->>Server: setup_handlers()
+        Server->>Server: asyncio.run(server.run())
+    else ConfigError or FileNotFoundError
+        CLI->>DegradedServer: DegradedMCPServer(settings, reason)
+        DegradedServer->>DegradedServer: Register only health_check
+        DegradedServer->>DegradedServer: asyncio.run(server.run())
+    end
 ```
+
+> **Graceful Degradation:** If `ConfigError` or `FileNotFoundError` is raised during bootstrap, the CLI catches the exception and launches `DegradedMCPServer`. This registers only `health_check` to report the diagnostic reason to the client and keeps the transport connection open.
 
 ### 5.3 ConfigLayer (Frozen Dataclass)
 
@@ -410,7 +422,7 @@ sequenceDiagram
 | `scope_config` | `scopes.yaml` | Scope definitions |
 | `milestone_config` | `milestones.yaml` | Milestone config |
 | `contributor_config` | `contributors.yaml` | Contributor entries |
-| `artifact_registry` | `artifacts.yaml` | Artifact type registry |
+| `artifact_registry` | `artifacts/` folder | Artifact type registry (modular YAML configurations) |
 | `project_structure_config` | `project_structure.yaml` | Directory policies |
 | `operation_policies_config` | `policies.yaml` | Phase-based operation restrictions |
 | `enforcement_config` | `enforcement.yaml` | Tool enforcement rules |
@@ -432,7 +444,8 @@ sequenceDiagram
 | `workflow_status_resolver` | Derive current workflow status |
 | `workflow_gate_runner` | Evaluate phase/cycle exit gates |
 | `state_repository` | Persisted branch state (state.json) |
-| `state_reconstructor` | Reconstruct state for orphaned branches |
+| `state_version_validator` | Validate state schema version and perform .bak backups on version mismatch or corruption |
+| `workspace_version_validator` | Validate workspace `.version` file existence and version parity against expected server version |
 | `phase_contract_resolver` | Resolve phase contracts from config |
 | `quality_state_repository` | Quality baseline state |
 | `enforcement_runner` | Pre/post tool enforcement rules |
@@ -446,7 +459,7 @@ No DI container or framework. All wiring is explicit in
 dataclass — no service locator, no lazy resolution.
 
 > **Detailed config loading architecture:** See
-> [config-loading-architecture.md](../reference/mcp/config-loading-architecture.md).
+> [config-loading-architecture.md](../reference/config-loading-architecture.md).
 
 ---
 
@@ -612,7 +625,7 @@ class BaseResource(ABC):
 All config files reside in `.pgmcp/config/`. See §5.3 for the full mapping.
 
 > **Detailed config-loading architecture:** See
-> [config-loading-architecture.md](../reference/mcp/config-loading-architecture.md).
+> [config-loading-architecture.md](../reference/config-loading-architecture.md).
 
 ### 8.3 Cross-Config Validation
 
@@ -769,9 +782,8 @@ class MyNewTool(ICoreTool[MyToolInput, MyToolOutput]):
 ### 13.3 Adding a New Scaffold Template
 
 1. Create a Jinja2 template in `.pgmcp/templates/concrete/`
-2. Register the artifact type in `.pgmcp/config/artifacts.yaml`
-3. Create a context schema in `mcp_server/schemas/contexts/`
-4. Use via `scaffold_artifact(artifact_type="...", name="...", context={...})`
+2. Register the artifact type by creating `.pgmcp/templates/config/<new_type>.yaml` (defining `context_schema`)
+3. Use via `scaffold_artifact(artifact_type="...", name="...", context={...})`
 
 ---
 
@@ -838,7 +850,7 @@ pip install phase_gate_mcp-1.0.0-py3-none-any.whl
 ## 16. Related Documentation
 
 - **[ARCHITECTURE_PRINCIPLES.md](../coding_standards/ARCHITECTURE_PRINCIPLES.md)** — Binding architecture contract
-- **[config-loading-architecture.md](../reference/mcp/config-loading-architecture.md)** — Config loading, Settings, DI map
+- **[config-loading-architecture.md](../reference/config-loading-architecture.md)** — Config loading, Settings, DI map
 - **[TOOLS.md](./TOOLS.md)** — All 50 MCP tools with parameters
 - **[RESOURCES.md](./RESOURCES.md)** — MCP resource specifications
 - **[PHASE_WORKFLOWS.md](./PHASE_WORKFLOWS.md)** — Workflow phase definitions
@@ -850,6 +862,8 @@ pip install phase_gate_mcp-1.0.0-py3-none-any.whl
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.3 | 2026-07-20 | Updated config-loading-architecture.md paths to fix stale reference/mcp/ links |
+| 3.2 | 2026-07-16 | Updated for modular YAML configuration loading and dynamic template validation. Removed Python context class creation step. |
 | 3.1 | 2026-06-24 | Separated ICoreTool/ILegacyTool interfaces, removed retired tools, corrected architectural diagrams, and documented cache run resource and validation schema URIs |
 | 3.0 | 2026-06-10 | Complete rewrite reflecting actual architecture: ServerBootstrapper composition root, 50 class-based tools, 15 YAML configs, enforcement system, proxy architecture |
 | 2.0 | 2025-12-08 | Original draft (now superseded) |

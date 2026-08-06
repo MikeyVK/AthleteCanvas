@@ -137,6 +137,12 @@ directories:
       - ".rst"
     require_scaffold_for: []
 
+  docs/adr:
+    parent: docs
+    description: "Architectural Decision Records (ADRs)"
+    allowed_artifact_types:
+      - adr
+
   docs/architecture:
     parent: docs
     description: "System architecture documentation"

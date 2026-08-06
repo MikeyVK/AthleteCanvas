@@ -114,10 +114,10 @@ Workflow lifecycle management with phase tracking and transition validation.
 | `get_project_plan` | Get project phase plan for issue | `issue_number` |
 | `save_planning_deliverables` | Save planning deliverables for issue | `issue_number` |
 | `update_planning_deliverables` | Update/merge planning deliverables | `issue_number` |
-| `transition_phase` | Sequential phase transition | `branch`, `to_phase`, `human_approval` |
-| `force_phase_transition` | Skip phases (requires reason + approval) | `branch`, `to_phase`, `skip_reason`, `human_approval` |
+| `transition_phase` | Sequential phase transition | `branch`, `to_phase`, `human_approval_message` |
+| `force_phase_transition` | Skip phases (requires reason + approval) | `branch`, `to_phase`, `skip_reason`, `human_approval_message` |
 | `transition_cycle` | Sequential TDD cycle transition | `to_cycle` |
-| `force_cycle_transition` | Skip to cycle (requires reason + approval) | `to_cycle`, `skip_reason`, `human_approval` |
+| `force_cycle_transition` | Skip to cycle (requires reason + approval) | `to_cycle`, `skip_reason`, `human_approval_message` |
 
 **📖 See:** [project.md](project.md) for workflow types, phase validation rules, and state tracking.
 
@@ -129,7 +129,7 @@ Multi-mode file editing with quality gate integration and concurrent edit protec
 
 | Tool | Purpose | Status | Key Features |
 |------|---------|--------|-------------|
-| `safe_edit_file` | Multi-mode editing with validation | **PRIMARY** | 4 edit modes, 3 validation modes, file-level mutex |
+| `safe_edit_file` | Frictionless 4-operation editing with validation | **PRIMARY** | 4 operations (replace, append, rewrite, pattern_replace), must_exist=True governance, fuzzy diagnostics |
 
 **📖 See:** [editing.md](editing.md) for the complete `safe_edit_file` deep-dive including anti-patterns, concurrent edit protection, and QA integration.
 
@@ -145,9 +145,8 @@ Unified artifact generation from Jinja2 templates for code and documentation art
 | `scaffold_schema` | Return JSON Schema for artifact type context | `artifact_type` |
 
 **Supported Artifact Types:**
-- **Code:** `dto`, `worker`, `adapter`, `tool`, `manager`, `service`
+- **Code:** `dto`, `typescript_dto`, `worker`, `adapter`, `tool`, `manager`, `service`
 - **Documentation:** `design`, `architecture`, `tracking`, `research`, `reference`, `planning`, `guide`, `procedure`
-
 **📖 See:** [scaffolding.md](scaffolding.md) for artifact registry structure, template resolution, and context variables.
 
 ---
@@ -209,7 +208,7 @@ Documentation search, work context aggregation, and server administration.
 ```
 1. scaffold_artifact(artifact_type="dto", name="MyFeature", context={...})
 2. git_add_or_commit(workflow_phase="implementation", sub_phase="red", cycle_number=1, message="Add failing test for MyFeature")
-3. safe_edit_file(path="...", line_edits=[...])  # Implement
+3. safe_edit_file(path="...", operation={"op": "replace", "target_content": "...", "replacement": "..."})  # Implement
 4. run_tests(path="tests/test_my_feature.py")
 5. git_add_or_commit(workflow_phase="implementation", sub_phase="green", cycle_number=1, message="Implement MyFeature logic")
 6. run_quality_gates(scope="files", files=["backend/dtos/my_feature.py"])
@@ -273,8 +272,8 @@ All GitHub tools (issues, PRs, labels, milestones) handle Unicode content correc
 
 ## Related Documentation
 
-- [editing.md](editing.md) — `safe_edit_file` deep-dive (4 edit modes, anti-patterns)
-- [scaffolding.md](scaffolding.md) — `scaffold_artifact` and `scaffold_schema` and artifacts.yaml registry
+- [editing.md](editing.md) — `safe_edit_file` deep-dive (4 operations: replace, append, rewrite, pattern_replace)
+- [scaffolding.md](scaffolding.md) — `scaffold_artifact` and `scaffold_schema` and the modular configuration registry
 - [project.md](project.md) — Workflow types and phase management
 - [docs/reference/mcp/proxy_restart.md](../proxy_restart.md) — Hot-reload mechanism for `restart_server`
 - [docs/reference/mcp/mcp_vision_reference.md](../mcp_vision_reference.md) — MCP server architecture and vision
@@ -285,7 +284,7 @@ All GitHub tools (issues, PRs, labels, milestones) handle Unicode content correc
 ## Version History
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 3.1 | 2026-07-16 | Agent | Updated scaffolding reference to modular configurations and added typescript_dto type. |
 | 3.0 | 2026-06-15 | Agent | Document ITool DTO and MCP Resource Caching migration (#402) |
-| 2.3 | 2026-06-11 | Agent | Document Structured JSON Transport (MCP structuredContent) design principle |
 | 2.2 | 2026-05-23 | Agent | Update discovery/index guidance for the delivered `get_work_context` contract and startup flow |
 | 2.1 | 2026-04-10 | Agent | Fix tool counts (50 total, Project/Phase 8, GitHub-Dependent 16); fix stale params and merge_method |

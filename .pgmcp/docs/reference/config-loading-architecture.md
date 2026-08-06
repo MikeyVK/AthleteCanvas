@@ -98,7 +98,7 @@ Takes a `config_root: Path` in its constructor. Each `load_*` method:
 | `scopes.yaml` | `load_scope_config` | `ScopeConfig` | — |
 | `workflows.yaml` | `load_workflow_config` | `WorkflowConfig` | — |
 | `workphases.yaml` | `load_workphases_config` | `WorkphasesConfig` | — |
-| `artifacts.yaml` | `load_artifact_registry_config` | `ArtifactRegistryConfig` | Custom YAML open + `model_validate` (bypasses `_load_yaml`) |
+| `artifacts.yaml` | `load_artifact_registry_config` | `ArtifactRegistryConfig` | Custom YAML open + scans and merges files under `artifacts/` folder |
 | `contributors.yaml` | `load_contributor_config` | `ContributorConfig` | — |
 | `issues.yaml` | `load_issue_config` | `IssueConfig` | — |
 | `milestones.yaml` | `load_milestone_config` | `MilestoneConfig` | — |
@@ -137,8 +137,13 @@ mcp_server/config/schemas/
 
 **Module:** `mcp_server/config/validator.py`
 
-Called after all configs are loaded, before any manager is constructed. Raises `ConfigError`
-on any violation — server fails to start.
+Called after all configs are loaded, before any manager is constructed. Raises `ConfigError` on any violation.
+
+**Degraded Startup Fallback:**
+If `ConfigValidator.validate_startup()` raises a `ConfigError` (or if a `FileNotFoundError` occurs during loading), the CLI catches the exception and boots the server in a **degraded mode** (`DegradedMCPServer`) exposing only the `health_check` tool. True infrastructure errors still crash the process.
+
+**Decoupled Template Validation:**
+Template version validation is decoupled from global bootstrap and deferred to `TemplateScaffolder` execution (e.g. during `scaffold_artifact` or `validate_template` tool calls) to prevent individual template errors from blocking server startup.
 
 ```mermaid
 flowchart LR
@@ -328,7 +333,7 @@ Full config VO → consumer map (managers and tools):
 
 | Config VO | Direct consumers |
 |-----------|-----------------|
-| `GitConfig` | `GitManager`, `GitHubManager`, `StateReconstructor`, `ListPRsTool`, `MergePRTool`, `EnforcementRunner` |
+| `GitConfig` | `GitManager`, `GitHubManager`, `ListPRsTool`, `MergePRTool`, `EnforcementRunner` |
 | `WorkphasesConfig` | `GitManager`, `ProjectManager`, `PhaseStateEngine`, `ScopeDecoder`, `CommitPhaseDetector`, `GetWorkContextTool`, `AddLabelsTool`*, `CreateLabelTool`* |
 | `WorkflowConfig` | `ConfigValidator` (startup only) |
 | `LabelConfig` | `GitHubManager`, `AddLabelsTool`, `CreateLabelTool`, `DeleteLabelTool`, `ListLabelsTool`, `RemoveLabelsTool` |
@@ -358,7 +363,7 @@ flowchart TD
         Y4[workflows.yaml]
         Y5[contracts.yaml]
         Y6[policies.yaml]
-        Y7[artifacts.yaml]
+        Y7["artifacts.yaml + artifacts/*.yaml"]
         Y8["issues / milestones<br/>scopes / contributors"]
         Y9["enforcement / quality<br/>project_structure"]
     end
@@ -369,7 +374,7 @@ flowchart TD
         L4[WorkflowConfig]
         L5[ContractsConfig]
         L6[OperationPoliciesConfig]
-        L7[ArtifactRegistryConfig]
+        L7["ArtifactRegistryConfig (merged)"]
         L8["IssueConfig / MilestoneConfig<br/>ScopeConfig / ContributorConfig"]
         L9["EnforcementConfig / QualityConfig<br/>ProjectStructureConfig"]
     end
@@ -435,5 +440,13 @@ flowchart TD
 3. Add `load_new_thing_config()` to `ConfigLoader`
 4. Load in `ServerBootstrapper._build_config_layer()` (in `mcp_server/bootstrap.py`) before `ConfigValidator.validate_startup()`; add the field to the `ConfigLayer` dataclass
 5. If the new config references workphases or artifact types, add a cross-validation check to `ConfigValidator`
-6. Inject into managers/tools that need it
 7. Add shared fixture in `tests/mcp_server/fixtures/` if widely used across tests
+
+---
+
+## Version History
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 2.0 | 2026-07-16 | Agent | Updated for modular YAML configuration loading (split configurations under artifacts/ directory). |
+| 1.0 | 2026-05-07 | Agent | Initial draft |

@@ -233,7 +233,7 @@ None.
 
 | Metric | Type | Description |
 |--------|------|-------------|
-| `status` | `str` | Overall status: `"healthy"`, `"degraded"`, `"unhealthy"` |
+| `status` | `str` | Overall status: `"healthy"`, `"unhealthy"` |
 | `uptime` | `int` | Server uptime in seconds |
 | `memory_usage_mb` | `float` | Current memory usage in megabytes |
 | `registered_tools` | `int` | Number of registered MCP tools |
@@ -248,6 +248,12 @@ None.
 - **Performance:** Minimal overhead (<10ms execution time)
 - **Use Case:** Debugging, CI/CD health checks, agent diagnostics
 
+#### Degraded Mode (Safe Mode)
+
+If the server encounters domain-level configuration errors (e.g., syntax errors in config files) or workspace version validation failures (missing or mismatching `.pgmcp/.version` file) during startup, it boots into a **degraded mode**:
+- Only the `health_check` tool is registered; all other tools are disabled.
+- The `status` field returns `"unhealthy"`.
+- The diagnostic error reason is populated in the `reason` field of the output.
 ---
 
 ### restart_server
@@ -355,7 +361,7 @@ The restart mechanism uses a transparent proxy:
 
 ```
 1. get_work_context() → inspect the invalid workflow-state warning and valid phases list
-2. force_phase_transition(branch="feature/123-oauth", to_phase="documentation", skip_reason="Repair invalid branch state", human_approval="Approved by workflow owner to repair invalid phase state")
+2. force_phase_transition(branch="feature/123-oauth", to_phase="documentation", skip_reason="Repair invalid branch state", human_approval_message="Approved by workflow owner to repair invalid phase state")
 3. get_work_context() → reload the current phase context and instructions
 ```
 
@@ -430,8 +436,8 @@ Proxy behavior configured in [mcp_server/core/proxy.py](../../../../mcp_server/c
 ## Related Documentation
 
 - [README.md](README.md) — MCP Tools navigation index
-- [docs/reference/mcp/proxy_restart.md](../proxy_restart.md) — Hot-reload proxy architecture (detailed)
-- [docs/reference/mcp/mcp_vision_reference.md](../mcp_vision_reference.md) — MCP server architecture and vision
+- [docs/reference/proxy_restart.md](../proxy_restart.md) — Hot-reload proxy architecture (detailed)
+- [docs/reference/mcp_vision_reference.md](../mcp_vision_reference.md) — MCP server architecture and vision
 - [docs/development/issue268/validation.md](../../../development/issue268/validation.md) — Validation evidence for the delivered `get_work_context` contract and `context_loaded` behavior
 
 ---
@@ -439,6 +445,7 @@ Proxy behavior configured in [mcp_server/core/proxy.py](../../../../mcp_server/c
 ## Version History
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
+| 2.3 | 2026-07-20 | Agent | Update degraded mode section for workspace version check failures, and fix stale links |
 | 2.2 | 2026-05-24 | Agent | Document the invalid workflow-phase recovery warning and recovery path for `get_work_context` |
 | 2.1 | 2026-05-23 | Agent | Update `get_work_context` reference to the delivered text contract, phase instructions, hand-over template, and context-loaded behavior |
 | 2.0 | 2026-02-08 | Agent | Complete reference for 4 discovery/admin tools: documentation search, work context, health check, server restart |

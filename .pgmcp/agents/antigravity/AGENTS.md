@@ -68,7 +68,7 @@ This document is a **binding contract**. Code that violates these principles is 
 ### File Operations
 | Action | ✅ USE THIS | ❌ NEVER USE |
 |--------|-------------|------------|
-| Edit file | `safe_edit_file(path, content/line_edits/insert_lines/search+replace, mode)` | `run_in_terminal("Set-Content")` |
+| Edit file | `safe_edit_file(path, operation, mode)` | `run_in_terminal("Set-Content")` |
 | Scaffold code/docs | `scaffold_artifact(artifact_type, name, context)` | Manual creation |
 | Inspect artifact context schema | `scaffold_schema(artifact_type)` | Guessing context fields or trial-and-error calls |
 
@@ -85,7 +85,7 @@ This document is a **binding contract**. Code that violates these principles is 
 | Initialize project | `initialize_project(issue_number, issue_title, workflow_name)` | Manual .pgmcp/ file creation |
 | Get project plan | `get_project_plan(issue_number)` | Manual .pgmcp/ file reading |
 | Transition phase | `transition_phase(branch, to_phase)` | Manual .pgmcp/state.json edit |
-| Force phase transition | `force_phase_transition(branch, to_phase, skip_reason, human_approval)` | Manual .pgmcp/state.json edit |
+| Force phase transition | `force_phase_transition(branch, to_phase, skip_reason, human_approval_message)` | Manual .pgmcp/state.json edit |
 
 ### Discovery & Admin
 | Action | ✅ USE THIS | ❌ NEVER USE |
@@ -199,15 +199,15 @@ Compatibility, migration, and breakage strategy is decided at the end of Researc
 
 These are representative examples, not the complete registry. Current first-class types also include `adapter`, `resource`, `interface`, `service`, `schema`, `generic`, `unit_test`, `integration_test`, `architecture`, `planning`, `validation_report`, `generic_doc`, `commit`, `pr`, and `issue`.
 
-**Registry:** `.pgmcp/config/artifacts.yaml` defines the authoritative complete set of artifact types and their templates.
+**Registry:** `.pgmcp/templates/config/` defines the authoritative complete set of artifact types and their templates.
 
 **Schema discovery:** Before calling `scaffold_artifact` with an artifact type whose context fields are not already in your working context, call `scaffold_schema(artifact_type=...)` first. It returns the full JSON Schema for the `context` parameter — required and optional fields — enabling first-time-right scaffolding without a failed call. If you call `scaffold_artifact` with wrong or missing context fields, the error response contains the same schema; use it to correct the call immediately.
 
 ---
 
-## 🤝 Three-Agent Model & Standalone Research
+## 🤝 Three-Agent Model
 
-This project uses three specialized agents in separate VS Code chat sessions to prevent role contamination and context pollution, along with a standalone research agent for deep exploratory work.
+This project uses three specialized agents in separate VS Code chat sessions to prevent role contamination and context pollution.
 
 ### Roles
 
@@ -216,7 +216,6 @@ This project uses three specialized agents in separate VS Code chat sessions to 
 | `@co` | Coordination authority and epic workflow owner | Read all; issue/label/milestone admin; epic docs/contracts/prompts edits; epic lifecycle mutations, phase transitions, commits, quality gates, PR submission, and merge within the approved narrow allowlist |
 | `@imp` | Child-issue implementation executor | Production code and test work on non-epic branches; cycle execution; commits; phase and cycle transitions |
 | `@qa` | QA authority — read-only | Read files; run tests; run quality gates. **No edits, no commits** |
-| `@research` | Standalone Research Agent | Read all; web searching; explore codebase and documentation. Operates outside phase-gate workflows. **No edits, no commits** |
 
 ### Sub-roles
 

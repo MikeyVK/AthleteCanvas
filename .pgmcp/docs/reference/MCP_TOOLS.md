@@ -132,10 +132,10 @@ Workflow lifecycle management: project initialization, phase transitions, TDD cy
 | **GetProjectPlanTool** | Get project phase plan for issue | `issue_number` | Phase plan with exit criteria |
 | **SavePlanningDeliverablesTool** | Save planning deliverables | `issue_number` | Confirmation |
 | **UpdatePlanningDeliverablesTool** | Update/merge planning deliverables | `issue_number` | Confirmation |
-| **TransitionPhaseTool** | Sequential phase transition | `branch`, `to_phase`, `human_approval` | New phase state |
-| **ForcePhaseTransitionTool** | Skip phases with reason + approval | `branch`, `to_phase`, `skip_reason`, `human_approval` | New phase state |
+| **TransitionPhaseTool** | Sequential phase transition | `branch`, `to_phase`, `human_approval_message` | New phase state |
+| **ForcePhaseTransitionTool** | Skip phases with reason + approval | `branch`, `to_phase`, `skip_reason`, `human_approval_message` | New phase state |
 | **TransitionCycleTool** | Sequential TDD cycle transition | `to_cycle` | New cycle state |
-| **ForceCycleTransitionTool** | Skip to cycle with reason + approval | `to_cycle`, `skip_reason`, `human_approval` | New cycle state |
+| **ForceCycleTransitionTool** | Skip to cycle with reason + approval | `to_cycle`, `skip_reason`, `human_approval_message` | New cycle state |
 
 ### 4. File Editing (1 tool)
 
@@ -143,7 +143,7 @@ Multi-mode file editing with quality gate integration and concurrent edit protec
 
 | Tool | Purpose | Parameters | Returns |
 |------|---------|------------|---------|
-| **SafeEditFileTool** | Multi-mode file editing with validation | `path`, `content`/`line_edits`/`insert_lines`/`search`+`replace`, `mode` | Saved file path; diff preview |
+| **SafeEditFileTool** | Frictionless 4-operation file editing with validation | `path`, `operation` (`replace`/`append`/`rewrite`/`pattern_replace`), `mode` | `SafeEditOutput` (success, path, passed, issues, written) |
 
 ### 5. Scaffolding (2 tools)
 
@@ -154,14 +154,14 @@ Generate new artifacts from templates (unified system).
 | **ScaffoldArtifactTool** | Generate code/docs from artifacts.yaml | `artifact_type` (dto/worker/design/etc), `name`, context fields (varies by type), `output_path` (optional) | Generated file path |
 | **ScaffoldSchemaTool** | Return JSON Schema for artifact type context | `artifact_type` | JSON Schema for the context parameter |
 
-**Artifact Types (from .pgmcp/config/artifacts.yaml):**
+**Artifact Types (from .pgmcp/templates/config.yaml):**
 - `dto` - Data Transfer Object with Pydantic
 - `worker` - Background job/processor
 - `design` - Design document
 - `adapter` - External API integration
 - `tool` - MCP tool
 
-See `.pgmcp/config/artifacts.yaml` for complete list and required fields per type.
+See `.pgmcp/templates/config.yaml` for complete list and required fields per type.
 
 ### 6. Quality & Validation (3 tools)
 
@@ -187,8 +187,11 @@ Documentation search, work context aggregation, and server administration.
 |------|---------|------------|---------|
 | **SearchDocumentationTool** | Search docs semantically | `query`, `scope` (optional: all/architecture/coding_standards/development/reference/implementation) | Ranked results with file path, line number, snippet |
 | **GetWorkContextTool** | Get current work state | `none` | Orientation header with TODO reminder, phase instructions, optional hand-over template |
-| **HealthCheckTool** | Server health check | None | OK/ERROR |
-| **RestartServerTool** | Hot-reload server via proxy mechanism | `reason` | Confirmation |
+| **HealthCheckTool** | Server health check | None | OK/ERROR (Sole tool registered in degraded mode) |
+| **RestartServerTool** | Hot-reload server via proxy mechanism | `reason` | Confirmation (Unavailable in degraded mode) |
+
+> [!NOTE]
+> If a domain configuration error occurs during startup, the server runs in **degraded mode**. In this mode, only `HealthCheckTool` is available. `RestartServerTool` is excluded, requiring a manual restart of the server process after configuration fixes are applied.
 
 **Usage Example:**
 ```
