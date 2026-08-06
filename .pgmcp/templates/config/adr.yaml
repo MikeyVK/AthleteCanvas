@@ -1,0 +1,174 @@
+type: doc
+type_id: adr
+template_version: 1.1.0
+name: Architectural Decision Record
+description: Architectural Decision Record (ADR) capturing context, drivers, options with explicit pros/cons, decision outcome, guardrails, and confirmation
+output_type: file
+template_path: concrete/adr.md.jinja2
+fallback_template: null
+name_suffix: null
+file_extension: .md
+generate_test: false
+state_machine:
+  states:
+    - DRAFT
+    - PROPOSED
+    - ACCEPTED
+    - REJECTED
+    - SUPERSEDED
+    - DEPRECATED
+  initial_state: DRAFT
+  valid_transitions:
+    - from: DRAFT
+      to: [PROPOSED, ACCEPTED, REJECTED]
+    - from: PROPOSED
+      to: [ACCEPTED, REJECTED]
+    - from: ACCEPTED
+      to: [SUPERSEDED, DEPRECATED]
+
+context_schema:
+  title:
+    type: string
+    title: Title
+    description: ADR Title (e.g. "Use LiteLLM as AI Provider Layer")
+    required: true
+  status:
+    type: string
+    title: Status
+    description: ADR Status (DRAFT|PROPOSED|ACCEPTED|REJECTED|SUPERSEDED|DEPRECATED)
+    required: true
+  version:
+    type: string
+    title: Version
+    description: Document version in 1.x.y format (e.g. 1.0.0)
+    required: true
+  last_updated:
+    type: string
+    title: Last Updated
+    description: Last updated date (YYYY-MM-DD)
+    required: true
+  deciders:
+    type: array
+    title: Deciders
+    description: List of people / roles involved in the decision
+    required: false
+    items:
+      type: string
+  supersedes:
+    type: string
+    title: Supersedes
+    description: Reference to prior ADR superseded by this record (or None)
+    required: false
+  superseded_by:
+    type: string
+    title: Superseded By
+    description: Reference to newer ADR that supersedes this record (or None)
+    required: false
+  problem_statement:
+    type: string
+    title: Problem Statement
+    description: Context and problem description driving the decision
+    required: true
+  decision_drivers:
+    type: array
+    title: Decision Drivers
+    description: Key requirements, forces, or principles driving the choice
+    required: false
+    items:
+      type: string
+  considered_options:
+    type: array
+    title: Considered Options
+    description: Options evaluated during research with explicit pros and cons
+    required: true
+    items:
+      type: object
+  decision_outcome:
+    type: string
+    title: Decision Outcome
+    description: The chosen option
+    required: true
+  rationale:
+    type: string
+    title: Rationale
+    description: Explanation of why this option was chosen over alternatives
+    required: true
+  consequences_positive:
+    type: array
+    title: Positive Consequences
+    description: Benefits gained from this decision
+    required: false
+    items:
+      type: string
+  consequences_negative:
+    type: array
+    title: Negative Consequences & Risks
+    description: Trade-offs, risks, or extra maintenance costs
+    required: false
+    items:
+      type: string
+  agent_guardrails:
+    type: array
+    title: Agent Implementation Guardrails
+    description: Hard MUST / MUST NOT boundary rules for AI agents implementing this decision
+    required: false
+    items:
+      type: string
+  confirmation:
+    type: string
+    title: Confirmation & Verification
+    description: How the implementation of this decision is verified (e.g. automated tests, quality gates)
+    required: false
+  purpose:
+    type: string
+    title: Purpose
+    description: Purpose of this ADR document
+    required: false
+  scope_in:
+    type: string
+    title: Scope In
+    description: Architectural scope covered by this ADR
+    required: false
+  scope_out:
+    type: string
+    title: Scope Out
+    description: Architectural scope explicitly excluded
+    required: false
+  prerequisites:
+    type: array
+    title: Prerequisites
+    description: Prerequisites or prior ADRs
+    required: false
+    items:
+      type: string
+  related_docs:
+    type: array
+    title: Related Docs
+    description: Related documents in the project
+    required: false
+    items:
+      type: string
+  id:
+    type: integer
+    title: ID
+    description: ADR ID number according to domain/level taxonomy
+    required: true
+  level:
+    type: string
+    title: Level
+    description: Strategic or Tactical
+    required: true
+    enum: [Strategic, Tactical]
+  category:
+    type: string
+    title: Category
+    description: High-level architectural domain category
+    required: true
+    enum: ["Core Invariants", "Data & Storage", "Security & Identity", "Integration", "Intelligence"]
+  tags:
+    type: array
+    title: Tags
+    description: Granular keywords for searchability
+    required: false
+    items:
+      type: string
