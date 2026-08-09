@@ -1,8 +1,10 @@
 # Inhoudsopgave — Charter 4.0
 
 **Status:** Vastgesteld structureel raamwerk  
+**Raamwerkversie:** 1.0  
 **Doelversie:** Charter 4.0  
 **Vastgesteld op:** 2026-08-09  
+**Grondslag:** Expliciete goedkeuring door Michel in de Issue 33 Charterdialoog  
 **Functie:** Bindend kader voor de volgorde, afbakening en uitwerking van Charter 4.0
 
 ## 1. Status van dit raamwerk
@@ -285,3 +287,10 @@ De precieze procedure en eventuele rol van een onafhankelijke arbiter worden pas
 Dit hoofdstuk regelt vrijwillig vertrek, overdracht van verantwoordelijkheden, beëindiging van bevoegdheden en gedwongen verwijdering bij ernstig handelen tegen de grondwet.
 
 De procedures en gevolgen worden pas tijdens de inhoudelijke uitwerking bepaald.
+
+
+## 5. Versiegeschiedenis
+
+| Versie | Datum | Wijziging |
+|---|---|---|
+| 1.0 | 2026-08-09 | Volledige structuur, volgorde, inhoudelijke afbakening en redactionele rationale voor Charter 4.0 vastgesteld. |
