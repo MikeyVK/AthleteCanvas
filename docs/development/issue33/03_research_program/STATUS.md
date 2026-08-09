@@ -1,13 +1,13 @@
-# Status onderzoek Charter 3.0
+# Status onderzoek Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.1  
+**Versie:** 2.0  
 **Laatst bijgewerkt:** 2026-08-09  
-**Werkfase:** Research  
+**Werkfase:** Research
 
 ## Actueel doel
 
-Het onderzoek ondersteunt het schrijven van Charter 3.0. De negentien eerder geformuleerde probleemkernen zijn geconvergeerd naar zes begrijpelijke probleemtheorieën:
+Het onderzoek ondersteunt het schrijven van Charter 4.0. De negentien probleemkernen zijn geconvergeerd naar zes begrijpelijke probleemtheorieën:
 
 1. Digitaal voortbestaan is uitbesteed aan vergankelijke systemen.
 2. Data reist verder dan haar context.
@@ -16,32 +16,28 @@ Het onderzoek ondersteunt het schrijven van Charter 3.0. De negentien eerder gef
 5. Digitalisering verdeelt toegang en kansen niet gelijk.
 6. Het digitale is fysiek, maar zijn rekening blijft buiten beeld.
 
-De zes theorieën vormen de werkbasis voor de nieuwe probleemdiagnose van Charter 3.0. De negentien kandidaten blijven beschikbaar als onderliggende analyse en herkomst, maar worden niet afzonderlijk gecertificeerd.
+De zes theorieën vormen de werkbasis voor hoofdstuk 1 van Charter 4.0. De negentien kandidaten blijven beschikbaar als onderliggende analyse en herkomst, maar worden niet afzonderlijk gecertificeerd.
 
 ## Actuele besluiten
 
-Het volledig door Michel bevestigde werkbesluit staat in [DECISION_LOG.md](DECISION_LOG.md) versie 1.0.
+De volledig bevestigde richting staat in [DECISION_LOG.md](DECISION_LOG.md). Het bindende structurele raamwerk en de afbakening per onderdeel staan in de [Inhoudsopgave van Charter 4.0](../Inhoudsopgave%20Ypsia%20Grondwet.md).
 
-Dat besluit vervangt de eerdere methodiekpilot, registergovernance, individuele kandidaatprocedures en wetenschappelijke bewijsroute.
+Deze besluiten vervangen de eerdere methodiekpilot, registergovernance, individuele kandidaatprocedures en wetenschappelijke bewijsroute.
 
 ## Actieve werkwijze
 
-Elke theorie krijgt één compacte Chartertoets:
+- We schrijven Charter 4.0 van boven naar beneden volgens de vastgestelde inhoudsopgave.
+- We bespreken en aanvaarden een tekstonderdeel voordat het als afgeronde Chartertekst wordt vastgelegd.
+- We raadplegen bestaande bronnen en dossiers alleen bij een concrete inhoudelijke vraag.
+- We maken geen nieuwe registers, methodiekdocumenten of afzonderlijke kandidaatdossiers.
+- De toon van hoofdstukken 2 tot en met 6 van Charter 3.0 blijft leidend; hoofdstuk 1 van Charter 3.0 is uitgesloten.
 
-1. herkenning in enkele veelgebruikte digitale ecosystemen;
-2. de terugkerende ontwerpkeuze achter het patroon;
-3. voldoende openbare onderbouwing dat het patroon niet denkbeeldig is;
-4. een oplossing, uitzondering of alternatief dat technische onvermijdelijkheid weerspreekt;
-5. een begrijpelijke conclusie over geschiktheid voor het Charter.
+## Status van de probleemtheorieën
 
-Er worden hiervoor geen nieuwe registers, methodiekdocumenten of afzonderlijke kandidaatdossiers aangemaakt.
+Alle zes probleemtheorieën zijn geschikt bevonden als begrijpelijke en verdedigbare basis voor het Charter. Zij hoeven niet opnieuw als afzonderlijk wetenschappelijk onderzoek te worden uitgevoerd.
 
-## Uitkomst compacte Chartertoets
+Theorie 5 behoudt de nuance dat ontwerp verschillen kan verkleinen of vastzetten en dat niet iedere ongelijke uitkomst door digitalisering wordt veroorzaakt.
 
-Alle zes probleemtheorieën hebben de compacte toets doorstaan. Zij zijn herkenbaar in veelgebruikte digitale ecosystemen, terug te voeren op terugkerende ontwerpkeuzes, openbaar gedocumenteerd en technisch niet onvermijdelijk.
+## Eerstvolgende actie
 
-Geen theorie hoeft te worden verwijderd of opnieuw als afzonderlijk wetenschappelijk onderzoek te worden uitgevoerd. Theorie 5 behoudt de expliciete nuance dat ontwerp verschillen kan verkleinen of vastzetten en niet iedere ongelijke uitkomst door digitalisering wordt veroorzaakt.
-
-## Volgende actie
-
-Vorm de zes getoetste theorieën om tot één vloeiende probleemdiagnose voor Charter 3.0. Behoud de begrijpelijke Nederlandse vertelvorm en gebruik de negentien kandidaten alleen als onderliggende herkomst.
+Herschrijf de onbenoemde opening van Charter 4.0. Deze opening behandelt uitsluitend de status, het gebruik, het gezag en de wijzigbaarheid van de grondwet en bevat nog geen inhoudelijke uitspraken over Ypsia.

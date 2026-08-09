@@ -1,14 +1,16 @@
 # Candidate 002 Architecture Test
 
-**Status:** PRELIMINARY — COMPARATIVE CONTROL, NOT PRIMARY PROBLEM EVIDENCE  
-**Version:** 0.2  
+**Status:** SUPPORTING RESEARCH — USEFUL DEEP DIVE, NOT A REPEATABLE PROTOCOL  
+**Version:** 0.3  
 **Last Updated:** 2026-08-09  
-**Decision Basis:** DEC-017, DEC-019, DEC-020  
+**Decision Basis:** Current Charter 4.0 direction in DECISION_LOG.md  
 **Scope:** Candidate 2A and 2B only
 
 ---
 
 ## 1. Purpose
+
+This document retains useful source findings, examples, and architectural patterns for candidate 2A and 2B. The procedure is not a template for the other candidates and is not a precondition for Charter text.
 
 This document tests two approved factual problem cores and their human norms against four existing digital data architectures.
 

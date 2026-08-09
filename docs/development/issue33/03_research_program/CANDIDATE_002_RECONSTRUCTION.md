@@ -1,14 +1,16 @@
 # Candidate 002 Reconstruction — Service-Bound Digital State
 
-**Status:** ACTIVE — 2A AND 2B FACTUAL CORES AND NORMS APPROVED; FIRST ARCHITECTURE TEST PRELIMINARY  
-**Version:** 0.22  
+**Status:** SUPPORTING RESEARCH — CONTENT RETAINED; PROCEDURE NOT NORMATIVE  
+**Version:** 0.23  
 **Date:** 2026-08-09  
-**Authority:** Calibration work under DEC-012  
+**Authority:** Current Charter 4.0 direction in DECISION_LOG.md  
 **Source dossier:** [PROBLEM_DOSSIER_002_EFFECTIVE_EXIT.md](PROBLEM_DOSSIER_002_EFFECTIVE_EXIT.md) 0.2  
 
 ## 1. Purpose
 
-This is the first reconstruction under
+This document preserves the substantive distinction between candidate 2A and 2B and the reasoning that supports it. Its procedure is not a required method for other candidates and is not a precondition for Charter text.
+
+This was the first reconstruction under
 [FOUNDATIONAL_DEFINITIONS.md](FOUNDATIONAL_DEFINITIONS.md) 0.1. It does not
 presume that the inherited *effective exit* formulation is one valid problem.
 

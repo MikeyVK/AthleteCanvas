@@ -1,20 +1,20 @@
-# Actueel beslislog — Charter 3.0
+# Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.0  
+**Versie:** 1.1  
 **Laatst bijgewerkt:** 2026-08-09  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
 
 ## Doel van dit document
 
-Dit document bevat uitsluitend de besluiten die de huidige route naar Charter 3.0 sturen. Het is geen historisch archief en geen register van alle eerder onderzochte werkwijzen.
+Dit document bevat uitsluitend de besluiten die de huidige route naar Charter 4.0 sturen. Het is geen historisch archief en geen register van alle eerder onderzochte werkwijzen.
 
 Wanneer een besluit niet langer richting geeft, wordt het verwijderd of vervangen. Een oud besluit blijft niet in dit document staan alleen omdat het ooit geldig was. De eerdere onderzoeksbesluiten, voorstellen en revisienotities uit versie 0.16 zijn op uitdrukkelijk verzoek geschrapt.
 
 ## BES-001 — Het Charter is het doel; onderzoek is ondersteunend
 
-Charter 3.0 wordt de grondwet van een soeverein digitaal alternatief. Het moet begrijpelijk uitleggen:
+Charter 4.0 wordt de grondwet van een soeverein digitaal alternatief. Het moet begrijpelijk uitleggen:
 
 1. welke terugkerende problemen wij in de moderne digitale samenleving herkennen;
 2. welke menselijke en morele positie wij daartegenover innemen;
@@ -25,7 +25,7 @@ Het onderzoek hoeft geen complete, definitieve of universeel geldige wetenschapp
 
 Een probleemtheorie is bruikbaar wanneer zij begrijpelijk, herkenbaar, verdedigbaar en relevant voor de doelarchitectuur is. De tekst hoeft niet te bewijzen dat het beschreven patroon altijd, overal en bij ieder digitaal systeem optreedt.
 
-Charter 3.0 is de actuele normatieve en ontwerpende koers. Bestaande formuleringen mogen worden verbeterd wanneer nieuwe kennis, voorbeelden of redeneringen daar aanleiding toe geven.
+Charter 4.0 is de actuele normatieve en ontwerpende koers. Bestaande formuleringen mogen worden verbeterd wanneer nieuwe kennis, voorbeelden of redeneringen daar aanleiding toe geven.
 
 ## BES-002 — De morele grond blijft expliciet menselijk
 
@@ -57,6 +57,30 @@ Begrijpelijk Nederlands is een inhoudelijke norm. Wanneer een theorie alleen met
 ## BES-004 — De negentien kandidaten convergeren naar zes probleemtheorieën
 
 De negentien geformuleerde probleemkernen blijven een waardevolle analyse- en bronnenbasis. Zij vormen geen opdracht om negentien afzonderlijke wetenschappelijke dossiers af te ronden.
+
+De negentien kernen zijn:
+
+1. **1A** — Private regelmacht over moeilijk vermijdbare digitale toegangspoorten.
+2. **1B** — Onvoldoende begrensde digitaal versterkte publieke dwangmacht.
+3. **2A** — Verlies van de digitale bron.
+4. **2B** — Verlies van de vastgelegde verbindingen rond een behouden digitale bron.
+5. **4A** — Gedragssturing zonder effectieve controle.
+6. **4B** — Vertrouwen in AI dat niet past bij haar betrouwbaarheid.
+7. **5A** — Niet-herleidbare bronbasis bij vervangende antwoordsynthese.
+8. **5B** — Oncontroleerbare herkomst van schaalbaar geproduceerde inhoud.
+9. **6A** — Context- en doeloverschrijdend datagebruik.
+10. **6B** — Niet-doorgewerkte correctie of beëindiging van persoonsgegevensgebruik.
+11. **6C** — Voorspellingen over mensen uit gegevens van anderen.
+12. **7A** — Niet werkelijk betwistbare digitale beslissingen.
+13. **7B** — Niet-gerechtvaardigde groepsverschillen in digitale toewijzing.
+14. **7C** — Digitaal geconcentreerde macht over werkenden zonder werkelijke tegenmacht.
+15. **8A** — Materieel ongelijke toegang door digitale kanaalafhankelijkheid.
+16. **9A** — Gedeelde digitale storingsafhankelijkheid zonder onafhankelijke uitwijkmogelijkheid.
+17. **9B** — Meefalende nood- en herstelmiddelen.
+18. **10A** — Materiële digitale levenscyclusbelasting buiten relevante ecologische grenzen.
+19. **10B** — Ongelijke afwenteling van de fysieke lasten van digitale systemen.
+
+Kandidaat 2 uit de voorlopige baseline is door de latere reconstructie gesplitst in 2A en 2B. Daardoor bestaat de actuele onderliggende basis uit negentien in plaats van achttien kernen.
 
 Zij worden samengebracht in de volgende zes voorlopige probleemtheorieën:
 
@@ -127,7 +151,7 @@ De werkzaamheden verlopen in deze volgorde:
 
 1. voer de compacte Chartertoets uit voor de zes probleemtheorieën;
 2. pas alleen formuleringen aan wanneer de toets daar inhoudelijk aanleiding toe geeft;
-3. verwerk de gedragen theorieën tot de probleemdiagnose van Charter 3.0;
+3. verwerk de gedragen theorieën tot de probleemdiagnose van Charter 4.0;
 4. formuleer per theorie de menselijke norm die wij kiezen;
 5. leid daaruit de constitutionele grondbeginselen en waarborgen af;
 6. formuleer de constitutionele verboden;
@@ -161,4 +185,5 @@ Waardevolle inhoudelijke inzichten uit eerder werk blijven beschikbaar via de ka
 
 | Versie | Datum | Wijziging |
 |---|---|---|
-| 1.0 | 2026-08-09 | Het volledige historische methodieklog vervangen door een compact actueel besliscontract voor de convergentie naar Charter 3.0. |
+| 1.1 | 2026-08-09 | Richting bijgewerkt naar Charter 4.0 en de negentien onderliggende probleemkernen expliciet vastgelegd. |
+| 1.0 | 2026-08-09 | Het volledige historische methodieklog vervangen door een compact actueel besliscontract voor de convergentie naar Charter 4.0. |
