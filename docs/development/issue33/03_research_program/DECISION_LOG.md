@@ -1,8 +1,8 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.1  
-**Laatst bijgewerkt:** 2026-08-09  
+**Versie:** 1.2  
+**Laatst bijgewerkt:** 2026-08-12  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
 
@@ -169,6 +169,19 @@ Documentatie ondersteunt het denken en mag het niet opnieuw overnemen.
 - Nieuwe inhoud wordt zoveel mogelijk verwerkt in het bestaande Charterconcept en de minimale actieve routing.
 - De werkfase blijft Research zolang dat praktisch behulpzaam is; de metadata bepaalt niet de inhoudelijke werkwijze.
 
+## BES-008 — Vaste schrijfstructuur voor hoofdstuk 1
+
+Hoofdstuk **1. Het Probleem** krijgt na de reeds vastgestelde inleiding van Deel I geen extra openingsalinea en geen afzonderlijke subkoppen voor de zes problemen.
+
+Ieder probleem wordt gepresenteerd als één scanbare teksteenheid:
+
+1. een vetgedrukte kernzin die het probleem zelfstandig benoemt;
+2. een waarneembare situatie;
+3. de terugkerende structurele inrichting die het probleem mogelijk maakt of versterkt;
+4. de betekenis of het gevolg daarvan.
+
+Na de zes teksteenheden volgt één gezamenlijke slotsom. Die wordt pas geschreven nadat alle zes probleemdefinities zijn vastgesteld. De volgorde van de problemen moet inhoudelijk uitlegbaar zijn en mag geen onbewezen rangorde van morele ernst of feitelijk gewicht suggereren.
+
 ## Niet meer van toepassing
 
 De volgende werkwijzen sturen het onderzoek niet langer:
@@ -185,5 +198,6 @@ Waardevolle inhoudelijke inzichten uit eerder werk blijven beschikbaar via de ka
 
 | Versie | Datum | Wijziging |
 |---|---|---|
+| 1.2 | 2026-08-12 | Vaste scanbare schrijfstructuur voor hoofdstuk 1 en inhoudelijk verantwoorde ordeningsregel vastgelegd. |
 | 1.1 | 2026-08-09 | Richting bijgewerkt naar Charter 4.0 en de negentien onderliggende probleemkernen expliciet vastgelegd. |
 | 1.0 | 2026-08-09 | Het volledige historische methodieklog vervangen door een compact actueel besliscontract voor de convergentie naar Charter 4.0. |
