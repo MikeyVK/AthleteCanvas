@@ -2,7 +2,7 @@
 
 > **Status:** Actief concept  
 > **Versie:** 4.0  
-> **Laatste update:** 2026-08-12
+> **Laatste update:** 2026-08-12 21:42
 
 Dit is de grondwet van Ypsia. Iedere productbeslissing, ontwerpkeuze, samenwerking, bestuurlijke beslissing en zakelijke koers wordt hieraan getoetst. Niet periodiek, maar telkens wanneer een beslissing wordt genomen.
 
