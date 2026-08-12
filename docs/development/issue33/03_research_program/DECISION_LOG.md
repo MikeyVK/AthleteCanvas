@@ -1,7 +1,7 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.2  
+**Versie:** 1.3  
 **Laatst bijgewerkt:** 2026-08-12  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
@@ -182,6 +182,17 @@ Ieder probleem wordt gepresenteerd als één scanbare teksteenheid:
 
 Na de zes teksteenheden volgt één gezamenlijke slotsom. Die wordt pas geschreven nadat alle zes probleemdefinities zijn vastgesteld. De volgorde van de problemen moet inhoudelijk uitlegbaar zijn en mag geen onbewezen rangorde van morele ernst of feitelijk gewicht suggereren.
 
+De vastgestelde kernzinnen en volgorde zijn:
+
+1. **Digitale continuïteit hangt af van vergankelijke systemen.**
+2. **De context van data reikt verder dan de digitale bron.**
+3. **Digitale systemen sturen onze kijk op de werkelijkheid.**
+4. **Digitaal beheer geeft beslismacht over wie ervan afhankelijk is.**
+5. **Digitalisering verdeelt toegang en kansen ongelijk.**
+6. **Digitale technologie heeft fysieke gevolgen voor mens en leefomgeving.**
+
+De volgorde vergroot het perspectief stapsgewijs van continuïteit en context via systemen en beheer naar de maatschappelijke en fysieke gevolgen van digitalisering en technologie. Zij drukt geen rangorde van ernst uit.
+
 ## Niet meer van toepassing
 
 De volgende werkwijzen sturen het onderzoek niet langer:
@@ -198,6 +209,7 @@ Waardevolle inhoudelijke inzichten uit eerder werk blijven beschikbaar via de ka
 
 | Versie | Datum | Wijziging |
 |---|---|---|
+| 1.3 | 2026-08-12 | De zes kernzinnen en hun logische volgorde vastgesteld. |
 | 1.2 | 2026-08-12 | Vaste scanbare schrijfstructuur voor hoofdstuk 1 en inhoudelijk verantwoorde ordeningsregel vastgelegd. |
 | 1.1 | 2026-08-09 | Richting bijgewerkt naar Charter 4.0 en de negentien onderliggende probleemkernen expliciet vastgelegd. |
 | 1.0 | 2026-08-09 | Het volledige historische methodieklog vervangen door een compact actueel besliscontract voor de convergentie naar Charter 4.0. |
