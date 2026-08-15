@@ -1,7 +1,7 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.16  
+**Versie:** 1.21  
 **Laatst bijgewerkt:** 2026-08-15  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
@@ -312,6 +312,8 @@ Het kopiëren van data en het niet bereiken van iedere kopie door een correctie 
 
 Probleem 4 wordt gedragen door **1A — private regelmacht**, **1B — digitaal versterkte publieke dwangmacht**, **7A — niet werkelijk betwistbare digitale beslissingen** en **7C — digitaal geconcentreerde arbeidsmacht**. **KAND-001** en het voor toegang en ordening relevante deel van **KAND-005** verdiepen private beheermacht. **KAND-038**, **KAND-041** en **KAND-043** dragen respectievelijk correctie en herziening, arbeidsafhankelijkheid en publieke macht zonder marktuitgang.
 
+De red-teambevinding dat publieke digitale macht onvoldoende herkenbaar zou zijn, is na een concrete tegenproef verworpen. Een overheid die gegevens koppelt, burgers classificeert en daar gevolgen aan verbindt, valt al onder de combinatie van regels opstellen, gedrag meten, beslissingen uitvoeren, beperkte uitleg en correctie, en het ontbreken van een gelijkwaardig alternatief. Publieke macht hoeft daarom niet als afzonderlijke opsomming in de chartertekst te worden toegevoegd. De eigen privacyschade van gegevensgebruik blijft daarnaast onder probleem 2 vallen.
+
 Het relevante deel van **KAND-007** wordt expliciet onder probleem 4 geplaatst wanneer ontbrekende exit, vendor lock-in of het ontbreken van een gelijkwaardig alternatief de beslismacht van een beheerder versterkt. Algemene overstapfrictie is geen zelfstandige Charterkern. Niet-overdraagbare of buiten het systeem onbereikbare brondata blijft bij probleem 1; verlies van betekenis, relaties of context blijft bij probleem 2. KAND-007 hoort alleen bij probleem 4 voor zover afhankelijkheid voorkomt dat betrokkenen zich feitelijk aan regels en beslissingen kunnen onttrekken.
 
 Concentratie, schaal, winst, centraal beheer en iedere vorm van regelstelling worden niet op zichzelf als probleem behandeld. De dragende configuratie is dat regels, metingen, beslissingen en correcties binnen dezelfde systemen samenkomen, terwijl degenen die de gevolgen ondervinden niet automatisch invloed, werkelijke correctie of een haalbare uitgang hebben. **KAND-042** blijft uitsluitend een grensoverschrijdende versterker van verantwoording en rechtsbescherming.
@@ -327,6 +329,9 @@ De grens met probleem 4 ligt bij het onderzoeksobject: probleem 4 betreft beslis
 ### Toepassing op probleem 6
 
 Probleem 6 wordt gedragen door **10A — materiële digitale levenscyclusbelasting buiten relevante ecologische grenzen** en **10B — ongelijke afwenteling van de fysieke lasten van digitale systemen**. **KAND-056** draagt de totale fysieke levenscyclusbelasting. **KAND-057** en **KAND-060** dragen de ruimtelijke en sociale scheiding tussen baten, beslismacht en lasten.
+
+
+De red-teambevinding over een te absolute baten-lastenverdeling is aanvaard. Productie- en vestigingsgebieden kunnen naast fysieke belasting ook werk, infrastructuur, belastinginkomsten of andere voordelen ontvangen; gebruikers en aanbieders kunnen eveneens lasten dragen. De chartertekst claimt daarom geen netto schuldverdeling. De behouden kern is dat wie voordeel heeft niet automatisch ook de zwaarste lasten draagt en dat digitale keuzes mensen op andere plaatsen en toekomstige generaties kunnen raken zonder dat zij daarop invloed hadden.
 
 **KAND-058** verdiept vervanging en elektronisch afval; **KAND-059** bewaakt dat efficiëntie per handeling niet gelijkstaat aan een dalende totale belasting wanneer gebruik en schaal sneller groeien. **KAND-061** blijft een tijds- en belangendragerlens voor gevolgen die later of bij toekomstige generaties terechtkomen. **KAND-062** blijft een oplossingsbeperking en **KAND-063** blijft verworpen als algemene probleemclaim.
 
@@ -485,7 +490,8 @@ De set is nog niet gereed voor definitieve vaststelling. Enkele geselecteerde ke
 #### Probleem 5 — Ongelijke toegang en kansen
 
 - **7B** en **8A** blijven herkenbaar: ongerechtvaardigd verschillende digitale uitkomsten en materieel ongelijke toegang door digitale kanaalafhankelijkheid.
-- De formulering over een beoordeling die eerdere achterstand als maatstaf gebruikt is te algemeen. Eerdere achterstand kan ook een gerechtvaardigde maatstaf zijn voor corrigerende ondersteuning; het probleem is de ongerechtvaardigd ongelijke uitkomst en de manier waarop gegevens, proxies of maatstaven achterstand laten doorwerken.
+- De red-teambevinding over de stap van één digitale drempel naar groeiende verschillen in welvaart en invloed is gedeeltelijk aanvaard. De cumulatieve werking blijft onderdeel van probleem 5, maar ontstaat niet door ieder afzonderlijk obstakel. De chartertekst maakt daarom expliciet dat de gevolgen zich opstapelen wanneer zulke drempels terugkeren. De formuleringen `nieuwe kansen te krijgen` en `de volgende stap` houden deze beweging concreet en vermijden de abstracte herhaling van `kans` en `bereikbaar`.
+- Het afzonderlijke voorbeeld van een digitale beoordeling die eerdere achterstand laat doorwerken, wordt niet in de chartertekst behouden. Het is een mogelijk mechanisme onder probleem 5, maar niet het dragende gewicht van deze geconvergeerde probleemtheorie. Dat gewicht ligt bij digitale uitsluiting en de manier waarop terugkerende drempels voordeel en achterstand laten opstapelen. De kernzin en slotzinnen blijven breed genoeg om ongelijk uitpakkende beoordelingen mee te dragen zonder ieder KAND-item afzonderlijk uit te leggen.
 - De beweging van één gemiste toegang of kans naar minder inkomen, ervaring of gezondheid en vervolgens naar algemene verschillen in welvaart en invloed is een verdedigbare Chartertheorie, maar geen volledig aangetoonde algemene causale keten.
 - De cumulatieve lens mag behouden blijven, maar moet zichtbaar begrensd worden zodat digitalisering niet als enige of primaire oorzaak van brede maatschappelijke ongelijkheid wordt gepresenteerd.
 
@@ -504,7 +510,7 @@ De set is nog niet gereed voor definitieve vaststelling. Enkele geselecteerde ke
 - Probleem 3 bereikt al vroeg de volledige maatschappelijke schaal. Bij revisie moet worden bewaakt dat de oplopende beweging naar problemen 4, 5 en 6 zichtbaar blijft.
 - Problemen 4 en 5 gebruiken beide werk en ondersteuning als voorbeeld. Hun grens moet helder blijven: probleem 4 gaat over macht, invloed, correctie en exit; probleem 5 over de verdeling van toegang, kansen en uitkomsten.
 - Probleem 6 heeft het zwaarste slottempo en bevat de meest referentiële en causale dubbelzinnigheid.
-- Vastgestelde lokale taalproblemen zijn onder meer `minder gezondheid`, `kansen bereiken`, de moeilijk leesbare constructie `een werkende opdrachten krijgt`, het onduidelijke antecedent van `binnen dezelfde systemen`, het onduidelijke `ervan` in probleem 3 en het dubbelzinnige `ze` in probleem 6.
+- De lokale taalproblemen uit de red-teamtest zijn opgelost: `minder gezondheid` is concreet gemaakt, `kansen bereiken` is vervangen, `een werkende opdrachten krijgt` is vereenvoudigd tot `iemand werk krijgt`, `binnen dezelfde systemen` is inhoudelijk aangescherpt tot `onder hetzelfde beheer`, het onduidelijke `ervan` in probleem 3 is verwijderd en de dubbelzinnige verwijzing in probleem 6 is herschreven vanuit de digitale keuzes zelf.
 - Na de zes problemen is één gezamenlijke slotbeweging nodig die de inhoudelijke lijn afrondt zonder de zes teksten opnieuw samen te vatten.
 
 ### KAND-grenzen die behouden blijven
