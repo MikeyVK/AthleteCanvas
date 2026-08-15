@@ -2,7 +2,7 @@
 
 > **Status:** Actief concept  
 > **Versie:** 4.0  
-> **Laatste update:** 2026-08-13 14:03
+> **Laatste update:** 2026-08-15 15:45
 
 Dit is de grondwet van Ypsia. Iedere productbeslissing, ontwerpkeuze, samenwerking, bestuurlijke beslissing en zakelijke koers wordt hieraan getoetst. Niet periodiek, maar telkens wanneer een beslissing wordt genomen.
 
@@ -24,7 +24,7 @@ Vanuit dat besef erkennen wij zes terugkerende problemen in de manier waarop dig
 
 **Digitale continuïteit hangt af van vergankelijke systemen.** Bij veel digitale diensten krijgt de eigenaar toegang tot de inhoud, terwijl een andere partij de bron beheert. Bescherming, overdracht en behoud hangen daardoor af van die partij. Verandert, faalt of stopt het systeem, dan kan de toegang verdwijnen of de bron zelf verloren gaan.
 
-**De digitale bron bevat niet de volledige context van data.** In de bron zelf zijn bijdragers, geschiedenis en verbanden niet altijd vastgelegd. Zonder die samenhang kunnen gegevens hun oorspronkelijke betekenis of bruikbaarheid verliezen en onbedoeld worden uitgelegd of gebruikt. Een bron kan bovendien iets onthullen over een andere betrokkene, zonder dat de verstrekker of diegene daarvoor heeft gekozen.
+**Digitale data kan niet zonder context.** Een digitale bron bevat niet altijd bijdragers, geschiedenis en verbanden. Zonder die samenhang kunnen gegevens hun oorspronkelijke betekenis of bruikbaarheid verliezen en onbedoeld worden uitgelegd of gebruikt. Wanneer data in context wordt gebracht, kan bovendien informatie over anderen zichtbaar worden, zonder dat de verstrekker of diegenen daarvoor hebben gekozen.
 
 **Digitale systemen sturen aandacht en hoe mensen oordelen.** Veel digitale systemen zijn ingericht om aandacht vast te houden, niet om zorgvuldig gebruik ervan te ondersteunen. Wat sterke reacties oproept, wordt vaker getoond en herhaald. Daardoor gaat tijd verloren, neemt cognitieve belasting toe en kan steeds grovere inhoud normaal gaan lijken. Populariteit en herhaling kunnen vertrouwen wekken, ook wanneer inhoud en herkomst daar geen reden toe geven. Ook generatieve AI stelt overtuigende antwoorden samen zonder vanzelf een betrouwbare en controleerbare weergave van bronnen te bieden. Zo beïnvloeden digitale systemen niet alleen waar aandacht naartoe gaat en hoeveel ervan wordt opgeëist, maar ook wat mens en samenleving als geloofwaardig, normaal en waar gaan beschouwen.
 

@@ -1,7 +1,7 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.12  
+**Versie:** 1.15  
 **Laatst bijgewerkt:** 2026-08-15  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
@@ -262,6 +262,9 @@ Waardevolle inhoudelijke inzichten uit eerder werk blijven beschikbaar via de ka
 
 | Versie | Datum | Wijziging |
 |---|---|---|
+| 1.15 | 2026-08-15 | Definitieve revisie van probleem 2 vastgesteld: context bepaalt mede betekenis, gebruik en relationele gevolgen van digitale data. |
+| 1.14 | 2026-08-15 | De red-teambevinding over probleem 2 verdiept: context blijkt geen ontbrekend bijschrift maar een medebepalende voorwaarde voor betekenis, waarde, gebruik en gevolgen van digitale data. |
+| 1.13 | 2026-08-15 | Vastgelegd dat 6B verdeeld wordt gedragen door bronlevensloop in probleem 1 en invloed in probleem 4, en dat 9A/9B op Charterabstractieniveau voldoende onder probleem 1 vallen. |
 | 1.12 | 2026-08-15 | Onafhankelijke red-teambevindingen over dekking, inhoud, causaliteit, taal, structuur en tempo vastgelegd als begrensde revisiebasis; nog zonder tekstuele of inhoudelijke revisiebesluiten. |
 | 1.11 | 2026-08-15 | Probleem 6 afgebakend rond totale fysieke levenscyclusbelasting, gezamenlijke schaal en ongelijke afwenteling in plaats en tijd. |
 | 1.10 | 2026-08-15 | Probleem 5 afgebakend rond ongelijke toegang, digitale toewijzing en de opstapeling van voordeel en achterstand. |
@@ -521,3 +524,87 @@ Voordat de Chartertekst wordt aangepast, worden de volgende keuzes expliciet gem
 5. Welke causale claims in problemen 3, 5 en 6 blijven als Chartertheorie staan en welke worden teruggebracht tot wat het vooronderzoek rechtstreeks draagt?
 
 Pas na deze keuzes volgt tekstuele revisie. Nieuw brononderzoek is alleen gerechtvaardigd wanneer een sterkere causale claim bewust behouden moet blijven en de bestaande analyse daarvoor aantoonbaar onvoldoende is.
+
+
+## BES-015 — 6B en 9A/9B worden gewogen over probleem 1 en probleem 4 gedekt
+
+**Status:** Approved  
+**Datum:** 2026-08-15
+
+### Besluit over 6B
+
+**6B — een geldige correctie of beëindiging die niet aantoonbaar doorwerkt** wordt niet als één volledig facet in probleem 1 of probleem 4 geperst. De kern wordt langs twee bestaande Charterproblemen gedragen:
+
+- de levensloop van de digitale bron, waaronder het voortbestaan van eerdere of verspreide vormen na een geldige wijziging of beëindiging, valt onder **probleem 1**;
+- de mogelijkheid van betrokkenen om op die levensloop, correctie, beëindiging en het verdere gebruik invloed uit te oefenen, valt onder **probleem 4**.
+
+Deze verdeling is een bewuste convergentiekeuze. Zij mag er bij revisie niet toe leiden dat 6B in beide teksten alleen impliciet blijft. De teksten hoeven het volledige technische mechanisme van kopieën, afgeleiden en downstreamsystemen niet uit te leggen, maar bronlevensloop en werkelijke invloed moeten samen herkenbaar blijven.
+
+### Besluit over 9A en 9B
+
+**9A — gedeelde afhankelijkheid zonder zelfstandige uitwijkmogelijkheid** en **9B — meefalende nood- en herstelmiddelen** worden op het abstractieniveau van het Charter voldoende gedragen door probleem 1.
+
+De dragende betekenis is dat digitale continuïteit en beschikbaarheid afhankelijk zijn van systemen die door een andere partij worden beheerd en waarvoor die partij vaak de praktische verantwoordelijkheid draagt. Wanneer zo'n systeem verandert, uitvalt of verdwijnt, kan ook toegang of beschikbaarheid wegvallen. Probleem 1 hoeft niet iedere functionele uitval, herstelvoorziening of technische afhankelijkheidsketen afzonderlijk te benoemen om deze betekenis te behouden.
+
+De beperkte invloed van afhankelijke mensen en organisaties op beheer, continuïteit, herstel en vertrek blijft een vraag van **probleem 4**. Bij de revisie van probleem 1 mag beschikbaarheid alleen worden aangescherpt wanneer dat de bestaande kern natuurlijk verduidelijkt; 9A en 9B vormen geen aanleiding om probleem 1 tot een algemene infrastructuur- of hersteltheorie te verbreden.
+
+### Gevolg voor de revisievolgorde
+
+De open punten over 6B en de classificatie van 9A/9B uit BES-014 zijn hiermee beantwoord. De eerstvolgende inhoudelijke revisie richt zich op probleem 2: het onderscheid tussen verloren samenhang en geschiedenis (**2B**), gebruik buiten oorspronkelijke context of bedoeling (**6A**) en materiële afleidingen over andere betrokkenen (**6C**).
+
+
+## BES-016 — De red-teamtest verdiept probleem 2 zonder de bestaande dekking te verwerpen
+
+**Status:** Approved  
+**Datum:** 2026-08-15
+
+### Wat de herlezing heeft onthuld
+
+De eerste red-teamlezing beoordeelde probleem 2 te veel vanuit de kernzin op zichzelf. Daardoor ontstond de zorg dat `De digitale bron bevat niet de volledige context van data` het probleem zou reduceren tot ontbrekende informatie in de bron en stilzwijgend meer contextopslag als oplossing zou voorschrijven.
+
+De herlezing via drie menselijke situaties laat zien dat de volledige alinea deze versmalling niet maakt. De zin `Zonder die samenhang` legt de nadruk terecht op de verhouding tussen bron en context. De tekst draagt daarmee reeds drie verschillende maar verbonden gevolgen:
+
+- een behouden bron kan een deel van haar gezamenlijk verleende bewijskracht, betekenis of functie verliezen wanneer bijdragers, geschiedenis en verbanden losraken (**2B**);
+- feitelijk correcte brondata kunnen tot een verkeerde of ongewenste conclusie of toepassing leiden wanneer de context waarin zij ontstonden niet wordt meegenomen (**6A**);
+- analyse of het in context brengen van brondata kan informatie over andere betrokkenen zichtbaar of toepasbaar maken en daarmee hun privacy raken (**6C**).
+
+De red-teamtest heeft probleem 2 daarom niet inhoudelijk ontkracht. Zij heeft een diepere gemeenschappelijke kern blootgelegd: digitale data ontlenen betekenis, waarde, gebruiksgrenzen en mogelijke gevolgen mede aan context. Context is geen optioneel bijschrift en hoeft evenmin volledig in de bron zelf te worden opgeslagen; de relevante samenhang moet wel worden begrepen en waar nodig behouden.
+
+### Gevolg voor de kernzin en eerste uitlegzin
+
+De bestaande kernzin mag worden aangescherpt vanuit de richting `Digitale data kan niet zonder context`. Deze formulering is nog geen definitieve redactionele keuze, maar maakt de diepere kern directer zichtbaar en voorkomt dat het probleem uitsluitend als onvolledigheid van de bron wordt gelezen. Bij de taalkundige trechter wordt nog beoordeeld of `data` hier als verzamelnaam enkelvoudig wordt gebruikt of dat een grammaticaal en ritmisch sterker alternatief nodig is.
+
+De eerste uitlegzin beweegt naar de directere constructie:
+
+`Een digitale bron bevat niet altijd bijdragers, geschiedenis en verbanden. Zonder die samenhang ...`
+
+De punt tussen beide gedachten blijft noodzakelijk: de eerste zin benoemt wat niet vanzelf in de bron aanwezig is; de volgende zin legt uit wat daarvan het gevolg is. De tekst schrijft daarmee nog geen oplossing voor.
+
+### Bewuste keuze voor `onbedoeld`
+
+Het woord `onbedoeld` blijft behouden. Het omvat zowel een uitleg of gebruik dat feitelijk verkeerd uitpakt als een uitleg of gebruik dat door een betrokkene niet gewenst is. Juist deze dubbele betekenis draagt de breedte van 6A zonder een opsomming of juridische kwalificatie te introduceren.
+
+### Bijgestelde auditconclusie
+
+Probleem 2 vraagt geen conceptuele herbouw. De bestaande alinea dekt 2B, 6A en 6C in herkenbare vorm. De revisie richt zich op een sterkere kernzin, een directere eerste uitlegzin en een beperkte taalkundige toets. De auditwaarschuwing tegen het letterlijk opslaan van iedere mogelijke context blijft uitsluitend een grens voor later architectuuronderzoek en is geen bezwaar tegen de huidige probleemdefinitie.
+
+
+## BES-017 — Definitieve Chartertekst voor probleem 2
+
+**Status:** Approved  
+**Datum:** 2026-08-15
+
+### Vastgestelde tekst
+
+> **Digitale data kan niet zonder context.** Een digitale bron bevat niet altijd bijdragers, geschiedenis en verbanden. Zonder die samenhang kunnen gegevens hun oorspronkelijke betekenis of bruikbaarheid verliezen en onbedoeld worden uitgelegd of gebruikt. Wanneer data in context wordt gebracht, kan bovendien informatie over anderen zichtbaar worden, zonder dat de verstrekker of diegenen daarvoor hebben gekozen.
+
+### Rationale
+
+- `Digitale data` wordt bewust als één conceptuele verzamelnaam behandeld; de enkelvoudsvorm `kan` is de vastgestelde natuurlijke Chartervorm.
+- De kernzin maakt context tot een noodzakelijke voorwaarde voor het begrijpen en gebruiken van digitale data, zonder te eisen dat iedere mogelijke context in de bron zelf wordt opgeslagen.
+- De eerste uitlegzin benoemt direct dat bijdragers, geschiedenis en verbanden niet altijd onderdeel van de bron zijn.
+- `Onbedoeld` blijft bewust behouden omdat het zowel feitelijk verkeerd als niet gewenst gebruik of uitleg kan omvatten.
+- De slotzin legt de handeling bij het in context brengen van data. Data zelf krijgt geen bedoeling of schuld toegeschreven.
+- De tekst bevat een bewuste tweedelige beweging: zonder samenhang kan betekenis of bruikbaarheid verloren gaan; door nieuwe samenhang kan informatie over anderen zichtbaar worden.
+
+De tekst draagt daarmee 2B, 6A en 6C zonder bronverlies uit probleem 1, beslismacht uit probleem 4 of een architecturale oplossing naar binnen te trekken.
