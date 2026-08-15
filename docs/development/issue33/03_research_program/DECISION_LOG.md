@@ -1,7 +1,7 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.15  
+**Versie:** 1.16  
 **Laatst bijgewerkt:** 2026-08-15  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
@@ -262,6 +262,7 @@ Waardevolle inhoudelijke inzichten uit eerder werk blijven beschikbaar via de ka
 
 | Versie | Datum | Wijziging |
 |---|---|---|
+| 1.16 | 2026-08-15 | Probleem 3 gericht herzien: maker en bewerking, overtuigingskracht tegenover juistheid en controleerbare bronbasis onderscheiden; maatschappelijke slotschaal versmald naar mensen. |
 | 1.15 | 2026-08-15 | Definitieve revisie van probleem 2 vastgesteld: context bepaalt mede betekenis, gebruik en relationele gevolgen van digitale data. |
 | 1.14 | 2026-08-15 | De red-teambevinding over probleem 2 verdiept: context blijkt geen ontbrekend bijschrift maar een medebepalende voorwaarde voor betekenis, waarde, gebruik en gevolgen van digitale data. |
 | 1.13 | 2026-08-15 | Vastgelegd dat 6B verdeeld wordt gedragen door bronlevensloop in probleem 1 en invloed in probleem 4, en dat 9A/9B op Charterabstractieniveau voldoende onder probleem 1 vallen. |
@@ -608,3 +609,24 @@ Probleem 2 vraagt geen conceptuele herbouw. De bestaande alinea dekt 2B, 6A en 6
 - De tekst bevat een bewuste tweedelige beweging: zonder samenhang kan betekenis of bruikbaarheid verloren gaan; door nieuwe samenhang kan informatie over anderen zichtbaar worden.
 
 De tekst draagt daarmee 2B, 6A en 6C zonder bronverlies uit probleem 1, beslismacht uit probleem 4 of een architecturale oplossing naar binnen te trekken.
+
+
+## BES-018 — Definitieve gerichte revisie van probleem 3
+
+**Status:** Approved  
+**Datum:** 2026-08-15
+
+### Vastgestelde tekst
+
+> **Digitale systemen sturen aandacht en hoe mensen oordelen.** Veel digitale systemen zijn ingericht om aandacht vast te houden, niet om zorgvuldig gebruik ervan te ondersteunen. Wat sterke reacties oproept, wordt vaker getoond en herhaald. Daardoor gaat tijd verloren, neemt cognitieve belasting toe en kan steeds grovere inhoud normaal gaan lijken. Populariteit en herhaling kunnen vertrouwen wekken, zelfs wanneer niet duidelijk is wie of wat de inhoud heeft gemaakt of veranderd. Ook kan generatieve AI foutieve informatie overtuigend als juist presenteren, zonder vanzelf betrouwbare en controleerbare bronnen te bieden. Zo beïnvloeden digitale systemen niet alleen waar aandacht naartoe gaat en hoeveel ervan wordt opgeëist, maar ook wat mensen als geloofwaardig, normaal en waar gaan beschouwen.
+
+### Gerichte revisiekeuzes
+
+- De kernzin en de eerste beweging over het vasthouden van aandacht, herhaling, tijdverlies, cognitieve belasting en normalisering blijven behouden.
+- `Zelfs wanneer` versterkt de tegenstelling tussen gewekt vertrouwen en onduidelijkheid over maker of bewerking, en voorkomt een directe herhaling van `ook`.
+- De herkomstzin draagt 5B herkenbaar: de relevante vraag is wie of wat inhoud heeft gemaakt of veranderd, niet uitsluitend of een bekende bron betrouwbaar is.
+- De AI-zin maakt 4B zichtbaar door foutieve informatie tegenover een overtuigende presentatie als juist te plaatsen.
+- Dezelfde AI-zin draagt 5A door vast te leggen dat betrouwbare en controleerbare bronnen niet vanzelf worden geboden.
+- De slotzin wordt versmald van `mens en samenleving` naar `mensen`. Daarmee blijft het menselijke gevolg krachtig zonder probleem 3 voortijdig naar de bredere maatschappelijke schaal van problemen 4 en 5 te trekken.
+
+Probleem 3 draagt na deze revisie 4A, 4B, 5A en 5B herkenbaar, zonder ieder mechanisme of iedere bewijsgrens afzonderlijk in de Chartertekst op te nemen.
