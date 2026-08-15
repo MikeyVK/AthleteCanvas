@@ -1,7 +1,7 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.21  
+**Versie:** 1.26  
 **Laatst bijgewerkt:** 2026-08-15  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
@@ -102,7 +102,7 @@ Zoekresultaten, aanbevelingen, rangschikkingen en AI-antwoorden bepalen mede wat
 
 **Herkomst:** kandidaten 4A, 4B, 5A en 5B.
 
-### 4. Digitaal beheer geeft beslismacht over wie ervan afhankelijk is
+### 4. Digitaal beheer geeft beslismacht over gebruikers
 
 Wie een belangrijk digitaal systeem beheert, kan regels stellen voor toegang, zichtbaarheid, deelname, werk en besluitvorming. De mensen die daarvan afhankelijk zijn of de gevolgen ondervinden, beschikken niet automatisch over dezelfde informatie, invloed of mogelijkheid om beslissingen te laten herzien.
 
@@ -189,7 +189,7 @@ De vastgestelde kernzinnen en volgorde zijn:
 1. **Digitale continuïteit hangt af van vergankelijke systemen.**
 2. **De digitale bron bevat niet de volledige context van data.**
 3. **Digitale systemen sturen aandacht en hoe mensen oordelen.**
-4. **Digitaal beheer geeft beslismacht over wie ervan afhankelijk is.**
+4. **Digitaal beheer geeft beslismacht over gebruikers.**
 5. **Digitalisering verdeelt toegang en kansen ongelijk.**
 6. **Digitale technologie belast mens en leefomgeving.**
 
@@ -509,7 +509,7 @@ De set is nog niet gereed voor definitieve vaststelling. Enkele geselecteerde ke
 - Probleem 2 blijft qua menselijke herkenbaarheid en zelfstandige scanbaarheid achter bij probleem 3 tot en met 6. De overgang van bronverlies in probleem 1 naar contextverlies in probleem 2 is onvoldoende zichtbaar doordat beide teksten direct over `de bron zelf` spreken.
 - Probleem 3 bereikt al vroeg de volledige maatschappelijke schaal. Bij revisie moet worden bewaakt dat de oplopende beweging naar problemen 4, 5 en 6 zichtbaar blijft.
 - Problemen 4 en 5 gebruiken beide werk en ondersteuning als voorbeeld. Hun grens moet helder blijven: probleem 4 gaat over macht, invloed, correctie en exit; probleem 5 over de verdeling van toegang, kansen en uitkomsten.
-- Probleem 6 heeft het zwaarste slottempo en bevat de meest referentiële en causale dubbelzinnigheid.
+- Probleem 6 had tijdens de eerste red-teamlezing het zwaarste slottempo en de meeste referentiële en causale dubbelzinnigheid; deze concrete problemen zijn in de daaropvolgende revisies opgelost.
 - De lokale taalproblemen uit de red-teamtest zijn opgelost: `minder gezondheid` is concreet gemaakt, `kansen bereiken` is vervangen, `een werkende opdrachten krijgt` is vereenvoudigd tot `iemand werk krijgt`, `binnen dezelfde systemen` is inhoudelijk aangescherpt tot `onder hetzelfde beheer`, het onduidelijke `ervan` in probleem 3 is verwijderd en de dubbelzinnige verwijzing in probleem 6 is herschreven vanuit de digitale keuzes zelf.
 - Na de zes problemen is één gezamenlijke slotbeweging nodig die de inhoudelijke lijn afrondt zonder de zes teksten opnieuw samen te vatten.
 
@@ -636,3 +636,41 @@ De tekst draagt daarmee 2B, 6A en 6C zonder bronverlies uit probleem 1, beslisma
 - De slotzin wordt versmald van `mens en samenleving` naar `mensen`. Daarmee blijft het menselijke gevolg krachtig zonder probleem 3 voortijdig naar de bredere maatschappelijke schaal van problemen 4 en 5 te trekken.
 
 Probleem 3 draagt na deze revisie 4A, 4B, 5A en 5B herkenbaar, zonder ieder mechanisme of iedere bewijsgrens afzonderlijk in de Chartertekst op te nemen.
+
+
+## Afgeronde tweede red-teamronde op de zes charterproblemen
+
+**Auditbasis:** commit `b66de322d75434c72a6fd478e1b4a50925d0da6d`  
+**Status:** AFGEROND — bevindingen beoordeeld en opgelost  
+**Reikwijdte:** inhoudelijke dekking, causaliteit, onderlinge afbakening, begrijpelijkheid, ritme en documentconsistentie
+
+### Wat de tweede ronde bevestigt
+
+- De zes probleemtheorieën vormen nog steeds een verdedigbare causale reeks van bron en context naar beïnvloeding, beheer, verdeling en fysieke gevolgen.
+- Geen van de negentien geconvergeerde probleemkernen wordt door de herziene set volledig afgesneden.
+- De eerder gekozen grenzen tussen problemen 1 en 2, 3 en 4, 4 en 5, en 5 en 6 blijven inhoudelijk bruikbaar.
+- Voor problemen 1 en 6 is geen nieuwe inhoudelijke charterrevisie gevonden.
+
+### Afhandeling bevindingen
+
+1. **RT2-01 — Documentdrift (OPGELOST).** De zes actuele probleemnamen en hun volgorde zijn gesynchroniseerd in `Inhoudsopgave Ypsia Grondwet.md` en `03_research_program/STATUS.md`.
+2. **RT2-02 — Te harde causaliteit in probleem 3 (OPGELOST).** `Daardoor` is vervangen door `Daarbij`, zodat de menselijke gevolgen verbonden blijven aan de bredere inrichting zonder een niet-gedragen directe causale keten te claimen.
+3. **RT2-03 — Drie lokale taalvragen (OPGELOST).** Probleem 2 zegt nu dat gegevens anders kunnen worden uitgelegd of gebruikt dan bedoeld. De kernzin van probleem 4 is verkort tot `Digitaal beheer geeft beslismacht over gebruikers`; de passage zelf draagt afhankelijkheid, invloed en exit. Probleem 5 onderscheidt mogelijkheid en uitkomst door te zeggen dat deelname meer mogelijkheden geeft om kennis, bereik en middelen op te bouwen.
+4. **RT2-04 — Interne veroudering in het beslislog (OPGELOST).** De eerdere bevinding over probleem 6 is als historische toestand geformuleerd en de latere oplossing is expliciet gemaakt.
+
+
+## Derde koude red-teamcontrole op de zes charterproblemen
+
+**Controlebasis:** actuele werkmap na afhandeling van RT2-01 tot en met RT2-04  
+**Status:** GESLAAGD — nul open inhoudelijke, taalkundige of documentconsistente bevindingen  
+**Datum:** 2026-08-15
+
+De zes actuele probleemdefinities zijn opnieuw als één geheel en afzonderlijk beoordeeld op:
+
+- inhoudelijke aansluiting op het vooronderzoek, de KAND-items en de negentien probleemkernen;
+- begrenzing tussen de zes problemen en het voorkomen van ongewenste overlap;
+- begrijpelijkheid, menselijke herkenbaarheid en zelfstandige leesbaarheid;
+- ritme, zinsbouw, woordkeuze en onderlinge stijlconsistentie;
+- interne samenhang tussen het Charter, de inhoudsopgave, dit beslislog en de onderzoeksstatus.
+
+De controle leverde geen nieuwe inhoudelijke of taalkundige bezwaren op. Oude formuleringen die nog in dit beslislog voorkomen, blijven uitsluitend staan als historische verantwoording van de gemaakte keuzes en gelden niet als actuele chartertekst.

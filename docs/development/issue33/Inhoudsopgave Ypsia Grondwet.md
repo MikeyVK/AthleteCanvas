@@ -1,9 +1,10 @@
 # Inhoudsopgave — Charter 4.0
 
 **Status:** Vastgesteld structureel raamwerk  
-**Raamwerkversie:** 1.0  
+**Raamwerkversie:** 1.1  
 **Doelversie:** Charter 4.0  
 **Vastgesteld op:** 2026-08-09  
+**Laatst bijgewerkt:** 2026-08-15  
 **Grondslag:** Expliciete goedkeuring door Michel in de Issue 33 Charterdialoog  
 **Functie:** Bindend kader voor de volgorde, afbakening en uitwerking van Charter 4.0
 
@@ -50,17 +51,17 @@ Deel I begint met een korte, onbenoemde inleiding.
 
 ### 1. Het Probleem
 
-#### 1.1 Digitaal voortbestaan is uitbesteed aan vergankelijke systemen
+#### 1.1 Digitale continuïteit hangt af van vergankelijke systemen
 
-#### 1.2 Data reist verder dan haar context
+#### 1.2 Digitale data kan niet zonder context
 
-#### 1.3 Digitale macht kan zich opstapelen zonder gelijkwaardige tegenmacht
+#### 1.3 Digitale systemen sturen aandacht en hoe mensen oordelen
 
-#### 1.4 Digitale systemen sturen ons beeld van de werkelijkheid
+#### 1.4 Digitaal beheer geeft beslismacht over gebruikers
 
-#### 1.5 Digitalisering verdeelt toegang en kansen niet gelijk
+#### 1.5 Digitalisering verdeelt toegang en kansen ongelijk
 
-#### 1.6 Het digitale is fysiek, maar zijn rekening blijft buiten beeld
+#### 1.6 Digitale technologie belast mens en leefomgeving
 
 ## Deel II — Het Mandaat
 

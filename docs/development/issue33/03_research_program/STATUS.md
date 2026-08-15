@@ -1,20 +1,20 @@
 # Status onderzoek Charter 4.0
 
 **Status:** Actief  
-**Versie:** 2.0  
-**Laatst bijgewerkt:** 2026-08-09  
+**Versie:** 2.1  
+**Laatst bijgewerkt:** 2026-08-15  
 **Werkfase:** Research
 
 ## Actueel doel
 
 Het onderzoek ondersteunt het schrijven van Charter 4.0. De negentien probleemkernen zijn geconvergeerd naar zes begrijpelijke probleemtheorieën:
 
-1. Digitaal voortbestaan is uitbesteed aan vergankelijke systemen.
-2. Data reist verder dan haar context.
-3. Digitale macht kan zich opstapelen zonder gelijkwaardige tegenmacht.
-4. Digitale systemen sturen ons beeld van de werkelijkheid.
-5. Digitalisering verdeelt toegang en kansen niet gelijk.
-6. Het digitale is fysiek, maar zijn rekening blijft buiten beeld.
+1. Digitale continuïteit hangt af van vergankelijke systemen.
+2. Digitale data kan niet zonder context.
+3. Digitale systemen sturen aandacht en hoe mensen oordelen.
+4. Digitaal beheer geeft beslismacht over gebruikers.
+5. Digitalisering verdeelt toegang en kansen ongelijk.
+6. Digitale technologie belast mens en leefomgeving.
 
 De zes theorieën vormen de werkbasis voor hoofdstuk 1 van Charter 4.0. De negentien kandidaten blijven beschikbaar als onderliggende analyse en herkomst, maar worden niet afzonderlijk gecertificeerd.
 
