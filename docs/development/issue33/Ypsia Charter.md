@@ -2,7 +2,7 @@
 
 > **Status:** Actief concept  
 > **Versie:** 4.0  
-> **Laatste update:** 2026-08-15 20:58
+> **Laatste update:** 2026-08-16 08:25
 
 Dit is de grondwet van Ypsia. Iedere productbeslissing, ontwerpkeuze, samenwerking, bestuurlijke beslissing en zakelijke koers wordt hieraan getoetst. Niet periodiek, maar telkens wanneer een beslissing wordt genomen.
 
@@ -33,3 +33,6 @@ Vanuit dat besef erkennen wij zes terugkerende problemen in de manier waarop dig
 **Digitalisering verdeelt toegang en kansen ongelijk.** Digitale deelname is steeds vaker een voorwaarde om rechten uit te oefenen en nieuwe kansen te krijgen. Een verouderde telefoon of ontoegankelijke interface kan toegang tot ondersteuning, werk of zorg blokkeren. Wanneer zulke drempels terugkeren, blijven de gevolgen niet beperkt tot één moment. Minder inkomen, minder ervaring of een slechtere gezondheid maken ook de volgende stap moeilijker. Wie wel kan deelnemen, krijgt ondertussen meer mogelijkheden om kennis, bereik en middelen op te bouwen. Zo stapelen voordeel en achterstand zich op en groeien verschillen in welvaart en invloed tussen mensen, groepen en gebieden.
 
 **Digitale technologie belast mens en leefomgeving.** Het gebruik van digitale technologie lijkt schoon en gewichtloos, omdat grondstoffenwinning, energie- en waterverbruik en afval onzichtbaar blijven. Eén apparaat of digitale handeling lijkt nauwelijks verschil te maken, maar op de schaal van miljoenen gebruikers en systemen groeien kleine keuzes uit tot een grote fysieke belasting. Wie voordeel heeft van digitale technologie, draagt niet automatisch ook de zwaarste lasten. De gevolgen voor leefomgeving en gezondheid worden direct gevoeld rond mijnen, fabrieken, datacentra en afvalverwerking. Zo raken digitale keuzes ook mensen die ergens anders leven en toekomstige generaties, zonder dat ze daarop invloed hebben gehad.
+
+
+Deze problemen verschillen in oorzaak en gevolg, maar maken samen duidelijk dat niet alles wat digitaal mogelijk is ook houdbaar, rechtvaardig of wenselijk is. Een ander fundament begint daarom bij menselijke en morele keuzes die richting geven aan Ypsia.

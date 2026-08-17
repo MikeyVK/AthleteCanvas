@@ -1,8 +1,8 @@
 # Actueel beslislog — Charter 4.0
 
 **Status:** Actief  
-**Versie:** 1.26  
-**Laatst bijgewerkt:** 2026-08-15  
+**Versie:** 1.28  
+**Laatst bijgewerkt:** 2026-08-16  
 **Beslisser:** Michel  
 **Richting volledig gelezen en bevestigd door Michel:** 2026-08-09  
 
@@ -674,3 +674,37 @@ De zes actuele probleemdefinities zijn opnieuw als één geheel en afzonderlijk 
 - interne samenhang tussen het Charter, de inhoudsopgave, dit beslislog en de onderzoeksstatus.
 
 De controle leverde geen nieuwe inhoudelijke of taalkundige bezwaren op. Oude formuleringen die nog in dit beslislog voorkomen, blijven uitsluitend staan als historische verantwoording van de gemaakte keuzes en gelden niet als actuele chartertekst.
+
+
+## BES-019 — Voorlopige slotbeweging verbindt de diagnose met het mandaat
+
+**Status:** Voorlopig vastgesteld — herijken na hoofdstuk 2  
+**Datum:** 2026-08-16
+
+### Vastgestelde werktekst
+
+> Deze problemen verschillen in oorzaak en gevolg, maar maken samen duidelijk dat niet alles wat digitaal mogelijk is ook houdbaar, rechtvaardig of wenselijk is. Een ander fundament begint daarom bij menselijke en morele keuzes die richting geven aan Ypsia.
+
+### Rationale en herijking
+
+De slotbeweging vat de zes problemen niet opnieuw samen en wijst geen enkel mechanisme, bedrijf of technologietype als gezamenlijke oorzaak aan. `Houdbaar` benoemt de structurele gevolgen door de tijd heen, `rechtvaardig` de verdeling van macht, kansen en lasten, en `wenselijk` de bewuste richting die na de diagnose gekozen moet worden.
+
+De formulering geldt als werkende overgang naar Deel II. Nadat hoofdstuk 2 de menselijke en morele grond heeft vastgelegd, wordt deze passage opnieuw gespiegeld aan die uitgangspunten. Zij mag dan scherper worden gemaakt wanneer die scherpte rechtstreeks uit de vastgestelde morele grond volgt. De diagnose wordt daarbij niet achteraf herschreven alsof een norm al een feitelijke bevinding was.
+
+
+## BES-020 — Het Charter krijgt twee leesroutes uit één canonieke bron
+
+**Status:** Approved  
+**Datum:** 2026-08-16
+
+### Besluit
+
+Het Charter vervult twee functies. Het vertelt overtuigend wie Ypsia dient, waarom het nodig is, wat het wil bereiken en langs welke richting het wordt gebouwd. Tegelijk is het de bindende bron voor toekomstige ontwerp-, ontwikkel- en bestuursbeslissingen.
+
+Daarom krijgt ieder Deel een korte, ongenummerde kernpassage. De documentopening en deze kernpassages vormen samen een compacte leesroute die de hoofdlijn van Ypsia zelfstandig begrijpelijk maakt. De genummerde hoofdstukken vormen de volledige leesroute en werken de redenering, rechten, regels, grenzen en bestuurlijke werking uit.
+
+Er blijft één canonieke brontekst. Compacte en uitgebreide webweergaven en downloaduitgaven worden daaruit gegenereerd. De compacte uitgave gebruikt geen afwijkende samenvattingen, wijzigt geen formuleringen en kan de volledige bindende tekst niet vervangen of beperken.
+
+### Gevolg voor *De Gebruiker*
+
+Het eerdere hoofdstuk *De Gebruiker* keert niet automatisch met dezelfde titel, reikwijdte of tekst terug. De menselijke en uitnodigende functie ervan wordt wel bewust hersteld in de ongenummerde kernpassage van Deel II. Die passage moet herkenbaar maken voor wie en vanuit welke verhouding Ypsia wordt gebouwd, zonder mensen tot productgebruikers te reduceren, bescherming tot deelnemers aan Ypsia te beperken of al concrete architectuur en grondrechten vast te leggen.

@@ -1,10 +1,10 @@
 # Inhoudsopgave — Charter 4.0
 
 **Status:** Vastgesteld structureel raamwerk  
-**Raamwerkversie:** 1.1  
+**Raamwerkversie:** 1.2  
 **Doelversie:** Charter 4.0  
 **Vastgesteld op:** 2026-08-09  
-**Laatst bijgewerkt:** 2026-08-15  
+**Laatst bijgewerkt:** 2026-08-16  
 **Grondslag:** Expliciete goedkeuring door Michel in de Issue 33 Charterdialoog  
 **Functie:** Bindend kader voor de volgorde, afbakening en uitwerking van Charter 4.0
 
@@ -40,6 +40,17 @@ De toon van hoofdstukken 2 tot en met 6 van **Grondwet van Ypsia - Concept (Deel
 Hoofdstuk 1, **Het Probleem**, van Charter 3.0 is uitdrukkelijk uitgesloten als inhoudelijke en stilistische bron voor Charter 4.0. De formuleringen, diagnoses en beeldspraak uit dat hoofdstuk mogen niet als uitgangspunt worden hergebruikt. Voor het nieuwe probleemhoofdstuk gelden uitsluitend de zes vastgestelde probleemtheorieën en de besluiten die voor Charter 4.0 zijn bevestigd.
 
 ## 3. Canonieke structuur
+
+### Twee leesroutes, één brontekst
+
+Het Charter wordt vanuit één canonieke brontekst gepubliceerd met twee leesroutes:
+
+- een **compacte leesroute**, bestaande uit de onbenoemde opening en de korte, ongenummerde kernpassage van ieder Deel;
+- een **volledige leesroute**, waarin de genummerde hoofdstukken de redenering, bescherming, regels en bestuurlijke werking uitwerken.
+
+Iedere kernpassage beantwoordt zelfstandig de centrale vraag van het betreffende Deel en nodigt uit tot verdere lezing. De kernpassages vormen samen een beknopte weergave van het Charter, maar vervangen de volledige bindende tekst niet. Een compacte webweergave en een compacte download worden uit dezelfde bron gegenereerd en krijgen geen afwijkende formuleringen.
+
+De ongenummerde opening van Deel II neemt de menselijke en uitnodigende functie van het eerdere hoofdstuk *De Gebruiker* over. Zij maakt herkenbaar voor wie en vanuit welke verhouding Ypsia wordt gebouwd, zonder bescherming tot productgebruikers te beperken of al concrete architectuur en grondrechten voor te schrijven.
 
 ### Onbenoemde opening
 
